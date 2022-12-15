@@ -1,28 +1,26 @@
 package com.GetMyGraphicsCard.productservice.controller;
 
-import jakarta.annotation.Resource;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.MediaType;
+import com.GetMyGraphicsCard.productservice.service.WebClientService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
 
 @RestController
+@RequestMapping("/api/v1")
 public class WebClientController {
 
-    private WebClient webClient;
+    private WebClientService webClientService;
+
+    @Autowired
+    public WebClientController(WebClientService webClientService) {
+        this.webClientService = webClientService;
+    }
 
     @GetMapping("/products")
-    public Mono<String> getProducts(){
-        webClient = WebClient.builder()
-                .baseUrl("https://openapi.naver.com/v1/search/shop.json?query=RTX 3060ti&display=100")
-                .defaultHeader("X-Naver-Client-Id", "LN0TxgVzwBlIVpnW0QGb")
-                .defaultHeader("X-Naver-Client-Secret", "_9ZdxXu6KD")
-                .build();
+    public Mono<String> listProducts(){
 
-        return webClient.get()
-                .retrieve()
-                .bodyToMono(String.class);
+        return webClientService.getProducts();
     }
 }
