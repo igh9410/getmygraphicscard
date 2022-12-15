@@ -5,4 +5,5 @@ import reactor.core.publisher.Mono;
 
 public interface WebClientService {
     public Mono<Root> getProducts();
+    public void addProducts(Mono<Root> products);
 }
