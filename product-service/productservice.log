@@ -281,3 +281,541 @@ com.fasterxml.jackson.databind.exc.MismatchedInputException: Cannot deserialize 
 2022-12-15T13:51:32.363+09:00 DEBUG 23539 --- [http-nio-5000-exec-6] m.m.a.RequestResponseBodyMethodProcessor : Using 'text/html', given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, application/signed-exchange;v=b3;q=0.9, */*;q=0.8] and supported [text/plain, */*, application/json, application/*+json]
 2022-12-15T13:51:32.363+09:00 DEBUG 23539 --- [http-nio-5000-exec-6] m.m.a.RequestResponseBodyMethodProcessor : Writing ["{<EOL>?"lastBuildDate":"Thu, 15 Dec 2022 13:51:32 +0900",<EOL>?"total":19725,<EOL>?"start":1,<EOL>?"display":100,<EOL>?" (truncated)..."]
 2022-12-15T13:51:32.365+09:00 DEBUG 23539 --- [http-nio-5000-exec-6] o.s.web.servlet.DispatcherServlet        : Exiting from "ASYNC" dispatch, status 200
+2022-12-15T14:19:11.858+09:00  INFO 31029 --- [restartedMain] c.G.p.ProductServiceApplication          : Starting ProductServiceApplication using Java 17.0.5 with PID 31029 (/home/geonhyuk/Documents/CS/Java/GetMyGraphicsCard/product-service/build/classes/java/main started by geonhyuk in /home/geonhyuk/Documents/CS/Java/GetMyGraphicsCard/product-service)
+2022-12-15T14:19:11.860+09:00  INFO 31029 --- [restartedMain] c.G.p.ProductServiceApplication          : No active profile set, falling back to 1 default profile: "default"
+2022-12-15T14:19:11.877+09:00  INFO 31029 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-12-15T14:19:11.878+09:00  INFO 31029 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-12-15T14:19:12.222+09:00  INFO 31029 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 5000 (http)
+2022-12-15T14:19:12.226+09:00  INFO 31029 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-12-15T14:19:12.227+09:00  INFO 31029 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.1]
+2022-12-15T14:19:12.246+09:00  INFO 31029 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-12-15T14:19:12.246+09:00  INFO 31029 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 368 ms
+2022-12-15T14:19:12.391+09:00 DEBUG 31029 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2022-12-15T14:19:12.417+09:00 DEBUG 31029 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : 3 mappings in 'requestMappingHandlerMapping'
+2022-12-15T14:19:12.423+09:00 DEBUG 31029 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2022-12-15T14:19:12.425+09:00 DEBUG 31029 --- [restartedMain] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
+2022-12-15T14:19:12.445+09:00  INFO 31029 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-12-15T14:19:12.455+09:00  INFO 31029 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 5000 (http) with context path ''
+2022-12-15T14:19:12.459+09:00  INFO 31029 --- [restartedMain] c.G.p.ProductServiceApplication          : Started ProductServiceApplication in 0.753 seconds (process running for 0.892)
+2022-12-15T14:19:18.413+09:00  INFO 31029 --- [http-nio-5000-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-12-15T14:19:18.414+09:00  INFO 31029 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-12-15T14:19:18.414+09:00 DEBUG 31029 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : Detected StandardServletMultipartResolver
+2022-12-15T14:19:18.414+09:00 DEBUG 31029 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : Detected AcceptHeaderLocaleResolver
+2022-12-15T14:19:18.414+09:00 DEBUG 31029 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : Detected FixedThemeResolver
+2022-12-15T14:19:18.414+09:00 DEBUG 31029 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@18147225
+2022-12-15T14:19:18.415+09:00 DEBUG 31029 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.support.SessionFlashMapManager@4271641a
+2022-12-15T14:19:18.415+09:00 DEBUG 31029 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+2022-12-15T14:19:18.415+09:00  INFO 31029 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2022-12-15T14:19:18.417+09:00 DEBUG 31029 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/products", parameters={}
+2022-12-15T14:19:18.420+09:00 DEBUG 31029 --- [http-nio-5000-exec-1] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2022-12-15T14:19:18.422+09:00 DEBUG 31029 --- [http-nio-5000-exec-1] o.s.w.s.r.ResourceHttpRequestHandler     : Resource not found
+2022-12-15T14:19:18.422+09:00 DEBUG 31029 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 404 NOT_FOUND
+2022-12-15T14:19:18.424+09:00 DEBUG 31029 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : "ERROR" dispatch for GET "/error", parameters={}
+2022-12-15T14:19:18.426+09:00 DEBUG 31029 --- [http-nio-5000-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController#errorHtml(HttpServletRequest, HttpServletResponse)
+2022-12-15T14:19:18.434+09:00 DEBUG 31029 --- [http-nio-5000-exec-1] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, text/html;q=0.8]
+2022-12-15T14:19:18.438+09:00 DEBUG 31029 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : Exiting from "ERROR" dispatch, status 404
+2022-12-15T14:19:23.920+09:00 DEBUG 31029 --- [http-nio-5000-exec-2] o.s.web.servlet.DispatcherServlet        : GET "/api/v1/products", parameters={}
+2022-12-15T14:19:23.920+09:00 DEBUG 31029 --- [http-nio-5000-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.GetMyGraphicsCard.productservice.controller.WebClientController#listProducts()
+2022-12-15T14:19:23.943+09:00 DEBUG 31029 --- [http-nio-5000-exec-2] o.s.w.r.f.client.ExchangeFunctions       : [4dd998bc] HTTP GET https://openapi.naver.com/v1/search/shop.json?query=RTX%203060ti&display=100
+2022-12-15T14:19:24.467+09:00 DEBUG 31029 --- [reactor-http-epoll-2] o.s.w.r.f.client.ExchangeFunctions       : [4dd998bc] [e1d5b5bd-1] Response 200 OK
+2022-12-15T14:19:24.483+09:00 DEBUG 31029 --- [reactor-http-epoll-2] org.springframework.web.HttpLogging      : [4dd998bc] [e1d5b5bd-1] Decoded "{<EOL>?"lastBuildDate":"Thu, 15 Dec 2022 14:19:24 +0900",<EOL>?"total":19732,<EOL>?"start":1,<EOL>?"display":100,<EOL>?" (truncated)..."
+2022-12-15T14:19:24.491+09:00 DEBUG 31029 --- [http-nio-5000-exec-2] m.m.a.RequestResponseBodyMethodProcessor : Using 'text/html', given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, application/signed-exchange;v=b3;q=0.9, */*;q=0.8] and supported [text/plain, */*, application/json, application/*+json]
+2022-12-15T14:19:24.491+09:00 DEBUG 31029 --- [http-nio-5000-exec-2] m.m.a.RequestResponseBodyMethodProcessor : Writing ["{<EOL>?"lastBuildDate":"Thu, 15 Dec 2022 14:19:24 +0900",<EOL>?"total":19732,<EOL>?"start":1,<EOL>?"display":100,<EOL>?" (truncated)..."]
+2022-12-15T14:19:24.497+09:00 DEBUG 31029 --- [http-nio-5000-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2022-12-15T14:20:01.469+09:00 DEBUG 31029 --- [http-nio-5000-exec-3] o.s.web.servlet.DispatcherServlet        : GET "/api/v1/products", parameters={}
+2022-12-15T14:20:01.470+09:00 DEBUG 31029 --- [http-nio-5000-exec-3] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.GetMyGraphicsCard.productservice.controller.WebClientController#listProducts()
+2022-12-15T14:20:01.471+09:00 DEBUG 31029 --- [http-nio-5000-exec-3] o.s.w.r.f.client.ExchangeFunctions       : [7c7758ed] HTTP GET https://openapi.naver.com/v1/search/shop.json?query=RTX%203060ti&display=100
+2022-12-15T14:20:01.744+09:00 DEBUG 31029 --- [reactor-http-epoll-3] o.s.w.r.f.client.ExchangeFunctions       : [7c7758ed] [62b91a24-1] Response 200 OK
+2022-12-15T14:20:01.748+09:00 DEBUG 31029 --- [reactor-http-epoll-3] org.springframework.web.HttpLogging      : [7c7758ed] [62b91a24-1] Decoded "{<EOL>?"lastBuildDate":"Thu, 15 Dec 2022 14:20:01 +0900",<EOL>?"total":19732,<EOL>?"start":1,<EOL>?"display":100,<EOL>?" (truncated)..."
+2022-12-15T14:20:01.751+09:00 DEBUG 31029 --- [http-nio-5000-exec-3] m.m.a.RequestResponseBodyMethodProcessor : Using 'text/html', given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, application/signed-exchange;v=b3;q=0.9, */*;q=0.8] and supported [text/plain, */*, application/json, application/*+json]
+2022-12-15T14:20:01.752+09:00 DEBUG 31029 --- [http-nio-5000-exec-3] m.m.a.RequestResponseBodyMethodProcessor : Writing ["{<EOL>?"lastBuildDate":"Thu, 15 Dec 2022 14:20:01 +0900",<EOL>?"total":19732,<EOL>?"start":1,<EOL>?"display":100,<EOL>?" (truncated)..."]
+2022-12-15T14:20:01.757+09:00 DEBUG 31029 --- [http-nio-5000-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2022-12-15T14:20:04.596+09:00 DEBUG 31029 --- [http-nio-5000-exec-4] o.s.web.servlet.DispatcherServlet        : GET "/api/v1/products", parameters={}
+2022-12-15T14:20:04.597+09:00 DEBUG 31029 --- [http-nio-5000-exec-4] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.GetMyGraphicsCard.productservice.controller.WebClientController#listProducts()
+2022-12-15T14:20:04.598+09:00 DEBUG 31029 --- [http-nio-5000-exec-4] o.s.w.r.f.client.ExchangeFunctions       : [40093b0e] HTTP GET https://openapi.naver.com/v1/search/shop.json?query=RTX%203060ti&display=100
+2022-12-15T14:20:04.691+09:00 DEBUG 31029 --- [reactor-http-epoll-3] o.s.w.r.f.client.ExchangeFunctions       : [40093b0e] [62b91a24-2] Response 200 OK
+2022-12-15T14:20:04.691+09:00 DEBUG 31029 --- [reactor-http-epoll-3] org.springframework.web.HttpLogging      : [40093b0e] [62b91a24-2] Decoded "{<EOL>?"lastBuildDate":"Thu, 15 Dec 2022 14:20:04 +0900",<EOL>?"total":19732,<EOL>?"start":1,<EOL>?"display":100,<EOL>?" (truncated)..."
+2022-12-15T14:20:04.692+09:00 DEBUG 31029 --- [http-nio-5000-exec-4] m.m.a.RequestResponseBodyMethodProcessor : Using 'text/html', given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, application/signed-exchange;v=b3;q=0.9, */*;q=0.8] and supported [text/plain, */*, application/json, application/*+json]
+2022-12-15T14:20:04.692+09:00 DEBUG 31029 --- [http-nio-5000-exec-4] m.m.a.RequestResponseBodyMethodProcessor : Writing ["{<EOL>?"lastBuildDate":"Thu, 15 Dec 2022 14:20:04 +0900",<EOL>?"total":19732,<EOL>?"start":1,<EOL>?"display":100,<EOL>?" (truncated)..."]
+2022-12-15T14:20:04.693+09:00 DEBUG 31029 --- [http-nio-5000-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2022-12-15T15:03:42.533+09:00  INFO 40339 --- [restartedMain] c.G.p.ProductServiceApplication          : Starting ProductServiceApplication using Java 17.0.5 with PID 40339 (/home/geonhyuk/Documents/CS/Java/GetMyGraphicsCard/product-service/build/classes/java/main started by geonhyuk in /home/geonhyuk/Documents/CS/Java/GetMyGraphicsCard/product-service)
+2022-12-15T15:03:42.535+09:00  INFO 40339 --- [restartedMain] c.G.p.ProductServiceApplication          : No active profile set, falling back to 1 default profile: "default"
+2022-12-15T15:03:42.554+09:00  INFO 40339 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-12-15T15:03:42.554+09:00  INFO 40339 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-12-15T15:03:42.991+09:00  INFO 40339 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 5000 (http)
+2022-12-15T15:03:42.997+09:00  INFO 40339 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-12-15T15:03:42.997+09:00  INFO 40339 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.1]
+2022-12-15T15:03:43.017+09:00  INFO 40339 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-12-15T15:03:43.018+09:00  INFO 40339 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 464 ms
+2022-12-15T15:03:43.265+09:00 DEBUG 40339 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2022-12-15T15:03:43.290+09:00 DEBUG 40339 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : 3 mappings in 'requestMappingHandlerMapping'
+2022-12-15T15:03:43.298+09:00 DEBUG 40339 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2022-12-15T15:03:43.301+09:00 DEBUG 40339 --- [restartedMain] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 1 @ExceptionHandler, 1 ResponseBodyAdvice
+2022-12-15T15:03:43.376+09:00  INFO 40339 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-12-15T15:03:43.389+09:00  INFO 40339 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 5000 (http) with context path ''
+2022-12-15T15:03:43.394+09:00  INFO 40339 --- [restartedMain] c.G.p.ProductServiceApplication          : Started ProductServiceApplication in 1.036 seconds (process running for 1.23)
+2022-12-15T15:03:49.022+09:00  INFO 40339 --- [http-nio-5000-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-12-15T15:03:49.023+09:00  INFO 40339 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-12-15T15:03:49.023+09:00 DEBUG 40339 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : Detected StandardServletMultipartResolver
+2022-12-15T15:03:49.023+09:00 DEBUG 40339 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : Detected AcceptHeaderLocaleResolver
+2022-12-15T15:03:49.023+09:00 DEBUG 40339 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : Detected FixedThemeResolver
+2022-12-15T15:03:49.023+09:00 DEBUG 40339 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@26fca4d
+2022-12-15T15:03:49.023+09:00 DEBUG 40339 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.support.SessionFlashMapManager@ba50176
+2022-12-15T15:03:49.023+09:00 DEBUG 40339 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+2022-12-15T15:03:49.023+09:00  INFO 40339 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2022-12-15T15:03:49.026+09:00 DEBUG 40339 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/products", parameters={}
+2022-12-15T15:03:49.031+09:00 DEBUG 40339 --- [http-nio-5000-exec-1] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2022-12-15T15:03:49.033+09:00 DEBUG 40339 --- [http-nio-5000-exec-1] o.s.w.s.r.ResourceHttpRequestHandler     : Resource not found
+2022-12-15T15:03:49.034+09:00 DEBUG 40339 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 404 NOT_FOUND
+2022-12-15T15:03:49.036+09:00 DEBUG 40339 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : "ERROR" dispatch for GET "/error", parameters={}
+2022-12-15T15:03:49.036+09:00 DEBUG 40339 --- [http-nio-5000-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController#errorHtml(HttpServletRequest, HttpServletResponse)
+2022-12-15T15:03:49.044+09:00 DEBUG 40339 --- [http-nio-5000-exec-1] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, text/html;q=0.8]
+2022-12-15T15:03:49.047+09:00 DEBUG 40339 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : Exiting from "ERROR" dispatch, status 404
+2022-12-15T15:03:53.700+09:00 DEBUG 40339 --- [http-nio-5000-exec-2] o.s.web.servlet.DispatcherServlet        : GET "/api/v1/products", parameters={}
+2022-12-15T15:03:53.701+09:00 DEBUG 40339 --- [http-nio-5000-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.GetMyGraphicsCard.productservice.controller.WebClientController#listProducts()
+2022-12-15T15:03:53.722+09:00 DEBUG 40339 --- [http-nio-5000-exec-2] o.s.w.r.f.client.ExchangeFunctions       : [659d0868] HTTP GET https://openapi.naver.com/v1/search/shop.json?query=RTX%203060ti&display=100
+2022-12-15T15:03:54.172+09:00 DEBUG 40339 --- [reactor-http-epoll-2] o.s.w.r.f.client.ExchangeFunctions       : [659d0868] [a4da0600-1] Response 200 OK
+2022-12-15T15:03:54.180+09:00 DEBUG 40339 --- [reactor-http-epoll-2] org.springframework.web.HttpLogging      : [659d0868] [a4da0600-1] Decoded "{<EOL>?"lastBuildDate":"Thu, 15 Dec 2022 15:03:54 +0900",<EOL>?"total":19740,<EOL>?"start":1,<EOL>?"display":100,<EOL>?" (truncated)..."
+2022-12-15T15:03:54.183+09:00 DEBUG 40339 --- [http-nio-5000-exec-2] m.m.a.RequestResponseBodyMethodProcessor : Using 'text/html', given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, application/signed-exchange;v=b3;q=0.9, */*;q=0.8] and supported [text/plain, */*, application/json, application/*+json]
+2022-12-15T15:03:54.183+09:00 DEBUG 40339 --- [http-nio-5000-exec-2] m.m.a.RequestResponseBodyMethodProcessor : Writing ["{<EOL>?"lastBuildDate":"Thu, 15 Dec 2022 15:03:54 +0900",<EOL>?"total":19740,<EOL>?"start":1,<EOL>?"display":100,<EOL>?" (truncated)..."]
+2022-12-15T15:03:54.186+09:00 DEBUG 40339 --- [http-nio-5000-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2022-12-15T15:15:44.173+09:00  INFO 42686 --- [restartedMain] c.G.p.ProductServiceApplication          : Starting ProductServiceApplication using Java 17.0.5 with PID 42686 (/home/geonhyuk/Documents/CS/Java/GetMyGraphicsCard/product-service/build/classes/java/main started by geonhyuk in /home/geonhyuk/Documents/CS/Java/GetMyGraphicsCard/product-service)
+2022-12-15T15:15:44.175+09:00  INFO 42686 --- [restartedMain] c.G.p.ProductServiceApplication          : No active profile set, falling back to 1 default profile: "default"
+2022-12-15T15:15:44.209+09:00  INFO 42686 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-12-15T15:15:44.209+09:00  INFO 42686 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-12-15T15:15:44.663+09:00  INFO 42686 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 5000 (http)
+2022-12-15T15:15:44.667+09:00  INFO 42686 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-12-15T15:15:44.667+09:00  INFO 42686 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.1]
+2022-12-15T15:15:44.687+09:00  INFO 42686 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-12-15T15:15:44.688+09:00  INFO 42686 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 479 ms
+2022-12-15T15:15:44.935+09:00 DEBUG 42686 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2022-12-15T15:15:44.962+09:00 DEBUG 42686 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : 3 mappings in 'requestMappingHandlerMapping'
+2022-12-15T15:15:44.968+09:00 DEBUG 42686 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2022-12-15T15:15:44.971+09:00 DEBUG 42686 --- [restartedMain] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 1 @ExceptionHandler, 1 ResponseBodyAdvice
+2022-12-15T15:15:45.037+09:00  INFO 42686 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-12-15T15:15:45.052+09:00  INFO 42686 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 5000 (http) with context path ''
+2022-12-15T15:15:45.059+09:00  INFO 42686 --- [restartedMain] c.G.p.ProductServiceApplication          : Started ProductServiceApplication in 1.059 seconds (process running for 1.211)
+2022-12-15T15:15:56.550+09:00  INFO 42686 --- [http-nio-5000-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-12-15T15:15:56.550+09:00  INFO 42686 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-12-15T15:15:56.550+09:00 DEBUG 42686 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : Detected StandardServletMultipartResolver
+2022-12-15T15:15:56.550+09:00 DEBUG 42686 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : Detected AcceptHeaderLocaleResolver
+2022-12-15T15:15:56.550+09:00 DEBUG 42686 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : Detected FixedThemeResolver
+2022-12-15T15:15:56.551+09:00 DEBUG 42686 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@26fca4d
+2022-12-15T15:15:56.551+09:00 DEBUG 42686 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.support.SessionFlashMapManager@ba50176
+2022-12-15T15:15:56.551+09:00 DEBUG 42686 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+2022-12-15T15:15:56.551+09:00  INFO 42686 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2022-12-15T15:15:56.554+09:00 DEBUG 42686 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/api/v1/products", parameters={}
+2022-12-15T15:15:56.556+09:00 DEBUG 42686 --- [http-nio-5000-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.GetMyGraphicsCard.productservice.controller.WebClientController#listProducts()
+2022-12-15T15:15:56.582+09:00 DEBUG 42686 --- [http-nio-5000-exec-1] o.s.w.r.f.client.ExchangeFunctions       : [3616636c] HTTP GET https://openapi.naver.com/v1/search/shop.json?query=RTX%203060ti&display=100
+2022-12-15T15:15:57.054+09:00 DEBUG 42686 --- [reactor-http-epoll-2] o.s.w.r.f.client.ExchangeFunctions       : [3616636c] [75784cb3-1] Response 200 OK
+2022-12-15T15:15:57.062+09:00 DEBUG 42686 --- [reactor-http-epoll-2] org.springframework.web.HttpLogging      : [3616636c] [75784cb3-1] Decoded "{<EOL>?"lastBuildDate":"Thu, 15 Dec 2022 15:15:57 +0900",<EOL>?"total":19755,<EOL>?"start":1,<EOL>?"display":100,<EOL>?" (truncated)..."
+2022-12-15T15:15:57.066+09:00 DEBUG 42686 --- [http-nio-5000-exec-1] m.m.a.RequestResponseBodyMethodProcessor : Using 'text/html', given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, application/signed-exchange;v=b3;q=0.9, */*;q=0.8] and supported [text/plain, */*, application/json, application/*+json]
+2022-12-15T15:15:57.066+09:00 DEBUG 42686 --- [http-nio-5000-exec-1] m.m.a.RequestResponseBodyMethodProcessor : Writing ["{<EOL>?"lastBuildDate":"Thu, 15 Dec 2022 15:15:57 +0900",<EOL>?"total":19755,<EOL>?"start":1,<EOL>?"display":100,<EOL>?" (truncated)..."]
+2022-12-15T15:15:57.071+09:00 DEBUG 42686 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2022-12-15T15:57:49.808+09:00  INFO 48601 --- [restartedMain] c.G.p.ProductServiceApplication          : Starting ProductServiceApplication using Java 17.0.5 with PID 48601 (/home/geonhyuk/Documents/CS/Java/GetMyGraphicsCard/product-service/build/classes/java/main started by geonhyuk in /home/geonhyuk/Documents/CS/Java/GetMyGraphicsCard/product-service)
+2022-12-15T15:57:49.810+09:00  INFO 48601 --- [restartedMain] c.G.p.ProductServiceApplication          : No active profile set, falling back to 1 default profile: "default"
+2022-12-15T15:57:49.841+09:00  INFO 48601 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-12-15T15:57:49.841+09:00  INFO 48601 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-12-15T15:57:50.254+09:00  INFO 48601 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 5000 (http)
+2022-12-15T15:57:50.259+09:00  INFO 48601 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-12-15T15:57:50.260+09:00  INFO 48601 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.1]
+2022-12-15T15:57:50.283+09:00  INFO 48601 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-12-15T15:57:50.283+09:00  INFO 48601 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 442 ms
+2022-12-15T15:57:50.542+09:00 DEBUG 48601 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2022-12-15T15:57:50.567+09:00 DEBUG 48601 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : 3 mappings in 'requestMappingHandlerMapping'
+2022-12-15T15:57:50.573+09:00 DEBUG 48601 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2022-12-15T15:57:50.576+09:00 DEBUG 48601 --- [restartedMain] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 1 @ExceptionHandler, 1 ResponseBodyAdvice
+2022-12-15T15:57:50.664+09:00  INFO 48601 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-12-15T15:57:50.688+09:00  INFO 48601 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 5000 (http) with context path ''
+2022-12-15T15:57:50.699+09:00  INFO 48601 --- [restartedMain] c.G.p.ProductServiceApplication          : Started ProductServiceApplication in 1.058 seconds (process running for 1.24)
+2022-12-15T15:57:53.678+09:00  INFO 48601 --- [http-nio-5000-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-12-15T15:57:53.679+09:00  INFO 48601 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-12-15T15:57:53.679+09:00 DEBUG 48601 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : Detected StandardServletMultipartResolver
+2022-12-15T15:57:53.679+09:00 DEBUG 48601 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : Detected AcceptHeaderLocaleResolver
+2022-12-15T15:57:53.679+09:00 DEBUG 48601 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : Detected FixedThemeResolver
+2022-12-15T15:57:53.680+09:00 DEBUG 48601 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@16c5d468
+2022-12-15T15:57:53.680+09:00 DEBUG 48601 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.support.SessionFlashMapManager@63664306
+2022-12-15T15:57:53.680+09:00 DEBUG 48601 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+2022-12-15T15:57:53.680+09:00  INFO 48601 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2022-12-15T15:57:53.683+09:00 DEBUG 48601 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/products", parameters={}
+2022-12-15T15:57:53.689+09:00 DEBUG 48601 --- [http-nio-5000-exec-1] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2022-12-15T15:57:53.690+09:00 DEBUG 48601 --- [http-nio-5000-exec-1] o.s.w.s.r.ResourceHttpRequestHandler     : Resource not found
+2022-12-15T15:57:53.691+09:00 DEBUG 48601 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 404 NOT_FOUND
+2022-12-15T15:57:53.693+09:00 DEBUG 48601 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : "ERROR" dispatch for GET "/error", parameters={}
+2022-12-15T15:57:53.694+09:00 DEBUG 48601 --- [http-nio-5000-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController#errorHtml(HttpServletRequest, HttpServletResponse)
+2022-12-15T15:57:53.702+09:00 DEBUG 48601 --- [http-nio-5000-exec-1] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, text/html;q=0.8]
+2022-12-15T15:57:53.705+09:00 DEBUG 48601 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : Exiting from "ERROR" dispatch, status 404
+2022-12-15T15:57:56.992+09:00 DEBUG 48601 --- [http-nio-5000-exec-2] o.s.web.servlet.DispatcherServlet        : GET "/api/v1/products", parameters={}
+2022-12-15T15:57:56.992+09:00 DEBUG 48601 --- [http-nio-5000-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.GetMyGraphicsCard.productservice.controller.WebClientController#listProducts()
+2022-12-15T15:57:57.016+09:00 DEBUG 48601 --- [http-nio-5000-exec-2] o.s.w.r.f.client.ExchangeFunctions       : [6618578e] HTTP GET https://openapi.naver.com/v1/search/shop.json?query=RTX%203060ti&display=100
+2022-12-15T15:57:57.467+09:00 DEBUG 48601 --- [reactor-http-epoll-2] o.s.w.r.f.client.ExchangeFunctions       : [6618578e] [e70776a7-1] Response 200 OK
+2022-12-15T15:57:57.475+09:00 DEBUG 48601 --- [reactor-http-epoll-2] org.springframework.web.HttpLogging      : [6618578e] [e70776a7-1] Decoded "{<EOL>?"lastBuildDate":"Thu, 15 Dec 2022 15:57:57 +0900",<EOL>?"total":19752,<EOL>?"start":1,<EOL>?"display":100,<EOL>?" (truncated)..."
+2022-12-15T15:57:57.478+09:00 DEBUG 48601 --- [http-nio-5000-exec-2] m.m.a.RequestResponseBodyMethodProcessor : Using 'text/html', given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, application/signed-exchange;v=b3;q=0.9, */*;q=0.8] and supported [text/plain, */*, application/json, application/*+json]
+2022-12-15T15:57:57.479+09:00 DEBUG 48601 --- [http-nio-5000-exec-2] m.m.a.RequestResponseBodyMethodProcessor : Writing ["{<EOL>?"lastBuildDate":"Thu, 15 Dec 2022 15:57:57 +0900",<EOL>?"total":19752,<EOL>?"start":1,<EOL>?"display":100,<EOL>?" (truncated)..."]
+2022-12-15T15:57:57.482+09:00 DEBUG 48601 --- [http-nio-5000-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2022-12-15T15:59:08.816+09:00  INFO 49177 --- [restartedMain] c.G.p.ProductServiceApplication          : Starting ProductServiceApplication using Java 17.0.5 with PID 49177 (/home/geonhyuk/Documents/CS/Java/GetMyGraphicsCard/product-service/build/classes/java/main started by geonhyuk in /home/geonhyuk/Documents/CS/Java/GetMyGraphicsCard/product-service)
+2022-12-15T15:59:08.817+09:00  INFO 49177 --- [restartedMain] c.G.p.ProductServiceApplication          : No active profile set, falling back to 1 default profile: "default"
+2022-12-15T15:59:08.835+09:00  INFO 49177 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-12-15T15:59:08.836+09:00  INFO 49177 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-12-15T15:59:09.225+09:00  INFO 49177 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 5000 (http)
+2022-12-15T15:59:09.232+09:00  INFO 49177 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-12-15T15:59:09.232+09:00  INFO 49177 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.1]
+2022-12-15T15:59:09.253+09:00  INFO 49177 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-12-15T15:59:09.253+09:00  INFO 49177 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 417 ms
+2022-12-15T15:59:09.475+09:00 DEBUG 49177 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2022-12-15T15:59:09.503+09:00 DEBUG 49177 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : 3 mappings in 'requestMappingHandlerMapping'
+2022-12-15T15:59:09.510+09:00 DEBUG 49177 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2022-12-15T15:59:09.514+09:00 DEBUG 49177 --- [restartedMain] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 1 @ExceptionHandler, 1 ResponseBodyAdvice
+2022-12-15T15:59:09.579+09:00  INFO 49177 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-12-15T15:59:09.592+09:00  INFO 49177 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 5000 (http) with context path ''
+2022-12-15T15:59:09.596+09:00  INFO 49177 --- [restartedMain] c.G.p.ProductServiceApplication          : Started ProductServiceApplication in 0.953 seconds (process running for 1.095)
+2022-12-15T15:59:14.590+09:00  INFO 49177 --- [http-nio-5000-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-12-15T15:59:14.590+09:00  INFO 49177 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-12-15T15:59:14.590+09:00 DEBUG 49177 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : Detected StandardServletMultipartResolver
+2022-12-15T15:59:14.590+09:00 DEBUG 49177 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : Detected AcceptHeaderLocaleResolver
+2022-12-15T15:59:14.590+09:00 DEBUG 49177 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : Detected FixedThemeResolver
+2022-12-15T15:59:14.591+09:00 DEBUG 49177 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@1deaffb1
+2022-12-15T15:59:14.591+09:00 DEBUG 49177 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.support.SessionFlashMapManager@230dd277
+2022-12-15T15:59:14.591+09:00 DEBUG 49177 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+2022-12-15T15:59:14.591+09:00  INFO 49177 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2022-12-15T15:59:14.594+09:00 DEBUG 49177 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/products", parameters={}
+2022-12-15T15:59:14.600+09:00 DEBUG 49177 --- [http-nio-5000-exec-1] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2022-12-15T15:59:14.602+09:00 DEBUG 49177 --- [http-nio-5000-exec-1] o.s.w.s.r.ResourceHttpRequestHandler     : Resource not found
+2022-12-15T15:59:14.602+09:00 DEBUG 49177 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 404 NOT_FOUND
+2022-12-15T15:59:14.604+09:00 DEBUG 49177 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : "ERROR" dispatch for GET "/error", parameters={}
+2022-12-15T15:59:14.605+09:00 DEBUG 49177 --- [http-nio-5000-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController#errorHtml(HttpServletRequest, HttpServletResponse)
+2022-12-15T15:59:14.617+09:00 DEBUG 49177 --- [http-nio-5000-exec-1] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, text/html;q=0.8]
+2022-12-15T15:59:14.622+09:00 DEBUG 49177 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : Exiting from "ERROR" dispatch, status 404
+2022-12-15T15:59:18.385+09:00 DEBUG 49177 --- [http-nio-5000-exec-2] o.s.web.servlet.DispatcherServlet        : GET "/api/v1/products", parameters={}
+2022-12-15T15:59:18.386+09:00 DEBUG 49177 --- [http-nio-5000-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.GetMyGraphicsCard.productservice.controller.WebClientController#listProducts()
+2022-12-15T15:59:18.411+09:00 DEBUG 49177 --- [http-nio-5000-exec-2] o.s.w.r.f.client.ExchangeFunctions       : [1c04aa12] HTTP GET https://openapi.naver.com/v1/search/shop.json?query=RTX%203060ti&display=100
+2022-12-15T15:59:18.818+09:00 DEBUG 49177 --- [reactor-http-epoll-2] o.s.w.r.f.client.ExchangeFunctions       : [1c04aa12] [6b22a66f-1] Response 200 OK
+2022-12-15T15:59:18.827+09:00 DEBUG 49177 --- [reactor-http-epoll-2] org.springframework.web.HttpLogging      : [1c04aa12] [6b22a66f-1] Decoded "{<EOL>?"lastBuildDate":"Thu, 15 Dec 2022 15:59:18 +0900",<EOL>?"total":19751,<EOL>?"start":1,<EOL>?"display":100,<EOL>?" (truncated)..."
+2022-12-15T15:59:18.829+09:00 DEBUG 49177 --- [http-nio-5000-exec-2] m.m.a.RequestResponseBodyMethodProcessor : Using 'text/html', given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, application/signed-exchange;v=b3;q=0.9, */*;q=0.8] and supported [text/plain, */*, application/json, application/*+json]
+2022-12-15T15:59:18.829+09:00 DEBUG 49177 --- [http-nio-5000-exec-2] m.m.a.RequestResponseBodyMethodProcessor : Writing ["{<EOL>?"lastBuildDate":"Thu, 15 Dec 2022 15:59:18 +0900",<EOL>?"total":19751,<EOL>?"start":1,<EOL>?"display":100,<EOL>?" (truncated)..."]
+2022-12-15T15:59:18.832+09:00 DEBUG 49177 --- [http-nio-5000-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2022-12-15T16:19:36.329+09:00  INFO 53914 --- [restartedMain] c.G.p.ProductServiceApplication          : Starting ProductServiceApplication using Java 17.0.5 with PID 53914 (/home/geonhyuk/Documents/CS/Java/GetMyGraphicsCard/product-service/build/classes/java/main started by geonhyuk in /home/geonhyuk/Documents/CS/Java/GetMyGraphicsCard/product-service)
+2022-12-15T16:19:36.335+09:00  INFO 53914 --- [restartedMain] c.G.p.ProductServiceApplication          : No active profile set, falling back to 1 default profile: "default"
+2022-12-15T16:19:36.351+09:00  INFO 53914 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-12-15T16:19:36.352+09:00  INFO 53914 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-12-15T16:19:36.747+09:00  INFO 53914 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 5000 (http)
+2022-12-15T16:19:36.750+09:00  INFO 53914 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-12-15T16:19:36.751+09:00  INFO 53914 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.1]
+2022-12-15T16:19:36.768+09:00  INFO 53914 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-12-15T16:19:36.769+09:00  INFO 53914 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 417 ms
+2022-12-15T16:19:37.014+09:00 DEBUG 53914 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2022-12-15T16:19:37.039+09:00 DEBUG 53914 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : 3 mappings in 'requestMappingHandlerMapping'
+2022-12-15T16:19:37.045+09:00 DEBUG 53914 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2022-12-15T16:19:37.048+09:00 DEBUG 53914 --- [restartedMain] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 1 @ExceptionHandler, 1 ResponseBodyAdvice
+2022-12-15T16:19:37.119+09:00  INFO 53914 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-12-15T16:19:37.141+09:00  INFO 53914 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 5000 (http) with context path ''
+2022-12-15T16:19:37.149+09:00  INFO 53914 --- [restartedMain] c.G.p.ProductServiceApplication          : Started ProductServiceApplication in 0.97 seconds (process running for 1.126)
+2022-12-15T16:19:44.400+09:00  INFO 53914 --- [http-nio-5000-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-12-15T16:19:44.400+09:00  INFO 53914 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-12-15T16:19:44.400+09:00 DEBUG 53914 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : Detected StandardServletMultipartResolver
+2022-12-15T16:19:44.400+09:00 DEBUG 53914 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : Detected AcceptHeaderLocaleResolver
+2022-12-15T16:19:44.400+09:00 DEBUG 53914 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : Detected FixedThemeResolver
+2022-12-15T16:19:44.400+09:00 DEBUG 53914 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@1b07fb61
+2022-12-15T16:19:44.400+09:00 DEBUG 53914 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.support.SessionFlashMapManager@539d25d
+2022-12-15T16:19:44.401+09:00 DEBUG 53914 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+2022-12-15T16:19:44.401+09:00  INFO 53914 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2022-12-15T16:19:44.404+09:00 DEBUG 53914 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/products", parameters={}
+2022-12-15T16:19:44.411+09:00 DEBUG 53914 --- [http-nio-5000-exec-1] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2022-12-15T16:19:44.412+09:00 DEBUG 53914 --- [http-nio-5000-exec-1] o.s.w.s.r.ResourceHttpRequestHandler     : Resource not found
+2022-12-15T16:19:44.413+09:00 DEBUG 53914 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 404 NOT_FOUND
+2022-12-15T16:19:44.414+09:00 DEBUG 53914 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : "ERROR" dispatch for GET "/error", parameters={}
+2022-12-15T16:19:44.415+09:00 DEBUG 53914 --- [http-nio-5000-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController#errorHtml(HttpServletRequest, HttpServletResponse)
+2022-12-15T16:19:44.424+09:00 DEBUG 53914 --- [http-nio-5000-exec-1] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, text/html;q=0.8]
+2022-12-15T16:19:44.427+09:00 DEBUG 53914 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : Exiting from "ERROR" dispatch, status 404
+2022-12-15T16:19:49.304+09:00 DEBUG 53914 --- [http-nio-5000-exec-2] o.s.web.servlet.DispatcherServlet        : GET "/api/products", parameters={}
+2022-12-15T16:19:49.305+09:00 DEBUG 53914 --- [http-nio-5000-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.GetMyGraphicsCard.productservice.controller.WebClientController#listProducts()
+2022-12-15T16:19:49.320+09:00 DEBUG 53914 --- [http-nio-5000-exec-2] m.m.a.RequestResponseBodyMethodProcessor : Using 'text/html', given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, application/signed-exchange;v=b3;q=0.9, */*;q=0.8] and supported [text/plain, */*, application/json, application/*+json]
+2022-12-15T16:19:49.320+09:00 DEBUG 53914 --- [http-nio-5000-exec-2] m.m.a.RequestResponseBodyMethodProcessor : Writing ["{"mapper":{},"source":{}}"]
+2022-12-15T16:19:49.321+09:00 DEBUG 53914 --- [http-nio-5000-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2022-12-15T16:20:20.572+09:00  INFO 54266 --- [restartedMain] c.G.p.ProductServiceApplication          : Starting ProductServiceApplication using Java 17.0.5 with PID 54266 (/home/geonhyuk/Documents/CS/Java/GetMyGraphicsCard/product-service/build/classes/java/main started by geonhyuk in /home/geonhyuk/Documents/CS/Java/GetMyGraphicsCard/product-service)
+2022-12-15T16:20:20.574+09:00  INFO 54266 --- [restartedMain] c.G.p.ProductServiceApplication          : No active profile set, falling back to 1 default profile: "default"
+2022-12-15T16:20:20.592+09:00  INFO 54266 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-12-15T16:20:20.592+09:00  INFO 54266 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-12-15T16:20:20.994+09:00  INFO 54266 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 5000 (http)
+2022-12-15T16:20:20.998+09:00  INFO 54266 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-12-15T16:20:20.998+09:00  INFO 54266 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.1]
+2022-12-15T16:20:21.018+09:00  INFO 54266 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-12-15T16:20:21.018+09:00  INFO 54266 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 425 ms
+2022-12-15T16:20:21.251+09:00 DEBUG 54266 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2022-12-15T16:20:21.277+09:00 DEBUG 54266 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : 3 mappings in 'requestMappingHandlerMapping'
+2022-12-15T16:20:21.284+09:00 DEBUG 54266 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2022-12-15T16:20:21.287+09:00 DEBUG 54266 --- [restartedMain] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 1 @ExceptionHandler, 1 ResponseBodyAdvice
+2022-12-15T16:20:21.362+09:00  INFO 54266 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-12-15T16:20:21.374+09:00  INFO 54266 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 5000 (http) with context path ''
+2022-12-15T16:20:21.378+09:00  INFO 54266 --- [restartedMain] c.G.p.ProductServiceApplication          : Started ProductServiceApplication in 0.957 seconds (process running for 1.109)
+2022-12-15T16:20:26.474+09:00  INFO 54266 --- [http-nio-5000-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-12-15T16:20:26.474+09:00  INFO 54266 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-12-15T16:20:26.474+09:00 DEBUG 54266 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : Detected StandardServletMultipartResolver
+2022-12-15T16:20:26.474+09:00 DEBUG 54266 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : Detected AcceptHeaderLocaleResolver
+2022-12-15T16:20:26.474+09:00 DEBUG 54266 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : Detected FixedThemeResolver
+2022-12-15T16:20:26.475+09:00 DEBUG 54266 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@67695e98
+2022-12-15T16:20:26.475+09:00 DEBUG 54266 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.support.SessionFlashMapManager@bf3c158
+2022-12-15T16:20:26.475+09:00 DEBUG 54266 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+2022-12-15T16:20:26.475+09:00  INFO 54266 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2022-12-15T16:20:26.478+09:00 DEBUG 54266 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/api/products", parameters={}
+2022-12-15T16:20:26.480+09:00 DEBUG 54266 --- [http-nio-5000-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.GetMyGraphicsCard.productservice.controller.WebClientController#listProducts()
+2022-12-15T16:20:26.504+09:00 DEBUG 54266 --- [http-nio-5000-exec-1] o.s.w.r.f.client.ExchangeFunctions       : [49acd0b5] HTTP GET https://openapi.naver.com/v1/search/shop.json?query=RTX%203060ti&display=100
+2022-12-15T16:20:26.969+09:00 DEBUG 54266 --- [reactor-http-epoll-2] o.s.w.r.f.client.ExchangeFunctions       : [49acd0b5] [e6c97d30-1] Response 200 OK
+2022-12-15T16:20:26.978+09:00 DEBUG 54266 --- [reactor-http-epoll-2] org.springframework.web.HttpLogging      : [49acd0b5] [e6c97d30-1] Decoded "{<EOL>?"lastBuildDate":"Thu, 15 Dec 2022 16:20:26 +0900",<EOL>?"total":19761,<EOL>?"start":1,<EOL>?"display":100,<EOL>?" (truncated)..."
+2022-12-15T16:20:26.985+09:00 DEBUG 54266 --- [http-nio-5000-exec-1] m.m.a.RequestResponseBodyMethodProcessor : Using 'text/html', given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, application/signed-exchange;v=b3;q=0.9, */*;q=0.8] and supported [text/plain, */*, application/json, application/*+json]
+2022-12-15T16:20:26.985+09:00 DEBUG 54266 --- [http-nio-5000-exec-1] m.m.a.RequestResponseBodyMethodProcessor : Writing [""{\n\t\"lastBuildDate\":\"Thu, 15 Dec 2022 16:20:26 +0900\",\n\t\"total\":19761,\n\t\"start\":1,\n\t (truncated)..."]
+2022-12-15T16:20:26.991+09:00 DEBUG 54266 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2022-12-15T16:32:43.550+09:00  INFO 57191 --- [restartedMain] c.G.p.ProductServiceApplication          : Starting ProductServiceApplication using Java 17.0.5 with PID 57191 (/home/geonhyuk/Documents/CS/Java/GetMyGraphicsCard/product-service/build/classes/java/main started by geonhyuk in /home/geonhyuk/Documents/CS/Java/GetMyGraphicsCard/product-service)
+2022-12-15T16:32:43.551+09:00  INFO 57191 --- [restartedMain] c.G.p.ProductServiceApplication          : No active profile set, falling back to 1 default profile: "default"
+2022-12-15T16:32:43.569+09:00  INFO 57191 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-12-15T16:32:43.569+09:00  INFO 57191 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-12-15T16:32:43.988+09:00  INFO 57191 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 5000 (http)
+2022-12-15T16:32:43.994+09:00  INFO 57191 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-12-15T16:32:43.994+09:00  INFO 57191 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.1]
+2022-12-15T16:32:44.014+09:00  INFO 57191 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-12-15T16:32:44.015+09:00  INFO 57191 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 446 ms
+2022-12-15T16:32:44.252+09:00 DEBUG 57191 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2022-12-15T16:32:44.279+09:00 DEBUG 57191 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : 3 mappings in 'requestMappingHandlerMapping'
+2022-12-15T16:32:44.286+09:00 DEBUG 57191 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2022-12-15T16:32:44.290+09:00 DEBUG 57191 --- [restartedMain] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 1 @ExceptionHandler, 1 ResponseBodyAdvice
+2022-12-15T16:32:44.361+09:00  INFO 57191 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-12-15T16:32:44.371+09:00  INFO 57191 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 5000 (http) with context path ''
+2022-12-15T16:32:44.375+09:00  INFO 57191 --- [restartedMain] c.G.p.ProductServiceApplication          : Started ProductServiceApplication in 0.984 seconds (process running for 1.14)
+2022-12-15T16:32:54.578+09:00  INFO 57191 --- [http-nio-5000-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-12-15T16:32:54.579+09:00  INFO 57191 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-12-15T16:32:54.579+09:00 DEBUG 57191 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : Detected StandardServletMultipartResolver
+2022-12-15T16:32:54.579+09:00 DEBUG 57191 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : Detected AcceptHeaderLocaleResolver
+2022-12-15T16:32:54.579+09:00 DEBUG 57191 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : Detected FixedThemeResolver
+2022-12-15T16:32:54.579+09:00 DEBUG 57191 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@67695e98
+2022-12-15T16:32:54.579+09:00 DEBUG 57191 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.support.SessionFlashMapManager@bf3c158
+2022-12-15T16:32:54.580+09:00 DEBUG 57191 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+2022-12-15T16:32:54.580+09:00  INFO 57191 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2022-12-15T16:32:54.583+09:00 DEBUG 57191 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/api/v1/products", parameters={}
+2022-12-15T16:32:54.588+09:00 DEBUG 57191 --- [http-nio-5000-exec-1] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2022-12-15T16:32:54.589+09:00 DEBUG 57191 --- [http-nio-5000-exec-1] o.s.w.s.r.ResourceHttpRequestHandler     : Resource not found
+2022-12-15T16:32:54.590+09:00 DEBUG 57191 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 404 NOT_FOUND
+2022-12-15T16:32:54.591+09:00 DEBUG 57191 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : "ERROR" dispatch for GET "/error", parameters={}
+2022-12-15T16:32:54.592+09:00 DEBUG 57191 --- [http-nio-5000-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController#errorHtml(HttpServletRequest, HttpServletResponse)
+2022-12-15T16:32:54.600+09:00 DEBUG 57191 --- [http-nio-5000-exec-1] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, text/html;q=0.8]
+2022-12-15T16:32:54.602+09:00 DEBUG 57191 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : Exiting from "ERROR" dispatch, status 404
+2022-12-15T16:32:56.751+09:00 DEBUG 57191 --- [http-nio-5000-exec-2] o.s.web.servlet.DispatcherServlet        : GET "/api/products", parameters={}
+2022-12-15T16:32:56.752+09:00 DEBUG 57191 --- [http-nio-5000-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.GetMyGraphicsCard.productservice.controller.WebClientController#listProducts()
+2022-12-15T16:32:56.772+09:00 DEBUG 57191 --- [http-nio-5000-exec-2] o.s.w.r.f.client.ExchangeFunctions       : [16cee930] HTTP GET https://openapi.naver.com/v1/search/shop.json?query=RTX%203060ti&display=100
+2022-12-15T16:32:57.223+09:00 DEBUG 57191 --- [reactor-http-epoll-2] o.s.w.r.f.client.ExchangeFunctions       : [16cee930] [57368138-1] Response 200 OK
+2022-12-15T16:32:57.233+09:00 DEBUG 57191 --- [reactor-http-epoll-2] org.springframework.web.HttpLogging      : [16cee930] [57368138-1] Decoded "{<EOL>?"lastBuildDate":"Thu, 15 Dec 2022 16:32:57 +0900",<EOL>?"total":19763,<EOL>?"start":1,<EOL>?"display":100,<EOL>?" (truncated)..."
+2022-12-15T16:32:57.256+09:00 DEBUG 57191 --- [http-nio-5000-exec-2] m.m.a.RequestResponseBodyMethodProcessor : Using 'application/json;q=0.8', given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, application/signed-exchange;v=b3;q=0.9, */*;q=0.8] and supported [application/json, application/*+json]
+2022-12-15T16:32:57.260+09:00 DEBUG 57191 --- [http-nio-5000-exec-2] m.m.a.RequestResponseBodyMethodProcessor : Writing [{"lastBuildDate":"Thu, 15 Dec 2022 16:32:57 +0900","total":19763,"start":1,"display":100,"items":[{" (truncated)...]
+2022-12-15T16:32:57.265+09:00  WARN 57191 --- [http-nio-5000-exec-2] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.http.converter.HttpMessageNotWritableException: Could not write JSON: JsonObject]
+2022-12-15T16:32:57.265+09:00 DEBUG 57191 --- [http-nio-5000-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 500 INTERNAL_SERVER_ERROR
+2022-12-15T16:32:57.265+09:00 DEBUG 57191 --- [http-nio-5000-exec-2] o.s.web.servlet.DispatcherServlet        : "ERROR" dispatch for GET "/error", parameters={}
+2022-12-15T16:32:57.265+09:00 DEBUG 57191 --- [http-nio-5000-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController#errorHtml(HttpServletRequest, HttpServletResponse)
+2022-12-15T16:32:57.267+09:00 DEBUG 57191 --- [http-nio-5000-exec-2] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, text/html;q=0.8]
+2022-12-15T16:32:57.268+09:00 DEBUG 57191 --- [http-nio-5000-exec-2] o.s.web.servlet.DispatcherServlet        : Exiting from "ERROR" dispatch, status 500
+2022-12-15T16:41:08.705+09:00  INFO 59895 --- [restartedMain] c.G.p.ProductServiceApplication          : Starting ProductServiceApplication using Java 17.0.5 with PID 59895 (/home/geonhyuk/Documents/CS/Java/GetMyGraphicsCard/product-service/build/classes/java/main started by geonhyuk in /home/geonhyuk/Documents/CS/Java/GetMyGraphicsCard/product-service)
+2022-12-15T16:41:08.707+09:00  INFO 59895 --- [restartedMain] c.G.p.ProductServiceApplication          : No active profile set, falling back to 1 default profile: "default"
+2022-12-15T16:41:08.723+09:00  INFO 59895 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-12-15T16:41:08.723+09:00  INFO 59895 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-12-15T16:41:09.115+09:00  INFO 59895 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 5000 (http)
+2022-12-15T16:41:09.119+09:00  INFO 59895 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-12-15T16:41:09.119+09:00  INFO 59895 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.1]
+2022-12-15T16:41:09.138+09:00  INFO 59895 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-12-15T16:41:09.138+09:00  INFO 59895 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 415 ms
+2022-12-15T16:41:09.368+09:00 DEBUG 59895 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2022-12-15T16:41:09.395+09:00 DEBUG 59895 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : 3 mappings in 'requestMappingHandlerMapping'
+2022-12-15T16:41:09.402+09:00 DEBUG 59895 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2022-12-15T16:41:09.405+09:00 DEBUG 59895 --- [restartedMain] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 1 @ExceptionHandler, 1 ResponseBodyAdvice
+2022-12-15T16:41:09.480+09:00  INFO 59895 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-12-15T16:41:09.491+09:00  INFO 59895 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 5000 (http) with context path ''
+2022-12-15T16:41:09.496+09:00  INFO 59895 --- [restartedMain] c.G.p.ProductServiceApplication          : Started ProductServiceApplication in 0.945 seconds (process running for 1.092)
+2022-12-15T16:41:19.847+09:00  INFO 59895 --- [http-nio-5000-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-12-15T16:41:19.848+09:00  INFO 59895 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-12-15T16:41:19.848+09:00 DEBUG 59895 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : Detected StandardServletMultipartResolver
+2022-12-15T16:41:19.848+09:00 DEBUG 59895 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : Detected AcceptHeaderLocaleResolver
+2022-12-15T16:41:19.848+09:00 DEBUG 59895 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : Detected FixedThemeResolver
+2022-12-15T16:41:19.848+09:00 DEBUG 59895 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@542c20aa
+2022-12-15T16:41:19.848+09:00 DEBUG 59895 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.support.SessionFlashMapManager@951cb05
+2022-12-15T16:41:19.848+09:00 DEBUG 59895 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+2022-12-15T16:41:19.848+09:00  INFO 59895 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2022-12-15T16:41:19.851+09:00 DEBUG 59895 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/api/v1/products", parameters={}
+2022-12-15T16:41:19.857+09:00 DEBUG 59895 --- [http-nio-5000-exec-1] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2022-12-15T16:41:19.858+09:00 DEBUG 59895 --- [http-nio-5000-exec-1] o.s.w.s.r.ResourceHttpRequestHandler     : Resource not found
+2022-12-15T16:41:19.858+09:00 DEBUG 59895 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 404 NOT_FOUND
+2022-12-15T16:41:19.860+09:00 DEBUG 59895 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : "ERROR" dispatch for GET "/error", parameters={}
+2022-12-15T16:41:19.860+09:00 DEBUG 59895 --- [http-nio-5000-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController#errorHtml(HttpServletRequest, HttpServletResponse)
+2022-12-15T16:41:19.868+09:00 DEBUG 59895 --- [http-nio-5000-exec-1] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, text/html;q=0.8]
+2022-12-15T16:41:19.870+09:00 DEBUG 59895 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : Exiting from "ERROR" dispatch, status 404
+2022-12-15T16:41:21.735+09:00 DEBUG 59895 --- [http-nio-5000-exec-2] o.s.web.servlet.DispatcherServlet        : GET "/api/products", parameters={}
+2022-12-15T16:41:21.735+09:00 DEBUG 59895 --- [http-nio-5000-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.GetMyGraphicsCard.productservice.controller.WebClientController#listProducts()
+2022-12-15T16:41:21.761+09:00 DEBUG 59895 --- [http-nio-5000-exec-2] o.s.w.r.f.client.ExchangeFunctions       : [693b207d] HTTP GET https://openapi.naver.com/v1/search/shop.json?query=RTX%203060ti&display=100
+2022-12-15T16:41:22.218+09:00 DEBUG 59895 --- [reactor-http-epoll-2] o.s.w.r.f.client.ExchangeFunctions       : [693b207d] [f30c1256-1] Response 200 OK
+2022-12-15T16:41:22.246+09:00 DEBUG 59895 --- [reactor-http-epoll-2] org.springframework.web.HttpLogging      : [693b207d] [f30c1256-1] Decoded [{}]
+2022-12-15T16:41:22.257+09:00 DEBUG 59895 --- [http-nio-5000-exec-2] m.m.a.RequestResponseBodyMethodProcessor : Using 'application/json;q=0.8', given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, application/signed-exchange;v=b3;q=0.9, */*;q=0.8] and supported [application/json, application/*+json]
+2022-12-15T16:41:22.258+09:00 DEBUG 59895 --- [http-nio-5000-exec-2] m.m.a.RequestResponseBodyMethodProcessor : Writing [{}]
+2022-12-15T16:41:22.262+09:00  WARN 59895 --- [http-nio-5000-exec-2] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.http.converter.HttpMessageNotWritableException: Could not write JSON: JsonObject]
+2022-12-15T16:41:22.262+09:00 DEBUG 59895 --- [http-nio-5000-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 500 INTERNAL_SERVER_ERROR
+2022-12-15T16:41:22.262+09:00 DEBUG 59895 --- [http-nio-5000-exec-2] o.s.web.servlet.DispatcherServlet        : "ERROR" dispatch for GET "/error", parameters={}
+2022-12-15T16:41:22.262+09:00 DEBUG 59895 --- [http-nio-5000-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController#errorHtml(HttpServletRequest, HttpServletResponse)
+2022-12-15T16:41:22.264+09:00 DEBUG 59895 --- [http-nio-5000-exec-2] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, text/html;q=0.8]
+2022-12-15T16:41:22.265+09:00 DEBUG 59895 --- [http-nio-5000-exec-2] o.s.web.servlet.DispatcherServlet        : Exiting from "ERROR" dispatch, status 500
+2022-12-15T16:43:47.639+09:00  INFO 60784 --- [restartedMain] c.G.p.ProductServiceApplication          : Starting ProductServiceApplication using Java 17.0.5 with PID 60784 (/home/geonhyuk/Documents/CS/Java/GetMyGraphicsCard/product-service/build/classes/java/main started by geonhyuk in /home/geonhyuk/Documents/CS/Java/GetMyGraphicsCard/product-service)
+2022-12-15T16:43:47.640+09:00  INFO 60784 --- [restartedMain] c.G.p.ProductServiceApplication          : No active profile set, falling back to 1 default profile: "default"
+2022-12-15T16:43:47.656+09:00  INFO 60784 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-12-15T16:43:47.657+09:00  INFO 60784 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-12-15T16:43:48.061+09:00  INFO 60784 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 5000 (http)
+2022-12-15T16:43:48.065+09:00  INFO 60784 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-12-15T16:43:48.065+09:00  INFO 60784 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.1]
+2022-12-15T16:43:48.084+09:00  INFO 60784 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-12-15T16:43:48.085+09:00  INFO 60784 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 428 ms
+2022-12-15T16:43:48.327+09:00 DEBUG 60784 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2022-12-15T16:43:48.357+09:00 DEBUG 60784 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : 3 mappings in 'requestMappingHandlerMapping'
+2022-12-15T16:43:48.364+09:00 DEBUG 60784 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2022-12-15T16:43:48.368+09:00 DEBUG 60784 --- [restartedMain] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 1 @ExceptionHandler, 1 ResponseBodyAdvice
+2022-12-15T16:43:48.467+09:00  INFO 60784 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-12-15T16:43:48.486+09:00  INFO 60784 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 5000 (http) with context path ''
+2022-12-15T16:43:48.494+09:00  INFO 60784 --- [restartedMain] c.G.p.ProductServiceApplication          : Started ProductServiceApplication in 1.006 seconds (process running for 1.151)
+2022-12-15T16:43:54.340+09:00  INFO 60784 --- [http-nio-5000-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-12-15T16:43:54.340+09:00  INFO 60784 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-12-15T16:43:54.340+09:00 DEBUG 60784 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : Detected StandardServletMultipartResolver
+2022-12-15T16:43:54.340+09:00 DEBUG 60784 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : Detected AcceptHeaderLocaleResolver
+2022-12-15T16:43:54.340+09:00 DEBUG 60784 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : Detected FixedThemeResolver
+2022-12-15T16:43:54.341+09:00 DEBUG 60784 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@542c20aa
+2022-12-15T16:43:54.341+09:00 DEBUG 60784 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.support.SessionFlashMapManager@951cb05
+2022-12-15T16:43:54.341+09:00 DEBUG 60784 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+2022-12-15T16:43:54.341+09:00  INFO 60784 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2022-12-15T16:43:54.344+09:00 DEBUG 60784 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/products", parameters={}
+2022-12-15T16:43:54.351+09:00 DEBUG 60784 --- [http-nio-5000-exec-1] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2022-12-15T16:43:54.352+09:00 DEBUG 60784 --- [http-nio-5000-exec-1] o.s.w.s.r.ResourceHttpRequestHandler     : Resource not found
+2022-12-15T16:43:54.353+09:00 DEBUG 60784 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 404 NOT_FOUND
+2022-12-15T16:43:54.354+09:00 DEBUG 60784 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : "ERROR" dispatch for GET "/error", parameters={}
+2022-12-15T16:43:54.355+09:00 DEBUG 60784 --- [http-nio-5000-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController#errorHtml(HttpServletRequest, HttpServletResponse)
+2022-12-15T16:43:54.363+09:00 DEBUG 60784 --- [http-nio-5000-exec-1] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, text/html;q=0.8]
+2022-12-15T16:43:54.367+09:00 DEBUG 60784 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : Exiting from "ERROR" dispatch, status 404
+2022-12-15T16:43:58.357+09:00 DEBUG 60784 --- [http-nio-5000-exec-2] o.s.web.servlet.DispatcherServlet        : GET "/api/products", parameters={}
+2022-12-15T16:43:58.358+09:00 DEBUG 60784 --- [http-nio-5000-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.GetMyGraphicsCard.productservice.controller.WebClientController#listProducts()
+2022-12-15T16:43:58.387+09:00 DEBUG 60784 --- [http-nio-5000-exec-2] o.s.w.r.f.client.ExchangeFunctions       : [693b207d] HTTP GET https://openapi.naver.com/v1/search/shop.json?query=RTX%203060ti&display=100
+2022-12-15T16:43:58.853+09:00 DEBUG 60784 --- [reactor-http-epoll-2] o.s.w.r.f.client.ExchangeFunctions       : [693b207d] [e20bcb91-1] Response 200 OK
+2022-12-15T16:43:58.876+09:00 DEBUG 60784 --- [reactor-http-epoll-2] org.springframework.web.HttpLogging      : [693b207d] [e20bcb91-1] Decoded [{}]
+2022-12-15T16:43:58.887+09:00 DEBUG 60784 --- [http-nio-5000-exec-2] m.m.a.RequestResponseBodyMethodProcessor : Using 'application/json;q=0.8', given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, application/signed-exchange;v=b3;q=0.9, */*;q=0.8] and supported [application/json, application/*+json]
+2022-12-15T16:43:58.888+09:00 DEBUG 60784 --- [http-nio-5000-exec-2] m.m.a.RequestResponseBodyMethodProcessor : Writing [{}]
+2022-12-15T16:43:58.891+09:00  WARN 60784 --- [http-nio-5000-exec-2] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.http.converter.HttpMessageNotWritableException: Could not write JSON: JsonObject]
+2022-12-15T16:43:58.891+09:00 DEBUG 60784 --- [http-nio-5000-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 500 INTERNAL_SERVER_ERROR
+2022-12-15T16:43:58.892+09:00 DEBUG 60784 --- [http-nio-5000-exec-2] o.s.web.servlet.DispatcherServlet        : "ERROR" dispatch for GET "/error", parameters={}
+2022-12-15T16:43:58.892+09:00 DEBUG 60784 --- [http-nio-5000-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController#errorHtml(HttpServletRequest, HttpServletResponse)
+2022-12-15T16:43:58.894+09:00 DEBUG 60784 --- [http-nio-5000-exec-2] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, text/html;q=0.8]
+2022-12-15T16:43:58.894+09:00 DEBUG 60784 --- [http-nio-5000-exec-2] o.s.web.servlet.DispatcherServlet        : Exiting from "ERROR" dispatch, status 500
+2022-12-15T17:40:10.943+09:00  INFO 13687 --- [restartedMain] c.G.p.ProductServiceApplication          : Starting ProductServiceApplication using Java 17.0.5 with PID 13687 (/home/geonhyuk/Documents/CS/Java/GetMyGraphicsCard/product-service/build/classes/java/main started by geonhyuk in /home/geonhyuk/Documents/CS/Java/GetMyGraphicsCard/product-service)
+2022-12-15T17:40:10.944+09:00  INFO 13687 --- [restartedMain] c.G.p.ProductServiceApplication          : No active profile set, falling back to 1 default profile: "default"
+2022-12-15T17:40:10.962+09:00  INFO 13687 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-12-15T17:40:10.962+09:00  INFO 13687 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-12-15T17:40:11.397+09:00  INFO 13687 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 5000 (http)
+2022-12-15T17:40:11.402+09:00  INFO 13687 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-12-15T17:40:11.402+09:00  INFO 13687 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.1]
+2022-12-15T17:40:11.423+09:00  INFO 13687 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-12-15T17:40:11.423+09:00  INFO 13687 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 460 ms
+2022-12-15T17:40:11.695+09:00 DEBUG 13687 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2022-12-15T17:40:11.722+09:00 DEBUG 13687 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : 3 mappings in 'requestMappingHandlerMapping'
+2022-12-15T17:40:11.728+09:00 DEBUG 13687 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2022-12-15T17:40:11.732+09:00 DEBUG 13687 --- [restartedMain] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 1 @ExceptionHandler, 1 ResponseBodyAdvice
+2022-12-15T17:40:11.800+09:00  INFO 13687 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-12-15T17:40:11.810+09:00  INFO 13687 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 5000 (http) with context path ''
+2022-12-15T17:40:11.814+09:00  INFO 13687 --- [restartedMain] c.G.p.ProductServiceApplication          : Started ProductServiceApplication in 1.041 seconds (process running for 1.21)
+2022-12-15T17:40:18.682+09:00  INFO 13687 --- [http-nio-5000-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-12-15T17:40:18.683+09:00  INFO 13687 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-12-15T17:40:18.683+09:00 DEBUG 13687 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : Detected StandardServletMultipartResolver
+2022-12-15T17:40:18.683+09:00 DEBUG 13687 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : Detected AcceptHeaderLocaleResolver
+2022-12-15T17:40:18.683+09:00 DEBUG 13687 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : Detected FixedThemeResolver
+2022-12-15T17:40:18.684+09:00 DEBUG 13687 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@175dd904
+2022-12-15T17:40:18.684+09:00 DEBUG 13687 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.support.SessionFlashMapManager@6abf7ecb
+2022-12-15T17:40:18.684+09:00 DEBUG 13687 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+2022-12-15T17:40:18.684+09:00  INFO 13687 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2022-12-15T17:40:18.687+09:00 DEBUG 13687 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/products", parameters={}
+2022-12-15T17:40:18.695+09:00 DEBUG 13687 --- [http-nio-5000-exec-1] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2022-12-15T17:40:18.696+09:00 DEBUG 13687 --- [http-nio-5000-exec-1] o.s.w.s.r.ResourceHttpRequestHandler     : Resource not found
+2022-12-15T17:40:18.697+09:00 DEBUG 13687 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 404 NOT_FOUND
+2022-12-15T17:40:18.699+09:00 DEBUG 13687 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : "ERROR" dispatch for GET "/error", parameters={}
+2022-12-15T17:40:18.700+09:00 DEBUG 13687 --- [http-nio-5000-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController#errorHtml(HttpServletRequest, HttpServletResponse)
+2022-12-15T17:40:18.709+09:00 DEBUG 13687 --- [http-nio-5000-exec-1] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, text/html;q=0.8]
+2022-12-15T17:40:18.712+09:00 DEBUG 13687 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : Exiting from "ERROR" dispatch, status 404
+2022-12-15T17:40:18.872+09:00 DEBUG 13687 --- [http-nio-5000-exec-2] o.s.web.servlet.DispatcherServlet        : GET "/favicon.ico", parameters={}
+2022-12-15T17:40:18.873+09:00 DEBUG 13687 --- [http-nio-5000-exec-2] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2022-12-15T17:40:18.873+09:00 DEBUG 13687 --- [http-nio-5000-exec-2] o.s.w.s.r.ResourceHttpRequestHandler     : Resource not found
+2022-12-15T17:40:18.873+09:00 DEBUG 13687 --- [http-nio-5000-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 404 NOT_FOUND
+2022-12-15T17:40:18.873+09:00 DEBUG 13687 --- [http-nio-5000-exec-2] o.s.web.servlet.DispatcherServlet        : "ERROR" dispatch for GET "/error", parameters={}
+2022-12-15T17:40:18.874+09:00 DEBUG 13687 --- [http-nio-5000-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController#error(HttpServletRequest)
+2022-12-15T17:40:18.877+09:00 DEBUG 13687 --- [http-nio-5000-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json;q=0.8', given [image/avif, image/webp, image/apng, image/svg+xml, image/*, */*;q=0.8] and supported [application/json, application/*+json]
+2022-12-15T17:40:18.877+09:00 DEBUG 13687 --- [http-nio-5000-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [{timestamp=Thu Dec 15 17:40:18 KST 2022, status=404, error=Not Found, message=No message available,  (truncated)...]
+2022-12-15T17:40:18.889+09:00 DEBUG 13687 --- [http-nio-5000-exec-2] o.s.web.servlet.DispatcherServlet        : Exiting from "ERROR" dispatch, status 404
+2022-12-15T17:40:23.475+09:00 DEBUG 13687 --- [http-nio-5000-exec-3] o.s.web.servlet.DispatcherServlet        : GET "/api/products", parameters={}
+2022-12-15T17:40:23.476+09:00 DEBUG 13687 --- [http-nio-5000-exec-3] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.GetMyGraphicsCard.productservice.controller.WebClientController#listProducts()
+2022-12-15T17:40:23.496+09:00 DEBUG 13687 --- [http-nio-5000-exec-3] o.s.w.r.f.client.ExchangeFunctions       : [31019b27] HTTP GET https://openapi.naver.com/v1/search/shop.json?query=RTX%203060ti&display=100
+2022-12-15T17:40:23.978+09:00 DEBUG 13687 --- [reactor-http-epoll-2] o.s.w.r.f.client.ExchangeFunctions       : [31019b27] [02980ce2-1] Response 200 OK
+2022-12-15T17:40:23.998+09:00 DEBUG 13687 --- [reactor-http-epoll-2] org.springframework.web.HttpLogging      : [31019b27] [02980ce2-1] Decoded [com.GetMyGraphicsCard.productservice.entity.NaverRoot@3e7ec1ff]
+2022-12-15T17:40:24.003+09:00 DEBUG 13687 --- [http-nio-5000-exec-3] m.m.a.RequestResponseBodyMethodProcessor : Using 'application/json;q=0.8', given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, application/signed-exchange;v=b3;q=0.9, */*;q=0.8] and supported [application/json, application/*+json]
+2022-12-15T17:40:24.003+09:00 DEBUG 13687 --- [http-nio-5000-exec-3] m.m.a.RequestResponseBodyMethodProcessor : Writing [com.GetMyGraphicsCard.productservice.entity.NaverRoot@3e7ec1ff]
+2022-12-15T17:40:24.004+09:00 DEBUG 13687 --- [http-nio-5000-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2022-12-15T17:41:11.790+09:00  INFO 14104 --- [restartedMain] c.G.p.ProductServiceApplication          : Starting ProductServiceApplication using Java 17.0.5 with PID 14104 (/home/geonhyuk/Documents/CS/Java/GetMyGraphicsCard/product-service/build/classes/java/main started by geonhyuk in /home/geonhyuk/Documents/CS/Java/GetMyGraphicsCard/product-service)
+2022-12-15T17:41:11.791+09:00  INFO 14104 --- [restartedMain] c.G.p.ProductServiceApplication          : No active profile set, falling back to 1 default profile: "default"
+2022-12-15T17:41:11.811+09:00  INFO 14104 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-12-15T17:41:11.811+09:00  INFO 14104 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-12-15T17:41:12.246+09:00  INFO 14104 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 5000 (http)
+2022-12-15T17:41:12.250+09:00  INFO 14104 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-12-15T17:41:12.250+09:00  INFO 14104 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.1]
+2022-12-15T17:41:12.270+09:00  INFO 14104 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-12-15T17:41:12.270+09:00  INFO 14104 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 459 ms
+2022-12-15T17:41:12.516+09:00 DEBUG 14104 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2022-12-15T17:41:12.544+09:00 DEBUG 14104 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : 3 mappings in 'requestMappingHandlerMapping'
+2022-12-15T17:41:12.551+09:00 DEBUG 14104 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2022-12-15T17:41:12.554+09:00 DEBUG 14104 --- [restartedMain] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 1 @ExceptionHandler, 1 ResponseBodyAdvice
+2022-12-15T17:41:12.658+09:00  INFO 14104 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-12-15T17:41:12.669+09:00  INFO 14104 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 5000 (http) with context path ''
+2022-12-15T17:41:12.674+09:00  INFO 14104 --- [restartedMain] c.G.p.ProductServiceApplication          : Started ProductServiceApplication in 1.05 seconds (process running for 1.197)
+2022-12-15T17:41:15.876+09:00  INFO 14104 --- [http-nio-5000-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-12-15T17:41:15.877+09:00  INFO 14104 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-12-15T17:41:15.877+09:00 DEBUG 14104 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : Detected StandardServletMultipartResolver
+2022-12-15T17:41:15.877+09:00 DEBUG 14104 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : Detected AcceptHeaderLocaleResolver
+2022-12-15T17:41:15.877+09:00 DEBUG 14104 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : Detected FixedThemeResolver
+2022-12-15T17:41:15.877+09:00 DEBUG 14104 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@74d326ff
+2022-12-15T17:41:15.877+09:00 DEBUG 14104 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.support.SessionFlashMapManager@3bee28ce
+2022-12-15T17:41:15.878+09:00 DEBUG 14104 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+2022-12-15T17:41:15.878+09:00  INFO 14104 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2022-12-15T17:41:15.880+09:00 DEBUG 14104 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/api/products", parameters={}
+2022-12-15T17:41:15.883+09:00 DEBUG 14104 --- [http-nio-5000-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.GetMyGraphicsCard.productservice.controller.WebClientController#listProducts()
+2022-12-15T17:41:15.907+09:00 DEBUG 14104 --- [http-nio-5000-exec-1] o.s.w.r.f.client.ExchangeFunctions       : [3c466080] HTTP GET https://openapi.naver.com/v1/search/shop.json?query=RTX%203060ti&display=100
+2022-12-15T17:41:16.378+09:00 DEBUG 14104 --- [reactor-http-epoll-2] o.s.w.r.f.client.ExchangeFunctions       : [3c466080] [ecb57e4e-1] Response 200 OK
+2022-12-15T17:41:16.401+09:00 DEBUG 14104 --- [reactor-http-epoll-2] org.springframework.web.HttpLogging      : [3c466080] [ecb57e4e-1] Decoded [com.GetMyGraphicsCard.productservice.entity.NaverRoot@40a5944b]
+2022-12-15T17:41:16.406+09:00 DEBUG 14104 --- [http-nio-5000-exec-1] m.m.a.RequestResponseBodyMethodProcessor : Using 'application/json;q=0.8', given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, application/signed-exchange;v=b3;q=0.9, */*;q=0.8] and supported [application/json, application/*+json]
+2022-12-15T17:41:16.407+09:00 DEBUG 14104 --- [http-nio-5000-exec-1] m.m.a.RequestResponseBodyMethodProcessor : Writing [com.GetMyGraphicsCard.productservice.entity.NaverRoot@40a5944b]
+2022-12-15T17:41:16.411+09:00 DEBUG 14104 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2022-12-15T17:51:17.198+09:00  INFO 16864 --- [restartedMain] c.G.p.ProductServiceApplication          : Starting ProductServiceApplication using Java 17.0.5 with PID 16864 (/home/geonhyuk/Documents/CS/Java/GetMyGraphicsCard/product-service/build/classes/java/main started by geonhyuk in /home/geonhyuk/Documents/CS/Java/GetMyGraphicsCard/product-service)
+2022-12-15T17:51:17.199+09:00  INFO 16864 --- [restartedMain] c.G.p.ProductServiceApplication          : No active profile set, falling back to 1 default profile: "default"
+2022-12-15T17:51:17.216+09:00  INFO 16864 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-12-15T17:51:17.216+09:00  INFO 16864 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-12-15T17:51:17.610+09:00  INFO 16864 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 5000 (http)
+2022-12-15T17:51:17.615+09:00  INFO 16864 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-12-15T17:51:17.615+09:00  INFO 16864 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.1]
+2022-12-15T17:51:17.636+09:00  INFO 16864 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-12-15T17:51:17.636+09:00  INFO 16864 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 420 ms
+2022-12-15T17:51:17.882+09:00 DEBUG 16864 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2022-12-15T17:51:17.908+09:00 DEBUG 16864 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : 3 mappings in 'requestMappingHandlerMapping'
+2022-12-15T17:51:17.914+09:00 DEBUG 16864 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2022-12-15T17:51:17.917+09:00 DEBUG 16864 --- [restartedMain] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 1 @ExceptionHandler, 1 ResponseBodyAdvice
+2022-12-15T17:51:18.006+09:00  INFO 16864 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-12-15T17:51:18.017+09:00  INFO 16864 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 5000 (http) with context path ''
+2022-12-15T17:51:18.021+09:00  INFO 16864 --- [restartedMain] c.G.p.ProductServiceApplication          : Started ProductServiceApplication in 0.989 seconds (process running for 1.131)
+2022-12-15T17:51:31.341+09:00  INFO 16864 --- [http-nio-5000-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-12-15T17:51:31.341+09:00  INFO 16864 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-12-15T17:51:31.341+09:00 DEBUG 16864 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : Detected StandardServletMultipartResolver
+2022-12-15T17:51:31.341+09:00 DEBUG 16864 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : Detected AcceptHeaderLocaleResolver
+2022-12-15T17:51:31.341+09:00 DEBUG 16864 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : Detected FixedThemeResolver
+2022-12-15T17:51:31.342+09:00 DEBUG 16864 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@74d326ff
+2022-12-15T17:51:31.342+09:00 DEBUG 16864 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.support.SessionFlashMapManager@3bee28ce
+2022-12-15T17:51:31.342+09:00 DEBUG 16864 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+2022-12-15T17:51:31.342+09:00  INFO 16864 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2022-12-15T17:51:31.345+09:00 DEBUG 16864 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/api/products", parameters={}
+2022-12-15T17:51:31.347+09:00 DEBUG 16864 --- [http-nio-5000-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.GetMyGraphicsCard.productservice.controller.WebClientController#listProducts()
+2022-12-15T17:51:31.373+09:00 DEBUG 16864 --- [http-nio-5000-exec-1] o.s.w.r.f.client.ExchangeFunctions       : [3c466080] HTTP GET https://openapi.naver.com/v1/search/shop.json?query=RTX%203060ti&display=100
+2022-12-15T17:51:31.829+09:00 DEBUG 16864 --- [reactor-http-epoll-2] o.s.w.r.f.client.ExchangeFunctions       : [3c466080] [81c484ee-1] Response 200 OK
+2022-12-15T17:51:31.857+09:00 DEBUG 16864 --- [reactor-http-epoll-2] org.springframework.web.HttpLogging      : [3c466080] [81c484ee-1] Decoded [com.GetMyGraphicsCard.productservice.entity.Root@6e06760d]
+2022-12-15T17:51:31.863+09:00 DEBUG 16864 --- [http-nio-5000-exec-1] m.m.a.RequestResponseBodyMethodProcessor : Using 'application/json;q=0.8', given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, application/signed-exchange;v=b3;q=0.9, */*;q=0.8] and supported [application/json, application/*+json]
+2022-12-15T17:51:31.864+09:00 DEBUG 16864 --- [http-nio-5000-exec-1] m.m.a.RequestResponseBodyMethodProcessor : Writing [com.GetMyGraphicsCard.productservice.entity.Root@6e06760d]
+2022-12-15T17:51:31.869+09:00 DEBUG 16864 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 200 OK

@@ -1,7 +1,8 @@
 package com.GetMyGraphicsCard.productservice.service;
 
+import com.GetMyGraphicsCard.productservice.entity.Root;
 import reactor.core.publisher.Mono;
 
 public interface WebClientService {
-    public Mono<String> getProducts();
+    public Mono<Root> getProducts();
 }
