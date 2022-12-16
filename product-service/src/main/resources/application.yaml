@@ -6,3 +6,9 @@ logging:
     org.hibernate: "error"
   file:
     name: "productservice.log"
+spring:
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      database: Java

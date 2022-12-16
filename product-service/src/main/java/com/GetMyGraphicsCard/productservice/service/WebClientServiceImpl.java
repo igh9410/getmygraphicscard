@@ -36,7 +36,6 @@ public class WebClientServiceImpl implements WebClientService {
                 .accept(MediaType.APPLICATION_JSON)
                 .retrieve()
                 .bodyToMono(Root.class);
-      //  addProducts(products);
         return products;
     }
 
@@ -44,6 +43,9 @@ public class WebClientServiceImpl implements WebClientService {
     public void addProducts(Mono<Root> products) {
         Root addedProducts = products.block();
         List<Item> addedItems = addedProducts.getItems();
+        for (Item item: addedItems) {
+            item.setTitle(item.getTitle().replaceAll("\\<.*?>", ""));
+        }
         itemRepository.saveAll(addedItems);
     }
 }

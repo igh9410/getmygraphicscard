@@ -1,7 +1,6 @@
 package com.GetMyGraphicsCard.productservice.controller;
 
 import com.GetMyGraphicsCard.productservice.entity.Item;
-import com.GetMyGraphicsCard.productservice.entity.Root;
 import com.GetMyGraphicsCard.productservice.service.WebClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
