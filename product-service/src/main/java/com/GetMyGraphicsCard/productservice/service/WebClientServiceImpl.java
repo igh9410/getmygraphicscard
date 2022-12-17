@@ -36,6 +36,7 @@ public class WebClientServiceImpl implements WebClientService {
                 .accept(MediaType.APPLICATION_JSON)
                 .retrieve()
                 .bodyToMono(Root.class);
+
         return products;
     }
 
