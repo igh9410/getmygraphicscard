@@ -2,39 +2,30 @@ package com.GetMyGraphicsCard.productservice.service;
 
 import com.GetMyGraphicsCard.productservice.entity.Item;
 import com.GetMyGraphicsCard.productservice.entity.Root;
-import com.GetMyGraphicsCard.productservice.service.WebClientServiceImpl;
-import com.google.gson.Gson;
 import okhttp3.mockwebserver.MockWebServer;
 import org.apache.commons.io.IOUtils;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
-
 import org.springframework.core.io.ClassPathResource;
-import org.springframework.http.MediaType;
 import org.springframework.test.context.TestPropertySource;
 import reactor.core.publisher.Mono;
-import reactor.test.StepVerifier;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
-
-@TestPropertySource("/application-test.yaml")
+@TestPropertySource(locations = "/application-test.properties")
 @SpringBootTest
 public class WebClientServiceTest {
 
     @Autowired
     private WebClientServiceImpl webClientServiceImpl;
 
-    @Autowired
-    private Gson gson;
     private static MockWebServer mockWebServer;
+
 
     @BeforeAll
     static void setUpMockWebServer() throws IOException {
@@ -50,6 +41,13 @@ public class WebClientServiceTest {
         StringBuilder sb = new StringBuilder();
         TestItems.forEach(item -> sb.append(item.toString()));
         System.out.println(sb.toString());
+    }
+
+    @Test
+    void addGraphicsCardToDBTest() {
+        Mono<Root> graphicsCard = webClientServiceImpl.requestGraphicsCardInfo("RTX 3070");
+        webClientServiceImpl.addGraphicsCardToDB(graphicsCard);
+
     }
     @AfterAll
     static void removeWebServer() throws IOException {
