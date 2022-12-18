@@ -13,12 +13,8 @@ import java.util.List;
 @RequestMapping("/api")
 public class WebClientController {
 
-    private WebClientService webClientService;
-
     @Autowired
-    public WebClientController(WebClientService webClientService) {
-        this.webClientService = webClientService;
-    }
+    private WebClientService webClientService;
 
     @GetMapping("/products")
     public List<Item> listProducts(){

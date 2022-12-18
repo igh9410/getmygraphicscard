@@ -11,42 +11,61 @@ import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class WebClientServiceImpl implements WebClientService {
 
-    private WebClient webClient;
-    private ItemRepository itemRepository;
+    private final WebClient webClient;
+    private final ItemRepository itemRepository;
 
 
     @Autowired
     public WebClientServiceImpl(ItemRepository itemRepository) {
         this.webClient =  WebClient.builder()
-                .baseUrl("https://openapi.naver.com/v1/search/shop.json?query=RTX 3060ti&display=100")
+                .baseUrl("https://openapi.naver.com/v1/search/shop.json")
                 .defaultHeader("X-Naver-Client-Id", "LN0TxgVzwBlIVpnW0QGb")
                 .defaultHeader("X-Naver-Client-Secret", "_9ZdxXu6KD")
                 .build();
         this.itemRepository = itemRepository;
     }
 
-
-
-    public Mono<Root> getProducts() {
-        Mono<Root> products = webClient.get()
+    // request Graphics Card Info via Naver API
+    public Mono<Root> requestGraphicsCardInfo(String title) {
+        Mono<Root> graphicsCard = webClient.get()
+                .uri(uriBuilder -> uriBuilder
+                        .queryParam("query", title)
+                        .queryParam("display", 100)
+                        .build())
                 .accept(MediaType.APPLICATION_JSON)
                 .retrieve()
                 .bodyToMono(Root.class);
+        return graphicsCard;
+    }
 
-        return products;
+
+    @Override
+    public void addGraphicsCardToDB(Mono<Root> graphicsCard) {
+        Root addedProducts = graphicsCard.block();
+        List<Item> addedItems = addedProducts.getItems()
+                .parallelStream()
+                .map(i -> new Item(i.getTitle().replaceAll("\\<.*?>", ""), i.getLink(), i.getImage(), i.getLprice(), i.getProductId()))
+                .collect(Collectors.toList());
+        itemRepository.saveAll(addedItems);
     }
 
     @Override
-    public void addProducts(Mono<Root> products) {
-        Root addedProducts = products.block();
-        List<Item> addedItems = addedProducts.getItems();
-        for (Item item: addedItems) {
-            item.setTitle(item.getTitle().replaceAll("\\<.*?>", ""));
-        }
-        itemRepository.saveAll(addedItems);
+    public Mono<Root> getProducts() {
+        Mono<Root> products = webClient.get()
+                .uri(uriBuilder -> uriBuilder
+                        .queryParam("query", "RTX 3060ti")
+                        .queryParam("display", 100)
+                        .build())
+                .accept(MediaType.APPLICATION_JSON)
+                .retrieve()
+                .bodyToMono(Root.class);
+        return products;
     }
+
+
 }

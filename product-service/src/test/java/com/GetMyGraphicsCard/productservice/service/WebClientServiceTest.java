@@ -1,5 +1,6 @@
 package com.GetMyGraphicsCard.productservice.service;
 
+import com.GetMyGraphicsCard.productservice.entity.Item;
 import com.GetMyGraphicsCard.productservice.entity.Root;
 import com.GetMyGraphicsCard.productservice.service.WebClientServiceImpl;
 import com.google.gson.Gson;
@@ -20,6 +21,7 @@ import reactor.test.StepVerifier;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -37,25 +39,24 @@ public class WebClientServiceTest {
     @BeforeAll
     static void setUpMockWebServer() throws IOException {
         mockWebServer = new MockWebServer();
-
         mockWebServer.start(6000);
     }
-
     @Test
-    void getProductsTest() throws IOException {
+    void requestGraphicsCardInfoTest() throws IOException {
         ClassPathResource naverResource = new ClassPathResource("NaverShop.json");
-        String NaverString = IOUtils.toString(naverResource.getInputStream(), StandardCharsets.UTF_8);
-        Root NaverRoot = gson.fromJson(NaverString, Root.class);
-        Mono<Root> NaverProducts = Mono.just(NaverRoot);
-        Mono<Root> TestProducts = webClientServiceImpl.getProducts();
-        System.out.println(NaverProducts.block());
-        System.out.println(TestProducts.block());
-        assertEquals(NaverProducts, TestProducts, "Connection Test");
+        String naverString = IOUtils.toString(naverResource.getInputStream(), StandardCharsets.UTF_8);
+        Root TestRoot = webClientServiceImpl.requestGraphicsCardInfo("RTX 3060ti").block();
+        List<Item> TestItems = TestRoot.getItems();
+        StringBuilder sb = new StringBuilder();
+        TestItems.forEach(item -> sb.append(item.toString()));
+        System.out.println(sb.toString());
     }
     @AfterAll
     static void removeWebServer() throws IOException {
         mockWebServer.shutdown();
     }
+
+
 
 
 

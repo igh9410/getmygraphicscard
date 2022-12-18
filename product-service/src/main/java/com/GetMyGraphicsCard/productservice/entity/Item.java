@@ -1,10 +1,7 @@
 package com.GetMyGraphicsCard.productservice.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -23,4 +20,14 @@ public class Item {
     @Id
     private String productId;
 
+    @Override
+    public String toString() {
+        return "{" +
+                "title=" + title + '\'' +
+                ", link='" + link + '\'' +
+                ", image='" + image + '\'' +
+                ", lprice='" + lprice + '\'' +
+                ", productId='" + productId + '\'' +
+                '}';
+    }
 }
