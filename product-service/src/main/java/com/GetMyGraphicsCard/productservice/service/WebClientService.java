@@ -10,6 +10,7 @@ import java.nio.channels.MembershipKey;
 public interface WebClientService {
     public Mono<Root> requestGraphicsCardInfo(String title);
     public void addGraphicsCardToDB(Mono<Root> graphicsCard);
+    public void addGraphicsCardsToDB(Flux<Root> graphicsCard);
 
     public Mono<Root> getProducts();
 

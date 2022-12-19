@@ -20,15 +20,5 @@ public class Item {
     @Id
     private String productId;
 
-    /*
-    @Override
-    public String toString() {
-        return "{" +
-                "\"title=\""+ title + '\"' +
-                ", link='" + link + '\"' +
-                ", image='" + image + '\"'' +
-                ", lprice='" + lprice + '\"'' +
-                ", productId='" + productId + '\"'' +
-                '}';
-    } */
+
 }

@@ -5,26 +5,38 @@ import com.GetMyGraphicsCard.productservice.service.WebClientService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 @Component
 public class ScheduledTasks {
     private static final Logger log = LoggerFactory.getLogger(ScheduledTasks.class);
 
-    private static String[] chipsets = {"RTX 3050", "RTX 3060", "RTX 3060ti"};
+    // Array of Nvidia graphics cards chipsets reference : https://en.wikipedia.org/wiki/List_of_Nvidia_graphics_processing_units/
+     private static String[] chipsetsNvidia = {"GTX 1630", "GTX 1650", "GTX 1650 Super", "GTX 1660", "GTX 1660 Super", "GTX 1660 Ti",
+            "RTX 2060", "RTX 2060 Super", "RTX 2070", "RTX 2070 Super", "RTX 2080", "RTX 2080 Super", "RTX 2080 Ti", "TITAN RTX",
+            "RTX 3050", "RTX 3060", "RTX 3060 Ti", "RTX 3070", "RTX 3070 Ti", "RTX 3080", "RTX 3080 Ti", "RTX 3090", "RTX 3090 Ti",
+            "RTX 4070 Ti", "RTX 4080", "RTX 4090"};
+
     @Autowired
     private WebClientService webClientService;
 
+
+
+
     @Scheduled(cron = "0 0/5 * * * ?") // Sending Http requests to Naver API every 5 minutes and save to DB
     public void GetGraphicsCardDataFromNaver() {
-        Mono<Root> request1 = webClientService.requestGraphicsCardInfo("RTX 3050");
-        Mono<Root> request2 = webClientService.requestGraphicsCardInfo("RTX 4080");
-        Mono<Root> request3 = webClientService.requestGraphicsCardInfo("RTX 4090");
-        Mono<Root> mergedRequests = Flux.merge(request1, request2, request3).next();
         log.info("Sending Http requests..");
-        webClientService.addGraphicsCardToDB(mergedRequests);
+        for (String chipset: chipsetsNvidia) {
+            Mono<Root> graphics = webClientService.requestGraphicsCardInfo(chipset);
+            webClientService.addGraphicsCardToDB(graphics);
+        }
     }
 }
