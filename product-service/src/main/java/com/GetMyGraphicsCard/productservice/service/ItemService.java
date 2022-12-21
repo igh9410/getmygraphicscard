@@ -10,7 +10,7 @@ public interface ItemService {
 
     public List<ItemResponse> findItemsInPriceRange(int lowest, int highest);
 
-//    public List<ItemResponse> findAllItemsByTitle(String title);
+    public List<ItemResponse> findAllItemsByTitle(String title);
 
 
 

@@ -7,7 +7,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -24,20 +23,20 @@ public class ItemServiceImpl implements ItemService {
     public List<ItemResponse> findItemsInPriceRange(int lowest, int highest) {
         return null;
     }
-    /*
+
     @Override
     public List<ItemResponse> findAllItemsByTitle(String title) {
-        List<Item> items = itemRepository.findAllById(title);
-        return
+        List<Item> items = itemRepository.findItemByTitle(title);
+        return items.parallelStream().map(this::mapToItemResponse).toList();
+    }
 
-    } */
 
     private ItemResponse mapToItemResponse(Item item) {
         return ItemResponse.builder()
                 .title(item.getTitle())
                 .link(item.getLink())
                 .image(item.getImage())
-                .lprice(Integer.parseInt(item.getLprice()))
+                .lprice(item.getLprice())
                 .build();
     }
 
