@@ -4,9 +4,7 @@ package com.GetMyGraphicsCard.productservice.service;
 import com.GetMyGraphicsCard.productservice.entity.Item;
 import com.GetMyGraphicsCard.productservice.entity.Root;
 import com.GetMyGraphicsCard.productservice.repository.ItemRepository;
-import com.GetMyGraphicsCard.productservice.task.ScheduledTasks;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
@@ -19,12 +17,11 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
+@Slf4j
 public class WebClientServiceImpl implements WebClientService {
 
     private final WebClient webClient;
     private final ItemRepository itemRepository;
-
-    private static final Logger log = LoggerFactory.getLogger(WebClientServiceImpl.class);
 
     @Autowired
     public WebClientServiceImpl(ItemRepository itemRepository) {
@@ -38,6 +35,7 @@ public class WebClientServiceImpl implements WebClientService {
 
     // request Graphics Card Info via Naver API
     public Mono<Root> requestGraphicsCardInfo(String title) {
+        log.info("Requesting {} info", title);
         Mono<Root> graphicsCard = webClient.get()
                 .uri(uriBuilder -> uriBuilder
                         .queryParam("query", title)
@@ -52,12 +50,13 @@ public class WebClientServiceImpl implements WebClientService {
 
 
     @Override
-    public void addGraphicsCardToDB(Mono<Root> graphicsCard) {
+    public void addGraphicsCardToDB(Mono<Root> graphicsCard, String chipset) {
         Root addedProducts = graphicsCard.block();
         List<Item> addedItems = addedProducts.getItems()
                 .parallelStream()
                 .map(i -> new Item(i.getTitle().replaceAll("\\<.*?>", ""), i.getLink(), i.getImage(), i.getLprice(), i.getProductId()))
                 .collect(Collectors.toList());
+        log.info("Saving {} data to DB", chipset);
         itemRepository.saveAll(addedItems);
     }
 
@@ -65,21 +64,5 @@ public class WebClientServiceImpl implements WebClientService {
     public void addGraphicsCardsToDB(Flux<Root> graphicsCard) {
 
     }
-
-    @Override
-    public Mono<Root> getProducts() {
-        Mono<Root> products = webClient.get()
-                .uri(uriBuilder -> uriBuilder
-                        .queryParam("query", "RTX 3060ti")
-                        .queryParam("display", 100)
-                        .build())
-                .accept(MediaType.APPLICATION_JSON)
-                .retrieve()
-                .bodyToMono(Root.class);
-        return products;
-    }
-
-
-
 
 }

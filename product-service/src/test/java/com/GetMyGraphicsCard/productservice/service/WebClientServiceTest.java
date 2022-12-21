@@ -42,13 +42,13 @@ public class WebClientServiceTest {
         TestItems.forEach(item -> sb.append(item.toString()));
         System.out.println(sb.toString());
     }
-
+/*
     @Test
     void addGraphicsCardToDBTest() {
         Mono<Root> graphicsCard = webClientServiceImpl.requestGraphicsCardInfo("RTX 3070");
-        webClientServiceImpl.addGraphicsCardToDB(graphicsCard);
+        webClientServiceImpl.addGraphicsCardToDB(graphicsCard, chipset);
 
-    }
+    } */
     @AfterAll
     static void removeWebServer() throws IOException {
         mockWebServer.shutdown();

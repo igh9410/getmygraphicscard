@@ -5,15 +5,9 @@ import com.GetMyGraphicsCard.productservice.service.WebClientService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.scheduling.annotation.Async;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
-import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 @Component
 public class ScheduledTasks {
@@ -31,12 +25,12 @@ public class ScheduledTasks {
 
 
 
-    @Scheduled(cron = "0 0/5 * * * ?") // Sending Http requests to Naver API every 5 minutes and save to DB
-    public void GetGraphicsCardDataFromNaver() {
+      @Scheduled(cron = "0 0/5 * * * ?") // Sending Http requests to Naver API every 5 minutes and save to DB
+      public void GetGraphicsCardDataFromNaver() {
         log.info("Sending Http requests..");
         for (String chipset: chipsetsNvidia) {
             Mono<Root> graphics = webClientService.requestGraphicsCardInfo(chipset);
-            webClientService.addGraphicsCardToDB(graphics);
+            webClientService.addGraphicsCardToDB(graphics, chipset);
         }
     }
 }
