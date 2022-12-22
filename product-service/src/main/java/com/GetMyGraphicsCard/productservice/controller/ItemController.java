@@ -20,8 +20,13 @@ public class ItemController {
     }
 
     @GetMapping("/search")
-    public List<ItemResponse> findAllItemsByTitle(@RequestParam String query) {
-        return itemService.findAllItemsByTitle(query);
+    public List<ItemResponse> findAllItemsByTitle(@RequestParam String title) {
+        return itemService.findAllItemsByTitle(title);
+    }
+
+    @GetMapping("/price")
+    public List<ItemResponse> findAllItemsByPriceRange(@RequestParam int lowest, @RequestParam int highest) throws Exception {
+        return itemService.findItemsInPriceRange(lowest, highest);
     }
 
 

@@ -8,7 +8,7 @@ public interface ItemService {
 
     public List<ItemResponse> getAllItems();
 
-    public List<ItemResponse> findItemsInPriceRange(int lowest, int highest);
+    public List<ItemResponse> findItemsInPriceRange(int lowest, int highest) throws Exception;
 
     public List<ItemResponse> findAllItemsByTitle(String title);
 
