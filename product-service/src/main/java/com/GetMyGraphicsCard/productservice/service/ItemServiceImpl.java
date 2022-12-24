@@ -4,6 +4,7 @@ import com.GetMyGraphicsCard.productservice.dto.ItemResponse;
 import com.GetMyGraphicsCard.productservice.entity.Item;
 import com.GetMyGraphicsCard.productservice.repository.ItemRepository;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.TextCriteria;
@@ -13,11 +14,10 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class ItemServiceImpl implements ItemService {
 
     private final ItemRepository itemRepository;
-
-    private final MongoTemplate mongoTemplate;
 
     @Override
     public List<ItemResponse> getAllItems() {
@@ -37,7 +37,8 @@ public class ItemServiceImpl implements ItemService {
     @Override
     public List<ItemResponse> findAllItemsByTitle(String title) {
         Sort sort = Sort.by(title);
-        TextCriteria textCriteria = TextCriteria.forDefaultLanguage().matchingAny(title);
+        TextCriteria textCriteria = TextCriteria.forDefaultLanguage().matchingAny(title).caseSensitive(false);
+        log.info("Finding items by title {}..", title);
         List<Item> items = itemRepository.findAllBy(textCriteria, sort);
         return items.parallelStream().map(this::mapToItemResponse).toList();
     }

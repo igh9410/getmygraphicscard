@@ -14,8 +14,6 @@ import java.util.List;
 @Repository
 public interface ItemRepository extends MongoRepository<Item, String> {
 
-    List<Item> findItemByTitle(String title);
-
     List<Item> findAllBy(TextCriteria criteria, Sort sort);
 
     Page<Item> findAllBy(TextCriteria criteria, Pageable pageable);
