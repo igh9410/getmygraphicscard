@@ -1,0 +1,12 @@
+server:
+  port: 5001
+
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/subscription_service
+    username: igh9410
+    password: Rjsgur94!
+  jpa:
+    hibernate:
+      ddt-auto: update
+

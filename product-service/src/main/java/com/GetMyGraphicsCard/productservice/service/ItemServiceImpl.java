@@ -11,6 +11,7 @@ import org.springframework.data.mongodb.core.query.TextCriteria;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -41,6 +42,20 @@ public class ItemServiceImpl implements ItemService {
         log.info("Finding items by title {}..", title);
         List<Item> items = itemRepository.findAllBy(textCriteria, sort);
         return items.parallelStream().map(this::mapToItemResponse).toList();
+    }
+
+    @Override
+    public ItemResponse findItemById(String id) throws Exception {
+        Optional<Item> result = itemRepository.findById(id);
+        Item item = null;
+
+        if (result.isPresent()) {
+            item = result.get();
+        } else {
+            throw new Exception("Item not found .. ");
+        }
+        log.info("Getting ProductId {} info..", id);
+        return mapToItemResponse(item);
     }
 
 

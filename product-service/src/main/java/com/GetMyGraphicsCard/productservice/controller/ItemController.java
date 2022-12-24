@@ -29,5 +29,9 @@ public class ItemController {
         return itemService.findItemsInPriceRange(lowest, highest);
     }
 
+    @GetMapping("{id}")
+    public ItemResponse findItemById(@PathVariable String id) throws Exception {
+        return itemService.findItemById(id);
+    }
 
 }

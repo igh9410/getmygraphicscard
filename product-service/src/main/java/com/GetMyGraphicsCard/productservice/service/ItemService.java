@@ -12,6 +12,8 @@ public interface ItemService {
 
     public List<ItemResponse> findAllItemsByTitle(String title);
 
+    public ItemResponse findItemById(String id) throws Exception;
+
 
 
 
