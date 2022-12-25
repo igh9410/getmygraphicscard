@@ -21,5 +21,5 @@ public class Subscription {
     private Long Id;
 
     @OneToMany(cascade = CascadeType.ALL)
-    private List<SubscriptionItem> subscriptionItems;
+    private List<SubscriptionItem> subscriptionItemList;
 }

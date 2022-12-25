@@ -1,19 +1,16 @@
 package com.GetMyGraphicsCard.subscriptionservice.service;
 
-import com.GetMyGraphicsCard.subscriptionservice.repository.SubscriptionRepository;
-import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.reactive.function.client.WebClient;
+import com.GetMyGraphicsCard.subscriptionservice.dto.SubscriptionItemDto;
+import com.GetMyGraphicsCard.subscriptionservice.entity.Subscription;
 
-@Service
-@RequiredArgsConstructor
-@Transactional
-public class SubscriptionService {
+import java.util.List;
 
-    private final SubscriptionRepository subscriptionRepository;
+public interface SubscriptionService {
 
-    private final WebClient webClient;
+    List<SubscriptionItemDto> getAllSubscribedItems(Long subscriptionId) throws Exception;
 
+    void addItemToSubscription(Long subscriptionId, String id);
+
+    void deleteItemFromSubscription(Subscription subscription, int index) throws Exception;
 
 }
