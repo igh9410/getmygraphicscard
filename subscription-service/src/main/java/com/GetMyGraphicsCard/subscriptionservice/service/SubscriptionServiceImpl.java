@@ -1,6 +1,5 @@
 package com.GetMyGraphicsCard.subscriptionservice.service;
 
-import com.GetMyGraphicsCard.subscriptionservice.dto.ItemResponse;
 import com.GetMyGraphicsCard.subscriptionservice.dto.SubscriptionItemDto;
 import com.GetMyGraphicsCard.subscriptionservice.entity.Subscription;
 import com.GetMyGraphicsCard.subscriptionservice.entity.SubscriptionItem;
@@ -12,7 +11,6 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.reactive.function.client.WebClient;
 
 import java.time.Duration;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -27,68 +25,63 @@ public class SubscriptionServiceImpl implements SubscriptionService {
 
 
     @Override
-    public List<SubscriptionItemDto> getAllSubscribedItems(Long subscriptionId) throws Exception {
-        Optional<Subscription> result = subscriptionRepository.findById(subscriptionId);
-        Subscription mockSubscription = null;
-        if (result.isPresent()) {
-            mockSubscription = result.get();
-        } else {
-            throw new Exception("Subscription does not exists.");
-        }
-        log.info("Retrieving all subscribed items");
-
-        return mockSubscription.getSubscriptionItemList().stream().map(this::mapToDto).toList();
+    public String makeSubscription() {
+        subscriptionRepository.save(new Subscription());
+        return "New subscription made.";
     }
 
     @Override
-    public void addItemToSubscription(Long subscriptionId, String id) {
+    public List<SubscriptionItemDto> getAllSubscribedItems(Long subscriptionId) throws Exception {
         Optional<Subscription> result = subscriptionRepository.findById(subscriptionId);
-        Subscription mockSubscription = null;
-        if (result.isPresent()) {
-            mockSubscription = result.get();
-        } else {
-            mockSubscription = new Subscription();
-            mockSubscription.setSubscriptionItemList(new ArrayList<SubscriptionItem>());
+
+        if (result.isEmpty()) {
+            throw new Exception("Subscription does not exists.");
+        }
+
+        log.info("Retrieving all subscribed items");
+
+        return result.get().getSubscriptionItemList().stream().map(this::mapToDto).toList();
+    }
+
+    @Override
+    public String addItemToSubscription(Long subscriptionId, String id) throws Exception {
+        Optional<Subscription> result = subscriptionRepository.findById(subscriptionId);
+
+        if (result.isEmpty()) {
+            throw new Exception("Subscription does not exists.");
         }
 
         log.info("Requesting product with id {} info to product-service", id);
-        ItemResponse graphicsCard = webClient.get()
+        SubscriptionItem item = webClient.get()
                 .uri(uriBuilder -> uriBuilder
                         .path("/items/{id}")
                         .build(id))
                 .retrieve()
-                .bodyToMono(ItemResponse.class)
+                .bodyToMono(SubscriptionItem.class)
                 .timeout(Duration.ofSeconds(3))
                 .block();
+        assert item != null;
 
-        SubscriptionItem requestedItem = new SubscriptionItem();
+        result.get().addItem(item);
 
-        requestedItem.setTitle(graphicsCard.getTitle());
-        requestedItem.setLink(graphicsCard.getLink());
-        requestedItem.setImage(graphicsCard.getImage());
-        requestedItem.setLprice(graphicsCard.getLprice());
-
-        List<SubscriptionItem> modifiedList = mockSubscription.getSubscriptionItemList();
-        modifiedList.add(requestedItem);
-
-        mockSubscription.setSubscriptionItemList(modifiedList);
         // save to database
-        subscriptionRepository.save(mockSubscription);
-        
+        subscriptionRepository.save(result.get());
+        String responseMessage = String.format("The requested item %s added to the subscription list.", item.getTitle());
+        return responseMessage;
     }
 
     @Override
-    public void deleteItemFromSubscription(Subscription subscription, int index) throws Exception {
+    public String deleteItemFromSubscription(Subscription subscription, int index) throws Exception {
         Optional<Subscription> result = subscriptionRepository.findById(subscription.getId());
-        Subscription mockSubscription = null;
-        if (result.isPresent()) {
-            mockSubscription = result.get();
-        } else {
+
+        if (result.isEmpty()) {
             throw new Exception("Subscription does not exists.");
         }
 
-     //   List<SubscriptionItem> subscriptionItem = mockSubscription.getSubscriptionItemList().get(index).orElseT;
 
+     //   List<SubscriptionItem> subscriptionItem = mockSubscription.getSubscriptionItemList().get(index).orElseT;
+        String responseMessage = "Item deleted successfully.";
+        return responseMessage;
     }
 
     private SubscriptionItemDto mapToDto(SubscriptionItem subscriptionItem) {

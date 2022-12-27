@@ -7,10 +7,11 @@ import java.util.List;
 
 public interface SubscriptionService {
 
+    String makeSubscription();
     List<SubscriptionItemDto> getAllSubscribedItems(Long subscriptionId) throws Exception;
 
-    void addItemToSubscription(Long subscriptionId, String id);
+    String addItemToSubscription(Long subscriptionId, String id) throws Exception;
 
-    void deleteItemFromSubscription(Subscription subscription, int index) throws Exception;
+    String deleteItemFromSubscription(Subscription subscription, int index) throws Exception;
 
 }

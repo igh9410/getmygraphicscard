@@ -10,8 +10,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class SubscriptionItemDto {
-
-    private Long Id;
     private String title;
     private String link;
     private String image;

@@ -46,15 +46,11 @@ public class ItemServiceImpl implements ItemService {
     @Override
     public ItemResponse findItemById(String id) throws Exception {
         Optional<Item> result = itemRepository.findById(id);
-        Item item = null;
-
-        if (result.isPresent()) {
-            item = result.get();
-        } else {
+        if (result.isEmpty()) {
             throw new Exception("Item not found .. ");
         }
         log.info("Getting ProductId {} info..", id);
-        return mapToItemResponse(item);
+        return mapToItemResponse(result.get());
     }
 
 
