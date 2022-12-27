@@ -28,8 +28,13 @@ dependencies {
 	implementation 'io.projectreactor:reactor-test:3.5.1'
 	implementation 'org.json:json:20220320'
 	implementation 'commons-io:commons-io:2.11.0'
-	implementation 'io.springfox:springfox-swagger2:3.0.0'
-	implementation 'io.springfox:springfox-swagger-ui'
+//	implementation 'io.springfox:springfox-swagger2:3.0.0'
+//	implementation 'io.springfox:springfox-swagger-ui'
+	//implementation 'org.springframework.cloud:spring-cloud-starter-config:4.0.0'
+	implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client:4.0.0'
+
+
+
 
 	compileOnly 'org.projectlombok:lombok'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'

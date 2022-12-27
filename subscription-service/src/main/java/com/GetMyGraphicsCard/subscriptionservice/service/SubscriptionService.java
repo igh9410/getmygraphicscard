@@ -12,6 +12,6 @@ public interface SubscriptionService {
 
     String addItemToSubscription(Long subscriptionId, String id) throws Exception;
 
-    String deleteItemFromSubscription(Subscription subscription, int index) throws Exception;
+  //  String deleteItemFromSubscription(Long subscriptionId, String id) throws Exception;
 
 }

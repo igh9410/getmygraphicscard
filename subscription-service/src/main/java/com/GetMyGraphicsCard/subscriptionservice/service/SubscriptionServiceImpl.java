@@ -70,8 +70,8 @@ public class SubscriptionServiceImpl implements SubscriptionService {
         return responseMessage;
     }
 
-    @Override
-    public String deleteItemFromSubscription(Subscription subscription, int index) throws Exception {
+  /*  @Override
+    public String deleteItemFromSubscription(Long subscriptionId,  index) throws Exception {
         Optional<Subscription> result = subscriptionRepository.findById(subscription.getId());
 
         if (result.isEmpty()) {
@@ -82,7 +82,7 @@ public class SubscriptionServiceImpl implements SubscriptionService {
      //   List<SubscriptionItem> subscriptionItem = mockSubscription.getSubscriptionItemList().get(index).orElseT;
         String responseMessage = "Item deleted successfully.";
         return responseMessage;
-    }
+    } */
 
     private SubscriptionItemDto mapToDto(SubscriptionItem subscriptionItem) {
         return SubscriptionItemDto.builder()

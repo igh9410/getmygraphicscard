@@ -27,7 +27,7 @@ public class SubscriptionController {
        return ResponseEntity.ok(subscriptionItemDtoList);
     }
 
-    @PutMapping("{id}")
+    @PostMapping("{id}")
     public ResponseEntity<String> addItemToSubscription(@PathVariable("id") String subscriptionId, @RequestBody String productId) throws Exception {
         return ResponseEntity.ok(subscriptionService.addItemToSubscription(Long.parseLong(subscriptionId), productId));
     }
