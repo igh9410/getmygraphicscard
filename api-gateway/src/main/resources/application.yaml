@@ -1,0 +1,50 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: api-gateway
+## Product Service Route
+  cloud:
+    gateway:
+      routes[0]:
+        id: product-service
+        uri: lb://product-service
+        predicates[0]: Path=/api/items
+## Subscription Service Route
+      routes[1]:
+        id: subscription-service
+        uri: lb://subscription-service
+        predicates:
+        - Path=/api/subscriptions,/api/subscriptions/{segment}
+## Eureka Server Route
+      routes[2]:
+        id: eureka-server
+        uri: http://localhost:8070
+        predicates[0]: Path=/eureka
+        filters[0]: SetPath=/
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8070/eureka
+
+logging:
+  level:
+    root: INFO
+    org:
+      springframework:
+        cloud:
+          gateway:
+            nodeValue: TRACE
+            route:
+              RouteDefinitionLocator: INFO
+
+
+
+
+
+
+
+
+
+

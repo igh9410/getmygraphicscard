@@ -25,8 +25,8 @@ public class Subscription {
     private List<SubscriptionItem> subscriptionItemList = new ArrayList<>();
 
     public void addItem(SubscriptionItem item) {
-        subscriptionItemList.add(item);
         item.setSubscription(this);
+        subscriptionItemList.add(item);
     }
 
     public void removeItem(SubscriptionItem item) {

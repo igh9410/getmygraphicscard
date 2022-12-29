@@ -62,7 +62,7 @@ public class SubscriptionServiceImpl implements SubscriptionService {
                 .block();
         assert item != null;
 
-        result.get().addItem(item);
+       result.get().addItem(item);
 
         // save to database
         subscriptionRepository.save(result.get());

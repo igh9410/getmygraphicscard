@@ -1,8 +1,8 @@
+server:
+  port: 8071
 spring:
   application:
     name: config-server
-  profiles:
-    active: native
   cloud:
     config:
       server:
@@ -10,5 +10,3 @@ spring:
           search-locations: classpath:/config
            #Reads from a specific filesystem folder
 
-server:
-  port: 8071

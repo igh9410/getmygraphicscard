@@ -8,7 +8,7 @@ import lombok.*;
 @Getter
 @Setter
 @Entity
-@Table(name = "item", uniqueConstraints = @UniqueConstraint(columnNames = "title"))
+@Table(name = "item")
 @Builder
 public class SubscriptionItem {
 
