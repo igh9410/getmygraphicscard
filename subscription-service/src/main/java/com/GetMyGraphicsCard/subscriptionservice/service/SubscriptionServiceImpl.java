@@ -31,6 +31,19 @@ public class SubscriptionServiceImpl implements SubscriptionService {
     }
 
     @Override
+    public String removeSubscription(Long subscriptionId) {
+        Subscription result = subscriptionRepository.getReferenceById(subscriptionId);
+        subscriptionRepository.delete(result);
+        return "Subscription deleted";
+    }
+
+    @Override
+    public Subscription findById(Long subscriptionId) {
+        return subscriptionRepository.getReferenceById(subscriptionId);
+    }
+
+
+    @Override
     public List<SubscriptionItemDto> getAllSubscribedItems(Long subscriptionId) throws Exception {
         Optional<Subscription> result = subscriptionRepository.findById(subscriptionId);
 
@@ -39,7 +52,6 @@ public class SubscriptionServiceImpl implements SubscriptionService {
         }
 
         log.info("Retrieving all subscribed items");
-
         return result.get().getSubscriptionItemList().stream().map(this::mapToDto).toList();
     }
 
@@ -62,7 +74,7 @@ public class SubscriptionServiceImpl implements SubscriptionService {
                 .block();
         assert item != null;
 
-       result.get().addItem(item);
+        result.get().addItem(item);
 
         // save to database
         subscriptionRepository.save(result.get());
@@ -70,19 +82,18 @@ public class SubscriptionServiceImpl implements SubscriptionService {
         return responseMessage;
     }
 
-  /*  @Override
-    public String deleteItemFromSubscription(Long subscriptionId,  index) throws Exception {
-        Optional<Subscription> result = subscriptionRepository.findById(subscription.getId());
-
+    @Override
+    public String removeItemFromSubscription(Long subscriptionId,  int index) throws Exception {
+        Optional<Subscription> result = subscriptionRepository.findById(subscriptionId);
         if (result.isEmpty()) {
             throw new Exception("Subscription does not exists.");
         }
+        SubscriptionItem removedItem = result.get().getSubscriptionItemList().get(index);
+        result.get().removeItem(removedItem);
 
-
-     //   List<SubscriptionItem> subscriptionItem = mockSubscription.getSubscriptionItemList().get(index).orElseT;
         String responseMessage = "Item deleted successfully.";
         return responseMessage;
-    } */
+    }
 
     private SubscriptionItemDto mapToDto(SubscriptionItem subscriptionItem) {
         return SubscriptionItemDto.builder()

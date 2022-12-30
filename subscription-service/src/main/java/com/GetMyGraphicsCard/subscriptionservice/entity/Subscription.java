@@ -19,14 +19,17 @@ public class Subscription {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long Id;
+    private Long id;
 
-    @OneToMany(mappedBy = "subscription",cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<SubscriptionItem> subscriptionItemList = new ArrayList<>();
+    @OneToMany(mappedBy = "subscription", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<SubscriptionItem> subscriptionItemList;
 
     public void addItem(SubscriptionItem item) {
-        item.setSubscription(this);
+        if (subscriptionItemList == null) {
+            subscriptionItemList = new ArrayList<>();
+        }
         subscriptionItemList.add(item);
+        item.setSubscription(this);
     }
 
     public void removeItem(SubscriptionItem item) {
