@@ -26,9 +26,12 @@ public class SubscriptionServiceImpl implements SubscriptionService {
 
     @Override
     public String makeSubscription() {
-        subscriptionRepository.save(new Subscription());
+        Subscription subscription = new Subscription();
+        subscriptionRepository.save(subscription);
         return "New subscription made.";
     }
+
+
 
     @Override
     public String removeSubscription(Long subscriptionId) {

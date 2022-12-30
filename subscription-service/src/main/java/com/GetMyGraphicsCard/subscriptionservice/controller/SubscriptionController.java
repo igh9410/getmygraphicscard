@@ -15,7 +15,7 @@ public class SubscriptionController {
     private final SubscriptionServiceImpl subscriptionService;
 
 
-    @PostMapping()
+    @PostMapping("/")
     public ResponseEntity<String> makeSubscription() {
         return ResponseEntity.ok(subscriptionService.makeSubscription());
     }

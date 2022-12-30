@@ -9,6 +9,7 @@ public interface SubscriptionService {
 
     String makeSubscription();
 
+
     String removeSubscription(Long subscriptionId);
 
     Subscription findById(Long subscriptionId);

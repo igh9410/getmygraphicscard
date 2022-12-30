@@ -20,7 +20,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.AdditionalAnswers.returnsFirstArg;
 import static org.mockito.Mockito.*;
 
-@TestPropertySource(locations = "/application-test.properties")
+@TestPropertySource(locations = "classpath:application-test.properties")
 @SpringBootTest
 public class ItemServiceTest {
 
