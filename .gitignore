@@ -9,3 +9,6 @@ NaverShop.json
 
 # Ignore Gradle build output directory
 build
+
+# Ignore configurations
+Keycloak-config

@@ -3,6 +3,7 @@ package com.GetMyGraphicsCard.subscriptionservice.service;
 import com.GetMyGraphicsCard.subscriptionservice.entity.Subscription;
 import com.GetMyGraphicsCard.subscriptionservice.entity.SubscriptionItem;
 import com.GetMyGraphicsCard.subscriptionservice.repository.SubscriptionRepository;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,6 +52,20 @@ public class SubscriptionServiceTest {
         subscription.addItem(subscriptionItem);
         assertEquals(subscription.getSubscriptionItemList().get(0).getTitle(), subscriptionItem.getTitle(), "This should be equal");
 
+    }
+
+    @Test
+    public void removeItemFromSubscriptionTest() {
+        SubscriptionItem subscriptionItem = SubscriptionItem.builder()
+                .id(1L)
+                .image("image")
+                .link("link")
+                .title("RTX 3060TI")
+                .lprice(200000)
+                .build();
+        subscription.addItem(subscriptionItem);
+        subscription.removeItem(subscriptionItem);
+        assertEquals(0, subscription.getSubscriptionItemList().size(), "Should be 0");
     }
 }
 

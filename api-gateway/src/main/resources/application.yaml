@@ -1,5 +1,5 @@
 server:
-  port: 8080
+  port: 8888
 spring:
   application:
     name: api-gateway
@@ -9,7 +9,7 @@ spring:
       routes[0]:
         id: product-service
         uri: lb://product-service
-        predicates[0]: Path=/api/items
+        predicates[0]: Path=/api/items, /api/items/{segment}
 ## Subscription Service Route
       routes[1]:
         id: subscription-service
@@ -22,6 +22,13 @@ spring:
         uri: http://localhost:8070
         predicates[0]: Path=/eureka
         filters[0]: SetPath=/
+## Eureka Static Resources Route
+      routes[3]:
+        id: eureka-server-static
+        uri: http://localhost:8070
+        predicates:
+        - Path=/eureka/**
+
 
 eureka:
   client:
@@ -30,6 +37,7 @@ eureka:
 
 logging:
   level:
+    nodeValue: DEBUG
     root: INFO
     org:
       springframework:
