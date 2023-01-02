@@ -28,7 +28,14 @@ spring:
         uri: http://localhost:8070
         predicates:
         - Path=/eureka/**
-
+  security:
+    oauth2:
+      client:
+        registration:
+          github:
+            clientId: 6bd70e8ad9662e2a0733
+            clientSecret: 811e9dd5fb4ef7ef7ac83dc1d372b3da6d1146f7
+# ...
 
 eureka:
   client:

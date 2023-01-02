@@ -7,19 +7,23 @@ import org.springframework.security.config.annotation.web.reactive.EnableWebFlux
 import org.springframework.security.config.web.server.ServerHttpSecurity;
 import org.springframework.security.web.server.SecurityWebFilterChain;
 
+
 @Configuration
 @EnableWebFluxSecurity
 public class SecurityConfig {
     @Bean
     public SecurityWebFilterChain springSecurityFilterChain(ServerHttpSecurity http) {
-        http.csrf()
+            http.csrf()
                 .disable()
                 .authorizeExchange()
                 .pathMatchers(HttpMethod.GET, "/api/items/**").permitAll()
                 .and()
                 .authorizeExchange()
-                .pathMatchers("/api/subscriptions/**").authenticated();
-
+                .pathMatchers("/api/subscriptions/**").authenticated()
+                    .and()
+                    .oauth2Login()
+                    .and()
+                    .logout().logoutUrl("http://localhost:8888");
         return http.build();
     }
 }

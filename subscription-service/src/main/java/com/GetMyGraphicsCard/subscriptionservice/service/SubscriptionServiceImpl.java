@@ -4,6 +4,7 @@ import com.GetMyGraphicsCard.subscriptionservice.dto.SubscriptionItemDto;
 import com.GetMyGraphicsCard.subscriptionservice.entity.Subscription;
 import com.GetMyGraphicsCard.subscriptionservice.entity.SubscriptionItem;
 import com.GetMyGraphicsCard.subscriptionservice.repository.SubscriptionRepository;
+import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -25,10 +26,10 @@ public class SubscriptionServiceImpl implements SubscriptionService {
 
 
     @Override
-    public String makeSubscription() {
+    public Subscription makeSubscription() {
         Subscription subscription = new Subscription();
         subscriptionRepository.save(subscription);
-        return "New subscription made.";
+        return subscription;
     }
 
 
@@ -51,7 +52,7 @@ public class SubscriptionServiceImpl implements SubscriptionService {
         Optional<Subscription> result = subscriptionRepository.findById(subscriptionId);
 
         if (result.isEmpty()) {
-            throw new Exception("Subscription does not exists.");
+           throw new Exception("Subscription does not exists.");
         }
 
         log.info("Retrieving all subscribed items");
@@ -59,11 +60,12 @@ public class SubscriptionServiceImpl implements SubscriptionService {
     }
 
     @Override
-    public String addItemToSubscription(Long subscriptionId, String id) throws Exception {
+    @CircuitBreaker(name = "productService", fallbackMethod = "buildFallbackAddItemToSubscription")
+    public SubscriptionItemDto addItemToSubscription(Long subscriptionId, String id) throws Exception {
         Optional<Subscription> result = subscriptionRepository.findById(subscriptionId);
 
         if (result.isEmpty()) {
-            throw new Exception("Subscription does not exists.");
+            throw new Exception("Please make a subscription to app first");
         }
 
         log.info("Requesting product with id {} info to product-service", id);
@@ -81,9 +83,20 @@ public class SubscriptionServiceImpl implements SubscriptionService {
 
         // save to database
         subscriptionRepository.save(result.get());
-        String responseMessage = String.format("The requested item %s added to the subscription list.", item.getTitle());
-        return responseMessage;
+        return mapToDto(item);
     }
+
+    public SubscriptionItemDto buildFallbackAddItemToSubscription(Long subscriptionId, String id, Exception e) {
+        SubscriptionItemDto subscriptionItemDto = SubscriptionItemDto.builder()
+                .title("Sorry the product service is not available")
+                .lprice(0)
+                .link("")
+                .image("")
+                .build();
+        return subscriptionItemDto;
+    }
+
+
 
     @Override
     public String removeItemFromSubscription(Long subscriptionId,  int index) throws Exception {
@@ -97,6 +110,9 @@ public class SubscriptionServiceImpl implements SubscriptionService {
         String responseMessage = "Item deleted successfully.";
         return responseMessage;
     }
+
+
+
 
     private SubscriptionItemDto mapToDto(SubscriptionItem subscriptionItem) {
         return SubscriptionItemDto.builder()

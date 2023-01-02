@@ -7,8 +7,7 @@ import java.util.List;
 
 public interface SubscriptionService {
 
-    String makeSubscription();
-
+    Subscription makeSubscription();
 
     String removeSubscription(Long subscriptionId);
 
@@ -16,7 +15,7 @@ public interface SubscriptionService {
 
     List<SubscriptionItemDto> getAllSubscribedItems(Long subscriptionId) throws Exception;
 
-    String addItemToSubscription(Long subscriptionId, String id) throws Exception;
+    SubscriptionItemDto addItemToSubscription(Long subscriptionId, String id) throws Exception;
 
     String removeItemFromSubscription(Long subscriptionId, int id) throws Exception;
 

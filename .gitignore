@@ -12,3 +12,4 @@ build
 
 # Ignore configurations
 Keycloak-config
+OAuth2Tokens
