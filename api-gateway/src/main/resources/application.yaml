@@ -6,6 +6,15 @@ spring:
 ## Product Service Route
   cloud:
     gateway:
+      ## Add Cors support from React app running on port 3000
+      corsConfigurations:
+        '[/**]':
+          allowedOrigins: "*"
+          allowedMethods:
+            - GET
+            - PUT
+            - POST
+            - DELETE
       routes[0]:
         id: product-service
         uri: lb://product-service

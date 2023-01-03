@@ -23,7 +23,7 @@ public class SecurityConfig {
                     .and()
                     .oauth2Login()
                     .and()
-                    .logout().logoutUrl("http://localhost:8888");
+                    .logout().logoutUrl("http://localhost:3000");
         return http.build();
     }
 }
