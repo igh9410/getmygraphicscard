@@ -9,6 +9,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.mongodb.core.query.TextCriteria;
 import org.springframework.test.context.TestPropertySource;
@@ -46,10 +48,10 @@ public class ItemServiceTest {
         when(itemRepository.saveAll(graphicsCards)).thenReturn(graphicsCards);
         TextCriteria textCriteria = TextCriteria.forDefaultLanguage().matchingAny("3060").caseSensitive(false);
         Sort sort = Sort.by("3060");
-        
+        Pageable pageable = PageRequest.of(0, 20);
 
 
-        List<ItemResponse> itemResponses = itemService.findAllItemsByTitle("3060");
+        List<ItemResponse> itemResponses = itemService.findAllItemsByTitle("3060", pageable);
         for (ItemResponse i: itemResponses) {
             System.out.println(i.getTitle());
         }

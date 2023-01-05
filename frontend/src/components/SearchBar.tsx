@@ -1,23 +1,32 @@
-import React from "react";
 import SearchIcon from "@mui/icons-material/Search";
 import "./SearchBar.css";
-import { Link } from "react-router-dom";
+import { Route, useNavigate } from "react-router-dom";
 import { IconButton } from "@mui/material";
+import React, { useState } from "react";
+import SearchItemsPage from "../pages/SearchItemsPage";
 
-interface SearchProps {
-  placeholder: string;
-}
-function SearchBar({ placeholder }: SearchProps) {
+function SearchBar() {
+  const [searchInput, setSearchInput] = useState("");
+  const navigate = useNavigate();
+
+  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    navigate("/items");
+  }
+
   return (
     <div className="search">
-      <div className="searchInputs">
-        <input type="text" placeholder={placeholder} />
-        <div className="searchIcon">
-          <IconButton>
-            <SearchIcon />
-          </IconButton>
-        </div>
-      </div>
+      <form onSubmit={handleSubmit}>
+        <input
+          id="title"
+          type="text"
+          placeholder="Search"
+          onChange={(e) => setSearchInput(e.target.value)}
+        />
+        <IconButton type="submit">
+          <SearchIcon />
+        </IconButton>
+      </form>
     </div>
   );
 }

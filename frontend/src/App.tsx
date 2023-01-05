@@ -1,19 +1,20 @@
-import React, { useEffect, useState } from "react";
-
+import React from "react";
 import "./App.css";
 import Header from "./components/Header";
-import axios from "axios";
+import Footer from "./components/Footer";
+import HomePage from "./pages/HomePage";
+import { Route, Routes } from "react-router-dom";
+import SearchItemsPage from "./pages/SearchItemsPage";
 
 function App() {
-  useEffect(() => {
-    const url = "http://localhost:8888/api/items";
-    axios.get(url).then((response) => {
-      console.log(response.data);
-    });
-  });
   return (
     <div className="App">
       <Header />
+      <Routes>
+        <Route path="/" element={<HomePage />} />;
+        <Route path="/items" element={<SearchItemsPage />} />;
+      </Routes>
+      <Footer />
     </div>
   );
 }

@@ -1,7 +1,12 @@
+import React from "react";
 import SearchBar from "./SearchBar";
+import SignIn from "./SignIn";
 
-function Header() {
-  return <SearchBar placeholder="Search" />;
+export default function Header() {
+  return (
+    <header>
+      <SearchBar />
+      <SignIn />
+    </header>
+  );
 }
-
-export default Header;

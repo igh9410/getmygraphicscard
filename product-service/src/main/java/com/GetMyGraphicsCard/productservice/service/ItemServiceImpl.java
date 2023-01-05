@@ -5,6 +5,9 @@ import com.GetMyGraphicsCard.productservice.entity.Item;
 import com.GetMyGraphicsCard.productservice.repository.ItemRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.mongodb.core.query.TextCriteria;
 import org.springframework.stereotype.Service;
@@ -20,8 +23,8 @@ public class ItemServiceImpl implements ItemService {
     private final ItemRepository itemRepository;
 
     @Override
-    public List<ItemResponse> getAllItems() {
-        List<Item> items = itemRepository.findAll();
+    public List<ItemResponse> getAllItems(Pageable pageable) {
+        List<Item> items = itemRepository.findAll(pageable).toList();
         return  items.parallelStream().map(this::mapToItemResponse).toList();
     }
 
@@ -35,11 +38,10 @@ public class ItemServiceImpl implements ItemService {
     }
 
     @Override
-    public List<ItemResponse> findAllItemsByTitle(String title) {
-        Sort sort = Sort.by(title);
+    public List<ItemResponse> findAllItemsByTitle(String title, Pageable pageable) {
         TextCriteria textCriteria = TextCriteria.forDefaultLanguage().matchingAny(title).caseSensitive(false);
         log.info("Finding items by title {}..", title);
-        List<Item> items = itemRepository.findAllBy(textCriteria, sort);
+        List<Item> items = itemRepository.findAllBy(textCriteria, pageable);
         return items.parallelStream().map(this::mapToItemResponse).toList();
     }
 
