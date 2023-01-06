@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import ItemModel from "../models/ItemModel";
 import SpinnerLoader from "../utils/SpinnerLoader";
 import { Box } from "@mui/system";
+import SearchItem from "../components/SearchItem";
+import "./SearchItemsPage.css";
 
 function SearchItemsPage() {
   const [items, setItems] = useState<ItemModel[]>([]);
@@ -56,7 +58,11 @@ function SearchItemsPage() {
 
   return (
     <div>
-      <Box></Box>
+      <div className="itemBox">
+        {items.map((item) => (
+          <SearchItem item={item} key={item.link} />
+        ))}
+      </div>
     </div>
   );
 }

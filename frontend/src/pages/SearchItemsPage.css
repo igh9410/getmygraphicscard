@@ -1,0 +1,7 @@
+.itemBox {
+  display: grid;
+  gap: 10px;
+  padding: 10px;
+
+  grid-template-columns: 25% 25% 25% 25%;
+}
