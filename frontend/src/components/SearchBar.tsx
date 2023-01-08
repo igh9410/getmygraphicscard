@@ -1,9 +1,9 @@
 import SearchIcon from "@mui/icons-material/Search";
 import "./SearchBar.css";
-import { Route, useNavigate } from "react-router-dom";
+import { Route, createSearchParams, useNavigate } from "react-router-dom";
 import { IconButton } from "@mui/material";
 import React, { useState } from "react";
-import SearchItemsPage from "../pages/SearchItemsPage";
+import SearchItemsPage from "../pages/ItemsPage";
 
 function SearchBar() {
   const [searchInput, setSearchInput] = useState("");
@@ -11,7 +11,13 @@ function SearchBar() {
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    navigate("/items");
+    navigate({
+      pathname: "/items/search",
+      search: createSearchParams({
+        title: searchInput,
+        pageNo: "1",
+      }).toString(),
+    });
   }
 
   return (

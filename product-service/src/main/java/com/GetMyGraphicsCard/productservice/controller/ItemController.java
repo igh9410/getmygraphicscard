@@ -24,8 +24,8 @@ public class ItemController {
     }
 
     @GetMapping("/search")
-    public List<ItemResponse> findAllItemsByTitle(@RequestParam(defaultValue = "0") Integer pageNo,
-                                                  @RequestParam(defaultValue = "20") Integer size, @RequestParam String title) {
+    public List<ItemResponse> findAllItemsByTitle(@RequestParam String title, @RequestParam(defaultValue = "0") Integer pageNo,
+                                                  @RequestParam(defaultValue = "20") Integer size) {
         Pageable pageable = PageRequest.of(pageNo, size);
         return itemService.findAllItemsByTitle(title, pageable);
     }

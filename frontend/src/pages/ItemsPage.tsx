@@ -3,18 +3,24 @@ import ItemModel from "../models/ItemModel";
 import SpinnerLoader from "../utils/SpinnerLoader";
 import { Box } from "@mui/system";
 import SearchItem from "../components/SearchItem";
-import "./SearchItemsPage.css";
+import "./ItemsPage.css";
+import { useSearchParams } from "react-router-dom";
 
-function SearchItemsPage() {
+function ItemsPage() {
   const [items, setItems] = useState<ItemModel[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [httpError, setHttpError] = useState(null);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [itemsPerPage] = useState(20);
+  const [searchParams, setSearchParams] = useSearchParams();
 
   useEffect(() => {
     const fetchItems = async () => {
-      const baseUrl: string = "http://localhost:8888/api/items";
-
-      const url: string = `${baseUrl}?pageNo=0&size=20`;
+      const baseUrl: string = "http://localhost:8888/api/items/search";
+      console.log(searchParams.get("title"));
+      const url: string = `${baseUrl}?title=${searchParams.get(
+        "title"
+      )}&pageNo=${currentPage - 1}&size=${itemsPerPage}`;
 
       const response = await fetch(url);
 
@@ -34,7 +40,7 @@ function SearchItemsPage() {
           lprice: responseData[key].lprice,
         });
       }
-      console.log(loadedItems);
+
       setItems(loadedItems);
       setIsLoading(false);
     };
@@ -42,7 +48,7 @@ function SearchItemsPage() {
       setIsLoading(false);
       setHttpError(error.message);
     });
-  }, []);
+  }, [searchParams]);
 
   if (isLoading) {
     return <SpinnerLoader />;
@@ -67,4 +73,4 @@ function SearchItemsPage() {
   );
 }
 
-export default SearchItemsPage;
+export default ItemsPage;
