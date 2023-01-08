@@ -1,6 +1,7 @@
 package com.GetMyGraphicsCard.productservice.repository;
 
 import com.GetMyGraphicsCard.productservice.entity.Item;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.mongodb.core.query.TextCriteria;
 import org.springframework.data.mongodb.repository.MongoRepository;
@@ -12,7 +13,8 @@ import java.util.List;
 @Repository
 public interface ItemRepository extends MongoRepository<Item, String> {
 
-    List<Item> findAllBy(TextCriteria criteria, Pageable pageable);
+    Page<Item> findAll(Pageable pageable);
+    Page<Item> findAllBy(TextCriteria criteria, Pageable pageable);
 
 
 

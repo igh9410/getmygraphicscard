@@ -10,17 +10,20 @@ function ItemsPage() {
   const [items, setItems] = useState<ItemModel[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [httpError, setHttpError] = useState(null);
-  const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage] = useState(20);
   const [searchParams, setSearchParams] = useSearchParams();
+  const [totalItems, setTotalItems] = useState(0);
+  const [totalPages, setTotalPages] = useState(0);
 
   useEffect(() => {
     const fetchItems = async () => {
       const baseUrl: string = "http://localhost:8888/api/items/search";
       console.log(searchParams.get("title"));
+
+      console.log(searchParams.get("pageNo"));
       const url: string = `${baseUrl}?title=${searchParams.get(
         "title"
-      )}&pageNo=${currentPage - 1}&size=${itemsPerPage}`;
+      )}&pageNo=${Number(searchParams.get("pageNo")) - 1}&size=${itemsPerPage}`;
 
       const response = await fetch(url);
 
@@ -28,7 +31,11 @@ function ItemsPage() {
         throw new Error("Something went wrong!");
       }
 
-      const responseData = await response.json();
+      const responseJson = await response.json();
+      const responseData = responseJson.content;
+
+      setTotalItems(responseJson.totalElements);
+      setTotalPages(responseJson.setTotalPages);
 
       const loadedItems: ItemModel[] = [];
 
@@ -40,7 +47,7 @@ function ItemsPage() {
           lprice: responseData[key].lprice,
         });
       }
-
+      console.log(loadedItems);
       setItems(loadedItems);
       setIsLoading(false);
     };
