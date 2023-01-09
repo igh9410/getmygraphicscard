@@ -1,10 +1,11 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import ItemModel from "../models/ItemModel";
 import SpinnerLoader from "../utils/SpinnerLoader";
 import { Box } from "@mui/system";
 import SearchItem from "../components/SearchItem";
 import "./ItemsPage.css";
-import { useSearchParams } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
+import Pagination from "@mui/material/Pagination";
 
 function ItemsPage() {
   const [items, setItems] = useState<ItemModel[]>([]);
@@ -12,15 +13,22 @@ function ItemsPage() {
   const [httpError, setHttpError] = useState(null);
   const [itemsPerPage] = useState(20);
   const [searchParams, setSearchParams] = useSearchParams();
-  const [totalItems, setTotalItems] = useState(0);
   const [totalPages, setTotalPages] = useState(0);
+
+  const handlePageChange = (e: React.ChangeEvent<unknown>, value: number) => {
+    let redirectionURL =
+      window.location.pathname +
+      "?title=" +
+      searchParams.get("title") +
+      "&pageNo=" +
+      value.toString();
+    window.location.assign(redirectionURL);
+  };
 
   useEffect(() => {
     const fetchItems = async () => {
       const baseUrl: string = "http://localhost:8888/api/items/search";
-      console.log(searchParams.get("title"));
 
-      console.log(searchParams.get("pageNo"));
       const url: string = `${baseUrl}?title=${searchParams.get(
         "title"
       )}&pageNo=${Number(searchParams.get("pageNo")) - 1}&size=${itemsPerPage}`;
@@ -34,8 +42,7 @@ function ItemsPage() {
       const responseJson = await response.json();
       const responseData = responseJson.content;
 
-      setTotalItems(responseJson.totalElements);
-      setTotalPages(responseJson.setTotalPages);
+      setTotalPages(responseJson.totalPages);
 
       const loadedItems: ItemModel[] = [];
 
@@ -55,7 +62,7 @@ function ItemsPage() {
       setIsLoading(false);
       setHttpError(error.message);
     });
-  }, [searchParams]);
+  }, [searchParams, totalPages]);
 
   if (isLoading) {
     return <SpinnerLoader />;
@@ -75,6 +82,14 @@ function ItemsPage() {
         {items.map((item) => (
           <SearchItem item={item} key={item.link} />
         ))}
+      </div>
+      <div className="pagination">
+        <Pagination
+          count={totalPages}
+          page={Number(searchParams.get("pageNo"))}
+          color="primary"
+          onChange={handlePageChange}
+        />
       </div>
     </div>
   );
