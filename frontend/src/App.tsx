@@ -8,6 +8,7 @@ import Container from "./layouts/Container";
 import "./App.css";
 import ItemsPage from "./pages/ItemsPage";
 import ErrorPage from "./pages/ErrorPage";
+import SubscriptionPage from "./pages/SubscriptionPage";
 
 function App(): JSX.Element {
   return (
@@ -17,6 +18,7 @@ function App(): JSX.Element {
         <Routes>
           <Route path="/" element={<HomePage />} />;
           <Route path="/items/search" element={<ItemsPage />} />;
+          <Route path="/subscriptions" element={<SubscriptionPage />} />;
           <Route path="*" element={<ErrorPage />} />;
         </Routes>
         <Footer />

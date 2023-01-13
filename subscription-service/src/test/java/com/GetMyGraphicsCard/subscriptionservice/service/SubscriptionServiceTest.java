@@ -3,20 +3,17 @@ package com.GetMyGraphicsCard.subscriptionservice.service;
 import com.GetMyGraphicsCard.subscriptionservice.entity.Subscription;
 import com.GetMyGraphicsCard.subscriptionservice.entity.SubscriptionItem;
 import com.GetMyGraphicsCard.subscriptionservice.repository.SubscriptionRepository;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.test.context.TestPropertySource;
 
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
-import static org.hamcrest.Matchers.any;
 
 
 

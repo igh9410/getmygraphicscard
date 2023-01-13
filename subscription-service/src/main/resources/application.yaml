@@ -3,6 +3,8 @@ server:
 spring:
   application:
     name: subscription-service
+  profiles:
+    include: oauth
   datasource:
     url: jdbc:mysql://localhost:3306/subscription_service
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -11,6 +13,7 @@ spring:
   jpa:
     hibernate:
       ddl-auto: update
+
  # config:
   #  import: optional:configserver:http://localhost:8071
 eureka:

@@ -6,15 +6,6 @@ spring:
 ## Product Service Route
   cloud:
     gateway:
-      ## Add Cors support from React app running on port 3000
-      corsConfigurations:
-        '[/**]':
-          allowedOrigins: "*"
-          allowedMethods:
-            - GET
-            - PUT
-            - POST
-            - DELETE
       routes[0]:
         id: product-service
         uri: lb://product-service
@@ -37,13 +28,7 @@ spring:
         uri: http://localhost:8070
         predicates:
         - Path=/eureka/**
-  security:
-    oauth2:
-      client:
-        registration:
-          github:
-            clientId: 6bd70e8ad9662e2a0733
-            clientSecret: 811e9dd5fb4ef7ef7ac83dc1d372b3da6d1146f7
+
 # ...
 
 eureka:

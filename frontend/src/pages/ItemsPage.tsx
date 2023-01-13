@@ -4,7 +4,7 @@ import SpinnerLoader from "../utils/SpinnerLoader";
 import { Box } from "@mui/system";
 import SearchItem from "../components/SearchItem";
 import "./ItemsPage.css";
-import { useNavigate, useSearchParams } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 import Pagination from "@mui/material/Pagination";
 
 function ItemsPage() {
@@ -15,7 +15,7 @@ function ItemsPage() {
   const [searchParams, setSearchParams] = useSearchParams();
   const [totalPages, setTotalPages] = useState(0);
 
-  const handlePageChange = (e: React.ChangeEvent<unknown>, value: number) => {
+  function handlePageChange(e: React.ChangeEvent<unknown>, value: number) {
     let redirectionURL =
       window.location.pathname +
       "?title=" +
@@ -23,7 +23,7 @@ function ItemsPage() {
       "&pageNo=" +
       value.toString();
     window.location.assign(redirectionURL);
-  };
+  }
 
   useEffect(() => {
     const fetchItems = async () => {

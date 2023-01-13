@@ -14,9 +14,9 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/subscriptions")
+@CrossOrigin("http://localhost:3000")
 public class SubscriptionController {
     private final SubscriptionServiceImpl subscriptionService;
-
 
     @PostMapping("/")
     public ResponseEntity<Subscription> makeSubscription() {
