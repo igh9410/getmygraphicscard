@@ -1,5 +1,6 @@
 package com.GetMyGraphicsCard.subscriptionservice.controller;
 
+import com.GetMyGraphicsCard.subscriptionservice.dto.SubscriptionDto;
 import com.GetMyGraphicsCard.subscriptionservice.dto.SubscriptionItemDto;
 import com.GetMyGraphicsCard.subscriptionservice.entity.Subscription;
 import com.GetMyGraphicsCard.subscriptionservice.service.SubscriptionServiceImpl;
@@ -20,8 +21,8 @@ public class SubscriptionController {
     private final SubscriptionServiceImpl subscriptionService;
 
     @PostMapping("/")
-    public ResponseEntity<Subscription> makeSubscription() {
-        return ResponseEntity.ok(subscriptionService.makeSubscription());
+    public ResponseEntity<String> makeSubscription(@RequestBody SubscriptionDto subscriptionDto) {
+        return ResponseEntity.ok(subscriptionService.makeSubscription(subscriptionDto));
     }
 
     @DeleteMapping("{id}")
