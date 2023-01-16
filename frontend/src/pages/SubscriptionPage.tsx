@@ -1,6 +1,6 @@
 function SubscriptionPage() {
   const fetchSubscriptons = async () => {
-    const baseUrl: string = "http://localhost:8888/api/subscriptions/2";
+    const baseUrl: string = "http://localhost:8888/api/subscriptions";
 
     const response = await fetch(baseUrl);
     const responseJson = await response.json();
