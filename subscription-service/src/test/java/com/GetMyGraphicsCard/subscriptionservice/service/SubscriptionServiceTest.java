@@ -1,43 +1,109 @@
 package com.GetMyGraphicsCard.subscriptionservice.service;
 
+import com.GetMyGraphicsCard.subscriptionservice.dto.SubscriptionDto;
+import com.GetMyGraphicsCard.subscriptionservice.dto.SubscriptionItemDto;
 import com.GetMyGraphicsCard.subscriptionservice.entity.Subscription;
 import com.GetMyGraphicsCard.subscriptionservice.entity.SubscriptionItem;
+import com.GetMyGraphicsCard.subscriptionservice.enums.Role;
 import com.GetMyGraphicsCard.subscriptionservice.repository.SubscriptionRepository;
+import org.assertj.core.util.Arrays;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.test.context.TestPropertySource;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.context.annotation.Import;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.when;
+import static org.mockito.AdditionalAnswers.returnsFirstArg;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.BDDMockito.willDoNothing;
+import static org.mockito.Mockito.*;
 
 
-
-@TestPropertySource(locations = "classpath:application-test.properties")
-@SpringBootTest
+@ExtendWith(MockitoExtension.class)
+@Import({SubscriptionServiceImpl.class})
 public class SubscriptionServiceTest {
 
-    @MockBean
+    @Mock
     SubscriptionRepository subscriptionRepository;
 
-    @Autowired
-    SubscriptionService subscriptionService;
+    @InjectMocks
+    SubscriptionServiceImpl subscriptionService;
 
+    @Mock
+    PasswordEncoder passwordEncoder;
     Subscription subscription;
 
     @BeforeEach
     public void setUpSubscription() {
-        subscription = new Subscription();
-        subscription.setId(1L);
-        subscription.setSubscriptionItemList(new ArrayList<>());
+        subscription = Subscription.builder()
+                .id(1L)
+                .username("test")
+                .password("test")
+                .email("test@gmail.com")
+                .role(Role.USER)
+                .subscriptionItemList(new ArrayList<>())
+                .build();
+
+        subscription.getSubscriptionItemList().add(SubscriptionItem.builder().subscription(subscription)
+                .title("RTX 3050")
+                .image("test1")
+                .link("test1")
+                .lprice(20000).build());
+        subscription.getSubscriptionItemList().add(SubscriptionItem.builder().subscription(subscription)
+                .title("RTX 3060")
+                .image("test2")
+                .link("test2")
+                .lprice(30000).build());
+        subscription.getSubscriptionItemList().add(SubscriptionItem.builder().subscription(subscription)
+                .title("RTX 3070")
+                .image("test3")
+                .link("test3")
+                .lprice(40000).build());
     }
 
     @Test
-    public void addItemToSubscriptionTest() throws Exception {
+    void makeSubscriptionTest() {
+        // given
+        when(subscriptionRepository.save(any(Subscription.class))).then(returnsFirstArg());
+
+        //when
+        SubscriptionDto subscriptionDto = SubscriptionDto.builder()
+                .username(subscription.getUsername())
+                .password(subscription.getPassword())
+                .email(subscription.getEmail())
+                .build();
+
+        SubscriptionDto expected = subscriptionService.makeSubscription(subscriptionDto);
+        assertEquals("test", expected.getUsername());
+        assertEquals("test", expected.getPassword());
+        assertEquals("test@gmail.com", expected.getEmail());
+
+        verify(subscriptionRepository).save(any());
+
+    }
+
+    @Test
+    void removeSubscriptionTest() {
+        Long subscriptionId = 1L;
+
+        willDoNothing().given(subscriptionRepository).deleteById(subscriptionId);
+
+        subscriptionService.removeSubscription(subscriptionId);
+
+        verify(subscriptionRepository, times(1)).deleteById(subscriptionId);
+    }
+
+
+    @Test
+    void addItemToSubscriptionTest() throws Exception {
         SubscriptionItem subscriptionItem = SubscriptionItem.builder()
                 .id(1L)
                 .image("image")
@@ -45,14 +111,14 @@ public class SubscriptionServiceTest {
                 .title("RTX 3060TI")
                 .lprice(200000)
                 .build();
-        when(subscriptionRepository.save(subscription)).thenReturn(subscription);
+
         subscription.addItem(subscriptionItem);
         assertEquals(subscription.getSubscriptionItemList().get(0).getTitle(), subscriptionItem.getTitle(), "This should be equal");
 
     }
 
     @Test
-    public void removeItemFromSubscriptionTest() {
+    void removeItemFromSubscriptionTest() {
         SubscriptionItem subscriptionItem = SubscriptionItem.builder()
                 .id(1L)
                 .image("image")
@@ -63,6 +129,15 @@ public class SubscriptionServiceTest {
         subscription.addItem(subscriptionItem);
         subscription.removeItem(subscriptionItem);
         assertEquals(0, subscription.getSubscriptionItemList().size(), "Should be 0");
+    }
+
+    @Test
+    void getAllSubscribedItemsTest() throws Exception {
+        when(subscriptionRepository.findById(1L)).thenReturn(Optional.of(subscription));
+        List<SubscriptionItemDto> testItems = subscriptionService.getAllSubscribedItems(1L);
+        assertEquals("RTX 3050", testItems.get(0).getTitle());
+        assertEquals("RTX 3060", testItems.get(1).getTitle());
+        assertEquals("RTX 3070", testItems.get(2).getTitle());
     }
 }
 

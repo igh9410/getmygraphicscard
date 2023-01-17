@@ -32,22 +32,22 @@ public class SubscriptionServiceImpl implements SubscriptionService {
 
 
     @Override
-    public String makeSubscription(SubscriptionDto subscriptionDto) {
+    public SubscriptionDto makeSubscription(SubscriptionDto subscriptionDto) {
         Subscription subscription = new Subscription();
         subscription.setUsername(subscriptionDto.getUsername());
         subscription.setPassword(passwordEncoder.encode(subscriptionDto.getPassword()));
         subscription.setEmail(subscriptionDto.getEmail());
         subscription.setRole(Role.USER);
         subscriptionRepository.save(subscription);
-        return "New subscription registered!";
+        return subscriptionDto;
     }
 
 
 
     @Override
     public String removeSubscription(Long subscriptionId) {
-        Subscription result = subscriptionRepository.getReferenceById(subscriptionId);
-        subscriptionRepository.delete(result);
+    //    Subscription result = subscriptionRepository.getReferenceById(subscriptionId);
+        subscriptionRepository.deleteById(subscriptionId);
         return "Subscription deleted";
     }
 

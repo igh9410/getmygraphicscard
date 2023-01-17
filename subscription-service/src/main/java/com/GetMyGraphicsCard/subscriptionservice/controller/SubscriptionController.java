@@ -21,8 +21,8 @@ public class SubscriptionController {
     private final SubscriptionServiceImpl subscriptionService;
 
     @PostMapping("/")
-    public ResponseEntity<String> makeSubscription(@RequestBody SubscriptionDto subscriptionDto) {
-        return ResponseEntity.ok(subscriptionService.makeSubscription(subscriptionDto));
+    public ResponseEntity<SubscriptionDto> makeSubscription(@RequestBody SubscriptionDto subscriptionDto) {
+        return ResponseEntity.ok().body(subscriptionService.makeSubscription(subscriptionDto));
     }
 
     @DeleteMapping("{id}")

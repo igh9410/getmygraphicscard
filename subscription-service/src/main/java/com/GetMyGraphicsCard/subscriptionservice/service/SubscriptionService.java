@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface SubscriptionService {
 
-    String makeSubscription(SubscriptionDto subscriptionDto);
+    SubscriptionDto makeSubscription(SubscriptionDto subscriptionDto);
 
     String removeSubscription(Long subscriptionId);
 

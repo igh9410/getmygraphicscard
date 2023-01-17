@@ -19,22 +19,25 @@ import javax.sql.DataSource;
 @EnableWebSecurity
 public class SecurityConfig {
 
-    @Autowired
-    DataSource dataSource;
-    @Bean
-    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http.csrf().disable()
-                .authorizeHttpRequests((authorize) -> authorize.anyRequest().permitAll());
+     @Bean
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 
-            //    .authenticated()
-             //   .and()
-             //   .authorizeHttpRequests()
-             //   .requestMatchers(HttpMethod.POST,"/api/subscriptions")
-             //   .permitAll();
 
-             //   .and()
-             //   .oauth2ResourceServer(OAuth2ResourceServerConfigurer::jwt)
-        //        .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
+            http.csrf().ignoringRequestMatchers("/api/subscriptions/", "/api/subscriptions/**")
+                    .and()
+                    .authorizeHttpRequests()
+                    .requestMatchers("/api/subscriptions/")
+                    .permitAll()
+                    .and()
+                    .authorizeHttpRequests()
+                    .requestMatchers("/api/subscriptions/**")
+                    .permitAll();
+
+            http.sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
+
+
+
+        //
         return http.build();
     }
 
