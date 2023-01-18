@@ -1,16 +1,21 @@
 package com.GetMyGraphicsCard.subscriptionservice.service;
 
+import com.GetMyGraphicsCard.subscriptionservice.config.JwtService;
+import com.GetMyGraphicsCard.subscriptionservice.dto.AuthenticationResponse;
+import com.GetMyGraphicsCard.subscriptionservice.dto.LoginRequest;
 import com.GetMyGraphicsCard.subscriptionservice.dto.SubscriptionDto;
 import com.GetMyGraphicsCard.subscriptionservice.dto.SubscriptionItemDto;
 import com.GetMyGraphicsCard.subscriptionservice.entity.Subscription;
 import com.GetMyGraphicsCard.subscriptionservice.entity.SubscriptionItem;
 import com.GetMyGraphicsCard.subscriptionservice.enums.Role;
-import com.GetMyGraphicsCard.subscriptionservice.exception.DuplicateSubscriptionException;
+import com.GetMyGraphicsCard.subscriptionservice.exception.NoSubscriptionException;
 import com.GetMyGraphicsCard.subscriptionservice.repository.SubscriptionRepository;
 import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -30,19 +35,21 @@ public class SubscriptionServiceImpl implements SubscriptionService {
     private final WebClient webClient;
     private final PasswordEncoder passwordEncoder;
 
+    private final AuthenticationManager authenticationManager;
+    private final JwtService jwtService;
 
     @Override
     public SubscriptionDto makeSubscription(SubscriptionDto subscriptionDto) {
-        Subscription subscription = new Subscription();
-        subscription.setUsername(subscriptionDto.getUsername());
-        subscription.setPassword(passwordEncoder.encode(subscriptionDto.getPassword()));
-        subscription.setEmail(subscriptionDto.getEmail());
-        subscription.setRole(Role.USER);
+        Subscription subscription = Subscription.builder()
+                .email(subscriptionDto.getEmail())
+                .password(passwordEncoder.encode(subscriptionDto.getPassword()))
+                .role(Role.USER)
+                .build();
         subscriptionRepository.save(subscription);
+        log.info("New user registered");
+
         return subscriptionDto;
     }
-
-
 
     @Override
     public String removeSubscription(Long subscriptionId) {
@@ -51,18 +58,33 @@ public class SubscriptionServiceImpl implements SubscriptionService {
         return "Subscription deleted";
     }
 
+    public AuthenticationResponse authenticate(LoginRequest request) {
+        authenticationManager.authenticate(
+                new UsernamePasswordAuthenticationToken(
+                        request.getUsername(),
+                        request.getPassword()
+                )
+        );
+        var user = subscriptionRepository.findByEmail(request.getUsername())
+                .orElseThrow();
+        var jwtToken = jwtService.generateToken(user);
+        return AuthenticationResponse.builder()
+                .token(jwtToken)
+                .build();
+    }
     @Override
-    public Subscription findByEmail(String email) {
-        return subscriptionRepository.findSubscriptionByEmail(email).orElseThrow(() -> new DuplicateSubscriptionException("Not a registered user"));
+    public Subscription findSubscriptionByEmail(String email) {
+        return subscriptionRepository.findByEmail(email).orElseThrow(() -> new NoSubscriptionException("Not a registered user"));
     }
 
     @Override
-    public Subscription findById(Long subscriptionId) {
+    public Subscription findSubscriptionById(Long subscriptionId) {
         return subscriptionRepository.getReferenceById(subscriptionId);
     }
 
 
     @Override
+    @PreAuthorize("#ssub")
     public List<SubscriptionItemDto> getAllSubscribedItems(Long subscriptionId) throws Exception {
         Optional<Subscription> result = subscriptionRepository.findById(subscriptionId);
 
@@ -71,6 +93,7 @@ public class SubscriptionServiceImpl implements SubscriptionService {
         }
 
         log.info("Retrieving all subscribed items");
+
         return result.get().getSubscriptionItemList().stream().map(this::mapToDto).toList();
     }
 

@@ -7,7 +7,5 @@ import java.util.Optional;
 
 public interface SubscriptionRepository extends JpaRepository<Subscription, Long> {
 
-    Optional<Subscription> findSubscriptionByUsername(String username);
-
-    Optional<Subscription> findSubscriptionByEmail(String email);
+   Optional<Subscription> findByEmail(String email);
 }

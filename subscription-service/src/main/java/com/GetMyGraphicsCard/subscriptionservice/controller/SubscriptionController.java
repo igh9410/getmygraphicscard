@@ -1,14 +1,13 @@
 package com.GetMyGraphicsCard.subscriptionservice.controller;
 
+import com.GetMyGraphicsCard.subscriptionservice.dto.AuthenticationResponse;
 import com.GetMyGraphicsCard.subscriptionservice.dto.SubscriptionDto;
 import com.GetMyGraphicsCard.subscriptionservice.dto.SubscriptionItemDto;
-import com.GetMyGraphicsCard.subscriptionservice.entity.Subscription;
 import com.GetMyGraphicsCard.subscriptionservice.service.SubscriptionServiceImpl;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-
-
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -21,13 +20,13 @@ public class SubscriptionController {
     private final SubscriptionServiceImpl subscriptionService;
 
     @PostMapping("/")
-    public ResponseEntity<SubscriptionDto> makeSubscription(@RequestBody SubscriptionDto subscriptionDto) {
+    public ResponseEntity<SubscriptionDto> makeSubscription(@Valid @RequestBody SubscriptionDto subscriptionDto) {
         return ResponseEntity.ok().body(subscriptionService.makeSubscription(subscriptionDto));
     }
 
     @DeleteMapping("{id}")
     public ResponseEntity<String> removeSubscription(@PathVariable("id") String subscriptionId) throws Exception {
-        if (subscriptionService.findById(Long.parseLong(subscriptionId)) == null) {
+        if (subscriptionService.findSubscriptionById(Long.parseLong(subscriptionId)) == null) {
             throw new Exception("Subscription does not exist.");
         }
         return ResponseEntity.ok(subscriptionService.removeSubscription(Long.parseLong(subscriptionId)));

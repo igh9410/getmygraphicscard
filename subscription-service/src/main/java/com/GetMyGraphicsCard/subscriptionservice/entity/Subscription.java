@@ -26,9 +26,9 @@ public class Subscription implements UserDetails {
     private Long id;
 
     private String username;
+
     private String password;
 
-    @Column(unique = true)
     private String email;
     @Enumerated(EnumType.STRING)
     private Role role;
@@ -53,6 +53,11 @@ public class Subscription implements UserDetails {
     public Collection<? extends GrantedAuthority> getAuthorities() {
         SimpleGrantedAuthority auth = new SimpleGrantedAuthority(role.name());
         return Collections.singletonList(auth);
+    }
+
+    @Override
+    public String getUsername() {
+        return email;
     }
 
     @Override

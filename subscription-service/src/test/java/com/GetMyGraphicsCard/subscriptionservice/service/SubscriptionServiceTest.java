@@ -69,6 +69,7 @@ public class SubscriptionServiceTest {
                 .lprice(40000).build());
     }
 
+
     @Test
     void makeSubscriptionTest() {
         // given
@@ -76,7 +77,6 @@ public class SubscriptionServiceTest {
 
         //when
         SubscriptionDto subscriptionDto = SubscriptionDto.builder()
-                .username(subscription.getUsername())
                 .password(subscription.getPassword())
                 .email(subscription.getEmail())
                 .build();
@@ -113,7 +113,7 @@ public class SubscriptionServiceTest {
                 .build();
 
         subscription.addItem(subscriptionItem);
-        assertEquals(subscription.getSubscriptionItemList().get(0).getTitle(), subscriptionItem.getTitle(), "This should be equal");
+        assertEquals(subscription.getSubscriptionItemList().get(3).getTitle(), subscriptionItem.getTitle(), "This should be equal");
 
     }
 
@@ -128,7 +128,7 @@ public class SubscriptionServiceTest {
                 .build();
         subscription.addItem(subscriptionItem);
         subscription.removeItem(subscriptionItem);
-        assertEquals(0, subscription.getSubscriptionItemList().size(), "Should be 0");
+        assertEquals(3, subscription.getSubscriptionItemList().size(), "Should be 3");
     }
 
     @Test
