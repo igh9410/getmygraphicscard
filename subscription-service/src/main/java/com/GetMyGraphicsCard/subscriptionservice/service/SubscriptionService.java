@@ -1,6 +1,5 @@
 package com.GetMyGraphicsCard.subscriptionservice.service;
 
-import com.GetMyGraphicsCard.subscriptionservice.dto.AuthenticationResponse;
 import com.GetMyGraphicsCard.subscriptionservice.dto.SubscriptionDto;
 import com.GetMyGraphicsCard.subscriptionservice.dto.SubscriptionItemDto;
 import com.GetMyGraphicsCard.subscriptionservice.entity.Subscription;
@@ -12,6 +11,7 @@ public interface SubscriptionService {
     SubscriptionDto makeSubscription(SubscriptionDto subscriptionDto);
 
     String removeSubscription(Long subscriptionId);
+
 
     Subscription findSubscriptionByEmail(String email);
     Subscription findSubscriptionById(Long subscriptionId);

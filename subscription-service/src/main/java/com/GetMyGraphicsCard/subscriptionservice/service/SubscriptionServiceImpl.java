@@ -1,8 +1,5 @@
 package com.GetMyGraphicsCard.subscriptionservice.service;
 
-import com.GetMyGraphicsCard.subscriptionservice.config.JwtService;
-import com.GetMyGraphicsCard.subscriptionservice.dto.AuthenticationResponse;
-import com.GetMyGraphicsCard.subscriptionservice.dto.LoginRequest;
 import com.GetMyGraphicsCard.subscriptionservice.dto.SubscriptionDto;
 import com.GetMyGraphicsCard.subscriptionservice.dto.SubscriptionItemDto;
 import com.GetMyGraphicsCard.subscriptionservice.entity.Subscription;
@@ -13,9 +10,6 @@ import com.GetMyGraphicsCard.subscriptionservice.repository.SubscriptionReposito
 import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -35,8 +29,7 @@ public class SubscriptionServiceImpl implements SubscriptionService {
     private final WebClient webClient;
     private final PasswordEncoder passwordEncoder;
 
-    private final AuthenticationManager authenticationManager;
-    private final JwtService jwtService;
+
 
     @Override
     public SubscriptionDto makeSubscription(SubscriptionDto subscriptionDto) {
@@ -53,25 +46,10 @@ public class SubscriptionServiceImpl implements SubscriptionService {
 
     @Override
     public String removeSubscription(Long subscriptionId) {
-    //    Subscription result = subscriptionRepository.getReferenceById(subscriptionId);
         subscriptionRepository.deleteById(subscriptionId);
         return "Subscription deleted";
     }
 
-    public AuthenticationResponse authenticate(LoginRequest request) {
-        authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(
-                        request.getUsername(),
-                        request.getPassword()
-                )
-        );
-        var user = subscriptionRepository.findByEmail(request.getUsername())
-                .orElseThrow();
-        var jwtToken = jwtService.generateToken(user);
-        return AuthenticationResponse.builder()
-                .token(jwtToken)
-                .build();
-    }
     @Override
     public Subscription findSubscriptionByEmail(String email) {
         return subscriptionRepository.findByEmail(email).orElseThrow(() -> new NoSubscriptionException("Not a registered user"));
@@ -84,7 +62,6 @@ public class SubscriptionServiceImpl implements SubscriptionService {
 
 
     @Override
-    @PreAuthorize("#ssub")
     public List<SubscriptionItemDto> getAllSubscribedItems(Long subscriptionId) throws Exception {
         Optional<Subscription> result = subscriptionRepository.findById(subscriptionId);
 
@@ -124,14 +101,15 @@ public class SubscriptionServiceImpl implements SubscriptionService {
         return mapToDto(item);
     }
 
+    @SuppressWarnings("unused")
     public SubscriptionItemDto buildFallbackAddItemToSubscription(Long subscriptionId, String id, Exception e) {
-        SubscriptionItemDto subscriptionItemDto = SubscriptionItemDto.builder()
+
+        return SubscriptionItemDto.builder()
                 .title("Sorry the product service is not available")
                 .lprice(0)
                 .link("")
                 .image("")
                 .build();
-        return subscriptionItemDto;
     }
 
 
@@ -145,8 +123,8 @@ public class SubscriptionServiceImpl implements SubscriptionService {
         SubscriptionItem removedItem = result.get().getSubscriptionItemList().get(index);
         result.get().removeItem(removedItem);
 
-        String responseMessage = "Item deleted successfully.";
-        return responseMessage;
+
+        return "Item deleted successfully.";
     }
 
 

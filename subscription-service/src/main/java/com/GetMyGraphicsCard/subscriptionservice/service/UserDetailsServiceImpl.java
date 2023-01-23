@@ -1,14 +1,19 @@
-package com.GetMyGraphicsCard.subscriptionservice.config;
+package com.GetMyGraphicsCard.subscriptionservice.service;
 
+import com.GetMyGraphicsCard.subscriptionservice.Model.SecurityUser;
+import com.GetMyGraphicsCard.subscriptionservice.entity.Subscription;
 import com.GetMyGraphicsCard.subscriptionservice.repository.SubscriptionRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-@Component("userDetailsService")
+
+
+@Service
 @RequiredArgsConstructor
 public class UserDetailsServiceImpl implements UserDetailsService {
 
@@ -17,6 +22,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     @Override
     @Transactional
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return subscriptionRepository.findByEmail(username).orElseThrow(() -> new UsernameNotFoundException("User not found"));
+        Subscription user = subscriptionRepository.findByEmail(username).orElseThrow(() -> new UsernameNotFoundException("User not found"));
+        return new SecurityUser(user);
     }
 }

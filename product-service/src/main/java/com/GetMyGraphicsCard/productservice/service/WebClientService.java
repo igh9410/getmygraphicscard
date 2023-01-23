@@ -7,7 +7,6 @@ import reactor.core.publisher.Mono;
 public interface WebClientService {
     public Mono<Root> requestGraphicsCardInfo(String title);
     public void addGraphicsCardToDB(Mono<Root> graphicsCard, String chipset);
-    public void addGraphicsCardsToDB(Flux<Root> graphicsCard);
 
 
 

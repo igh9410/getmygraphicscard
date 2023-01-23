@@ -16,14 +16,13 @@ import lombok.NoArgsConstructor;
 public class SubscriptionDto {
 
 
-    @NotBlank
-    @Size(min=4, max=12, message = "The username must be between 4 and 12 characters.")
-    private String username;
+
     @NotBlank
     @Size(min=6, max=20, message = "The password must be between 6 and 20 characters.")
     private String password;
-
-    @Email
+    @Email(message = "The email must be valid.")
     private String email;
+
+
 
 }

@@ -45,7 +45,6 @@ public class SubscriptionServiceTest {
     public void setUpSubscription() {
         subscription = Subscription.builder()
                 .id(1L)
-                .username("test")
                 .password("test")
                 .email("test@gmail.com")
                 .role(Role.USER)
@@ -82,7 +81,7 @@ public class SubscriptionServiceTest {
                 .build();
 
         SubscriptionDto expected = subscriptionService.makeSubscription(subscriptionDto);
-        assertEquals("test", expected.getUsername());
+
         assertEquals("test", expected.getPassword());
         assertEquals("test@gmail.com", expected.getEmail());
 

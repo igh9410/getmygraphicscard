@@ -3,8 +3,9 @@ package com.GetMyGraphicsCard.productservice.controller;
 import com.GetMyGraphicsCard.productservice.dto.ItemResponse;
 import com.GetMyGraphicsCard.productservice.service.ItemService;
 import lombok.RequiredArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
@@ -18,6 +19,8 @@ import java.util.List;
 public class ItemController {
 
     private final ItemService itemService;
+
+    private Logger logger = LoggerFactory.getLogger("ItemController.class");
 
     @GetMapping
     public Page<ItemResponse> getAllItems(@RequestParam(defaultValue = "0") Integer pageNo,

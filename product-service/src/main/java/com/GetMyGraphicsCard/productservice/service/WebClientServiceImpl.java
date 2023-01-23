@@ -6,6 +6,7 @@ import com.GetMyGraphicsCard.productservice.entity.Root;
 import com.GetMyGraphicsCard.productservice.repository.ItemRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
@@ -22,6 +23,7 @@ public class WebClientServiceImpl implements WebClientService {
 
     private final WebClient webClient;
     private final ItemRepository itemRepository;
+
 
     @Autowired
     public WebClientServiceImpl(ItemRepository itemRepository) {
@@ -60,9 +62,6 @@ public class WebClientServiceImpl implements WebClientService {
         itemRepository.saveAll(addedItems);
     }
 
-    @Override
-    public void addGraphicsCardsToDB(Flux<Root> graphicsCard) {
 
-    }
 
 }

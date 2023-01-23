@@ -4,11 +4,13 @@ logging:
   level:
     org.springframework.web: "debug"
     org.hibernate: "error"
-  file:
-    name: "productservice.log"
+##  file:
+  ##  name: "productservice.log"
 spring:
   application:
     name: product-service
+  profiles:
+    include: naver
   data:
     mongodb:
       host: localhost
@@ -19,6 +21,19 @@ spring:
  # config:
   #  import: optional:configserver:http://localhost:8071
    # use-legacy-processing: true
+
+## Kafka Configuration
+  kafka:
+    bootstrap-servers: localhost:9092
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+    consumer:
+        group-id: group_id
+        auto-offset-reset: earliest
+        key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+        value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+
 eureka:
   client:
     serviceUrl:

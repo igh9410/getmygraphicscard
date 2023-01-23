@@ -16,6 +16,7 @@ configurations {
 
 repositories {
 	mavenCentral()
+	gradlePluginPortal()
 }
 
 dependencies {
@@ -32,6 +33,10 @@ dependencies {
 //	implementation 'io.springfox:springfox-swagger-ui'
 	//implementation 'org.springframework.cloud:spring-cloud-starter-config:4.0.0'
 	implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client:4.0.0'
+	implementation 'org.springframework.cloud:spring-cloud-stream:4.0.0'
+	implementation 'org.springframework.cloud:spring-cloud-starter-stream-kafka:4.0.0'
+	implementation 'org.springframework.kafka:spring-kafka:3.0.2'
+	implementation 'org.apache.kafka:kafka-clients:3.3.2'
 
 
 
@@ -42,9 +47,8 @@ dependencies {
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'com.squareup.okhttp3:mockwebserver:4.10.0'
 	testImplementation 'org.awaitility:awaitility'
-	testImplementation "org.testcontainers:testcontainers:1.17.6"
-	testImplementation "org.testcontainers:mongodb:1.17.6"
-	testImplementation "org.testcontainers:junit-jupiter:1.17.6"
+
+
 
 
 
