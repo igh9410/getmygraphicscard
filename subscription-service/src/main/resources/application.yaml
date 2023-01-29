@@ -13,6 +13,9 @@ spring:
   jpa:
     hibernate:
       ddl-auto: update
+  ## Kafka Configuration
+  kafka:
+    bootstrap-servers: localhost:9092
 
  # config:
   #  import: optional:configserver:http://localhost:8071

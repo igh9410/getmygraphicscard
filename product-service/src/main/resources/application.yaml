@@ -25,14 +25,14 @@ spring:
 ## Kafka Configuration
   kafka:
     bootstrap-servers: localhost:9092
-    producer:
-      key-serializer: org.apache.kafka.common.serialization.StringSerializer
-      value-serializer: org.apache.kafka.common.serialization.StringSerializer
-    consumer:
-        group-id: group_id
-        auto-offset-reset: earliest
-        key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-        value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+   ## producer:
+     ## key-serializer: org.apache.kafka.common.serialization.StringSerializer
+     ## value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+     ## properties:
+       ## spring:
+         ## json:
+       ##     type:
+     ##         mapping: event:com.GetMyGraphicsCard.productservice.event.PriceAlert
 
 eureka:
   client:
