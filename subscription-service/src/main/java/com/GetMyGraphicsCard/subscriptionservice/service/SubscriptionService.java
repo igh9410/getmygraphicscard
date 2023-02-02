@@ -12,7 +12,6 @@ public interface SubscriptionService {
 
     String removeSubscription(Long subscriptionId);
 
-
     Subscription findSubscriptionByEmail(String email);
     Subscription findSubscriptionById(Long subscriptionId);
 
@@ -21,5 +20,6 @@ public interface SubscriptionService {
     SubscriptionItemDto addItemToSubscription(Long subscriptionId, String id) throws Exception;
 
     String removeItemFromSubscription(Long subscriptionId, int id) throws Exception;
+
 
 }

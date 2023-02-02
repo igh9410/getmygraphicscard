@@ -1,4 +1,4 @@
-package com.GetMyGraphicsCard.productservice.event;
+package com.GetMyGraphicsCard.subscriptionservice.event;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -10,6 +10,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 public class PriceAlert {
+
 
     private String productId;
     private String title;

@@ -41,4 +41,18 @@ public class Subscription {
         subscriptionItemList.remove(item);
         item.setSubscription(null);
     }
+
+
+    @Override
+    public String toString() {
+        return "Subscription{" +
+                "id=" + id +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", role=" + role +
+                ", subscriptionItemList=" + subscriptionItemList +
+                '}';
+    }
+
+
 }

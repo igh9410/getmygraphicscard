@@ -130,6 +130,7 @@ public class SubscriptionServiceImpl implements SubscriptionService {
 
 
 
+
     private SubscriptionItemDto mapToDto(SubscriptionItem subscriptionItem) {
         return SubscriptionItemDto.builder()
                 .title(subscriptionItem.getTitle())

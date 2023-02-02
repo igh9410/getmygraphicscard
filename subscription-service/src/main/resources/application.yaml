@@ -16,6 +16,9 @@ spring:
   ## Kafka Configuration
   kafka:
     bootstrap-servers: localhost:9092
+    consumer:
+      properties:
+        spring.json.trusted.packages: "*"
 
  # config:
   #  import: optional:configserver:http://localhost:8071

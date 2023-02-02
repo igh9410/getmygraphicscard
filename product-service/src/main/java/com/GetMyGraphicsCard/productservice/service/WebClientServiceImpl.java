@@ -3,6 +3,7 @@ package com.GetMyGraphicsCard.productservice.service;
 
 import com.GetMyGraphicsCard.productservice.entity.Item;
 import com.GetMyGraphicsCard.productservice.entity.Root;
+import com.GetMyGraphicsCard.productservice.event.PriceAlert;
 import com.GetMyGraphicsCard.productservice.repository.ItemRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -24,7 +25,7 @@ public class WebClientServiceImpl implements WebClientService {
     private final WebClient webClient;
     private final ItemRepository itemRepository;
 
-    private final KafkaTemplate<String, String> kafkaTemplate;
+    private final KafkaTemplate<String, PriceAlert> kafkaTemplate;
 
 
     // request Graphics Card Info via Naver API
@@ -52,11 +53,11 @@ public class WebClientServiceImpl implements WebClientService {
                 .collect(Collectors.toList());
 
         for (Item i: addedItems) {
-            System.out.println("Product Id = " + i.getProductId());
             if (itemRepository.existsById(i.getProductId())) {
-                Item comparison = itemRepository.findById(i.getProductId()).orElseThrow(() -> new RuntimeException("Item does not exist"));
-                if (i.getLprice() <= comparison.getLprice()) {
-                    kafkaTemplate.send("alertTopic", "The lowest price information for product Id " + i.getProductId() + " has been updated");
+                System.out.println("Product Id = " + i.getProductId());
+                Item comparison = itemRepository.findByLink(i.getLink()).orElseThrow(() -> new RuntimeException("Item does not exist"));
+                if (i.getLprice() < comparison.getLprice()) { // Check if the lowest price is available
+                    kafkaTemplate.send("alertTopic", new PriceAlert(i.getProductId(), i.getTitle(), i.getLink()));
                     log.info("Sending price information message to Kafka..");
                 }
             }

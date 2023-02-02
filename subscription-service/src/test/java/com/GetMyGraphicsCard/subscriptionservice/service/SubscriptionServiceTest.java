@@ -6,7 +6,6 @@ import com.GetMyGraphicsCard.subscriptionservice.entity.Subscription;
 import com.GetMyGraphicsCard.subscriptionservice.entity.SubscriptionItem;
 import com.GetMyGraphicsCard.subscriptionservice.enums.Role;
 import com.GetMyGraphicsCard.subscriptionservice.repository.SubscriptionRepository;
-import org.assertj.core.util.Arrays;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -137,6 +136,46 @@ public class SubscriptionServiceTest {
         assertEquals("RTX 3050", testItems.get(0).getTitle());
         assertEquals("RTX 3060", testItems.get(1).getTitle());
         assertEquals("RTX 3070", testItems.get(2).getTitle());
+    }
+
+    @Test
+    void getNotifiedUsersByLinkTest() {
+        Subscription subscription2 = Subscription.builder()
+                .id(2L)
+                .password("test2")
+                .email("test2@gmail.com")
+                .role(Role.USER)
+                .subscriptionItemList(new ArrayList<>())
+                .build();
+        subscription2.getSubscriptionItemList().add(SubscriptionItem.builder().subscription(subscription)
+                .title("RTX 3050")
+                .image("test1")
+                .link("test1")
+                .lprice(20000).build());
+        Subscription subscription3 = Subscription.builder()
+                .id(3L)
+                .password("test3")
+                .email("test3@gmail.com")
+                .role(Role.USER)
+                .subscriptionItemList(new ArrayList<>())
+                .build();
+        subscription2.getSubscriptionItemList().add(SubscriptionItem.builder().subscription(subscription)
+                .title("RTX 3060")
+                .image("test2")
+                .link("test2")
+                .lprice(300000).build());
+
+        String link = "test1";
+        List<Subscription> testUsers = new ArrayList<>();
+        testUsers.add(subscription);
+        testUsers.add(subscription2);
+        testUsers.add(subscription3);
+        
+        System.out.println(testUsers.isEmpty());
+
+
+
+
     }
 }
 
