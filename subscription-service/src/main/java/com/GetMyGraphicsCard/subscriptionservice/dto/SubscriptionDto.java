@@ -15,13 +15,12 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class SubscriptionDto {
 
-
+    @Email(message = "The email must be valid.")
+    private String email;
 
     @NotBlank
     @Size(min=6, max=20, message = "The password must be between 6 and 20 characters.")
     private String password;
-    @Email(message = "The email must be valid.")
-    private String email;
 
 
 

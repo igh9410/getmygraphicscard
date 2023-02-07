@@ -15,12 +15,15 @@ public class PriceAlert {
     private String title;
     private String link;
 
+    private int lprice;
+
     @Override
     public String toString() {
         return "PriceAlert{" +
                 "productId='" + productId + '\'' +
                 ", title='" + title + '\'' +
                 ", link='" + link + '\'' +
+                ", lprice=" + lprice +
                 '}';
     }
 }

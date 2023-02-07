@@ -21,6 +21,8 @@ public class Alert {
     private String title;
     private String link;
 
+    private int lprice;
+
 
 }
 

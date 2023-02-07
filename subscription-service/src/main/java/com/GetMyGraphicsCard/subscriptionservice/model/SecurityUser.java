@@ -1,4 +1,4 @@
-package com.GetMyGraphicsCard.subscriptionservice.Model;
+package com.GetMyGraphicsCard.subscriptionservice.model;
 
 import com.GetMyGraphicsCard.subscriptionservice.entity.Subscription;
 import org.springframework.security.core.GrantedAuthority;

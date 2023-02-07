@@ -57,7 +57,7 @@ public class WebClientServiceImpl implements WebClientService {
                 System.out.println("Product Id = " + i.getProductId());
                 Item comparison = itemRepository.findByLink(i.getLink()).orElseThrow(() -> new RuntimeException("Item does not exist"));
                 if (i.getLprice() < comparison.getLprice()) { // Check if the lowest price is available
-                    kafkaTemplate.send("alertTopic", new PriceAlert(i.getProductId(), i.getTitle(), i.getLink()));
+                    kafkaTemplate.send("alertTopic", new PriceAlert(i.getProductId(), i.getTitle(), i.getLink(), i.getLprice()));
                     log.info("Sending price information message to Kafka..");
                 }
             }

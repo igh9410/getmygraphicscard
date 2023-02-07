@@ -22,7 +22,7 @@ public class ScheduledTasks {
     @Autowired
     private WebClientService webClientService;
 
-   // @Scheduled(fixedRate = 10000)
+
     @Scheduled(cron = "0 0/5 * * * ?") // Send Http requests to Naver API every 5 minutes and save to DB
     public void GetGraphicsCardDataFromNaver() {
         log.info("Sending Http requests..");

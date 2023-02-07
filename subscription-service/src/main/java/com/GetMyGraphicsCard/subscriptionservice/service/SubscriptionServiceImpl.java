@@ -5,6 +5,7 @@ import com.GetMyGraphicsCard.subscriptionservice.dto.SubscriptionItemDto;
 import com.GetMyGraphicsCard.subscriptionservice.entity.Subscription;
 import com.GetMyGraphicsCard.subscriptionservice.entity.SubscriptionItem;
 import com.GetMyGraphicsCard.subscriptionservice.enums.Role;
+import com.GetMyGraphicsCard.subscriptionservice.exception.DuplicateSubscriptionException;
 import com.GetMyGraphicsCard.subscriptionservice.exception.NoSubscriptionException;
 import com.GetMyGraphicsCard.subscriptionservice.repository.SubscriptionRepository;
 import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
@@ -33,6 +34,9 @@ public class SubscriptionServiceImpl implements SubscriptionService {
 
     @Override
     public SubscriptionDto makeSubscription(SubscriptionDto subscriptionDto) {
+        if (subscriptionRepository.existsByEmail(subscriptionDto.getEmail())) {
+            throw new DuplicateSubscriptionException("Email already registered");
+        }
         Subscription subscription = Subscription.builder()
                 .email(subscriptionDto.getEmail())
                 .password(passwordEncoder.encode(subscriptionDto.getPassword()))

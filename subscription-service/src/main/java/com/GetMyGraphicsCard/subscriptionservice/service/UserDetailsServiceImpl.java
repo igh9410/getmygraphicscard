@@ -1,9 +1,9 @@
 package com.GetMyGraphicsCard.subscriptionservice.service;
 
-import com.GetMyGraphicsCard.subscriptionservice.Model.SecurityUser;
+import com.GetMyGraphicsCard.subscriptionservice.model.SecurityUser;
 import com.GetMyGraphicsCard.subscriptionservice.entity.Subscription;
 import com.GetMyGraphicsCard.subscriptionservice.repository.SubscriptionRepository;
-import lombok.RequiredArgsConstructor;
+import lombok.AllArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -13,7 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 
 @Service
-@RequiredArgsConstructor
+@AllArgsConstructor
 public class UserDetailsServiceImpl implements UserDetailsService {
 
     private final SubscriptionRepository subscriptionRepository;

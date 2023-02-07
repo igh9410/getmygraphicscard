@@ -1,6 +1,8 @@
 package com.GetMyGraphicsCard.subscriptionservice.service;
 
+import com.GetMyGraphicsCard.subscriptionservice.entity.Alert;
 import com.GetMyGraphicsCard.subscriptionservice.entity.SubscriptionItem;
+import com.GetMyGraphicsCard.subscriptionservice.repository.AlertRepository;
 import com.GetMyGraphicsCard.subscriptionservice.repository.SubscriptionItemRepository;
 import com.GetMyGraphicsCard.subscriptionservice.repository.SubscriptionRepository;
 import lombok.RequiredArgsConstructor;
@@ -23,25 +25,28 @@ public class EmailServiceImpl implements EmailService {
 
     private final SubscriptionItemRepository itemRepository;
 
-    private final SubscriptionRepository subscriptionRepository;
+    private final AlertRepository alertRepository;
 
     private static Logger logger =  LoggerFactory.getLogger(EmailServiceImpl.class);
 
 
     @Override
-   // @Scheduled(fixedRate = 300000L)
     @Scheduled(cron = "0 0/5 * * * ?")
     public void sendMailToSubscribers() {
         List<SubscriptionItem> items = itemRepository.itemsToBeNotified();
 
+        // send emails to subscribers every 5 minute
         for (SubscriptionItem i : items) {
             SimpleMailMessage message = new SimpleMailMessage();
             String receiverEmail = i.getSubscription().getEmail();
             message.setFrom("athanasia9410@gmail.com");
             message.setTo(receiverEmail);
             message.setSubject("Your subscribed item " +  i.getTitle() + " hits the lowest price!");
-            message.setText("The lowest price for product name " + i.getTitle() + " , link: " + i.getLink() + " is now available!");
+            message.setText("The lowest price for product name " + i.getTitle() + " , link: " + i.getLink() + " is now available");
             emailSender.send(message);
+
         }
+        // Delete the saved alerts after sending emails;
+        alertRepository.deleteAll();
     }
 }
