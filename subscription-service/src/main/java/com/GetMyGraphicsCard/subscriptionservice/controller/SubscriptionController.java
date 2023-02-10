@@ -2,13 +2,19 @@ package com.GetMyGraphicsCard.subscriptionservice.controller;
 
 import com.GetMyGraphicsCard.subscriptionservice.dto.SubscriptionDto;
 import com.GetMyGraphicsCard.subscriptionservice.dto.SubscriptionItemDto;
+import com.GetMyGraphicsCard.subscriptionservice.model.SecurityUser;
 import com.GetMyGraphicsCard.subscriptionservice.service.SubscriptionServiceImpl;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
 import java.util.List;
 
 @RestController
@@ -18,10 +24,8 @@ import java.util.List;
 public class SubscriptionController {
     private final SubscriptionServiceImpl subscriptionService;
 
-    @PostMapping("/")
-    public ResponseEntity<SubscriptionDto> makeSubscription(@Valid @RequestBody SubscriptionDto subscriptionDto) {
-        return ResponseEntity.ok().body(subscriptionService.makeSubscription(subscriptionDto));
-    }
+    private static final Logger log = LoggerFactory.getLogger(SubscriptionController.class);
+
     @DeleteMapping("/{id}")
     public ResponseEntity<String> removeSubscription(@PathVariable("id") String subscriptionId) throws Exception {
         if (subscriptionService.findSubscriptionById(Long.parseLong(subscriptionId)) == null) {

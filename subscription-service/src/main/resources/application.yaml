@@ -1,5 +1,8 @@
 server:
   port: 5001
+rsa:
+  private-key: classpath:certs/private.pem
+  public-key: classpath:certs/public.pem
 spring:
   application:
     name: subscription-service
@@ -37,7 +40,7 @@ logging:
           descriptor:
             sql:
               BasicBinder: TRACE
-      security: DEBUG
+      security: TRACE
 
 management:
   health:
