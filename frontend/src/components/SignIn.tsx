@@ -2,10 +2,17 @@ import { Button } from "@mui/material";
 import React from "react";
 import "./SignIn.css";
 
+
 function SignIn() {
+ 
+
   return (
     <div className="signIn">
-      <Button variant="contained" color="primary">
+      <Button
+        variant="contained"
+        onClick={() => navigate("/login")}
+        color="primary"
+      >
         Sign In
       </Button>
     </div>

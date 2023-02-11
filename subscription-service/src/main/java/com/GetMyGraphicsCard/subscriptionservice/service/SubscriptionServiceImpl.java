@@ -11,6 +11,7 @@ import com.GetMyGraphicsCard.subscriptionservice.repository.SubscriptionReposito
 import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -65,27 +66,25 @@ public class SubscriptionServiceImpl implements SubscriptionService {
     }
 
 
-    @Override
-    public List<SubscriptionItemDto> getAllSubscribedItems(Long subscriptionId) throws Exception {
-        Optional<Subscription> result = subscriptionRepository.findById(subscriptionId);
 
-        if (result.isEmpty()) {
-           throw new Exception("Subscription does not exists.");
-        }
+    @PreAuthorize("hasAuthority('SCOPE_ADMIN') or #subscription.email == authentication.name")
+    @Override
+    public List<SubscriptionItemDto> getAllSubscribedItems(Subscription subscription) throws Exception {
 
         log.info("Retrieving all subscribed items");
 
-        return result.get().getSubscriptionItemList().stream().map(this::mapToDto).toList();
+        return subscription.getSubscriptionItemList().stream().map(this::mapToDto).toList();
     }
 
     @Override
     @CircuitBreaker(name = "productService", fallbackMethod = "buildFallbackAddItemToSubscription")
-    public SubscriptionItemDto addItemToSubscription(Long subscriptionId, String id) throws Exception {
+    public SubscriptionItemDto addItemToSubscription(Subscription subscription, String id) throws Exception {
+        /*
         Optional<Subscription> result = subscriptionRepository.findById(subscriptionId);
 
         if (result.isEmpty()) {
             throw new Exception("Please make a subscription to app first");
-        }
+        } */
 
         log.info("Requesting product with id {} info to product-service", id);
         SubscriptionItem item = webClient.get()
@@ -98,10 +97,10 @@ public class SubscriptionServiceImpl implements SubscriptionService {
                 .block();
         assert item != null;
 
-        result.get().addItem(item);
+        subscription.addItem(item);
 
         // save to database
-        subscriptionRepository.save(result.get());
+        subscriptionRepository.save(subscription);
         return mapToDto(item);
     }
 
@@ -116,17 +115,14 @@ public class SubscriptionServiceImpl implements SubscriptionService {
                 .build();
     }
 
-
-
     @Override
-    public String removeItemFromSubscription(Long subscriptionId,  int index) throws Exception {
-        Optional<Subscription> result = subscriptionRepository.findById(subscriptionId);
+    public String removeItemFromSubscription(Subscription subscription, int index) throws Exception {
+       /* Optional<Subscription> result = subscriptionRepository.findById(subscriptionId);
         if (result.isEmpty()) {
             throw new Exception("Subscription does not exists.");
-        }
-        SubscriptionItem removedItem = result.get().getSubscriptionItemList().get(index);
-        result.get().removeItem(removedItem);
-
+        } */
+        SubscriptionItem removedItem = subscription.getSubscriptionItemList().get(index);
+        subscription.removeItem(removedItem);
 
         return "Item deleted successfully.";
     }

@@ -13,10 +13,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.GrantedAuthority;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.Collection;
 
 @RestController
 @RequiredArgsConstructor
@@ -35,21 +32,13 @@ public class AuthController {
     }
 
     @PostMapping("/login")
-    public String login(@RequestBody LoginRequest loginRequest) {
+    public ResponseEntity<String> login(@RequestBody LoginRequest loginRequest) {
         log.debug("Token requested for user: '{}'", loginRequest.getEmail());
-        log.info("Token requested for user: '{}'", loginRequest.getEmail());
         Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(loginRequest.getEmail(), loginRequest.getPassword()));
         String token = authService.generateToken(authentication);
         log.debug("Token granted: {}", token);
-        log.info("Name = {}, Authority = {}",authentication.getName(), authentication.getAuthorities());
-        return token;
+        return ResponseEntity.ok(token);
     }
 
 
-
-    @PreAuthorize("hasAuthority('SCOPE_ADMIN')")
-    @GetMapping("/secure")
-    public String secure() {
-        return "This is secured!";
-    }
 }

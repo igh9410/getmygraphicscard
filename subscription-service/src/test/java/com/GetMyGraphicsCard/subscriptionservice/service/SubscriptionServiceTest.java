@@ -131,8 +131,8 @@ public class SubscriptionServiceTest {
 
     @Test
     void getAllSubscribedItemsTest() throws Exception {
-        when(subscriptionRepository.findById(1L)).thenReturn(Optional.of(subscription));
-        List<SubscriptionItemDto> testItems = subscriptionService.getAllSubscribedItems(1L);
+
+        List<SubscriptionItemDto> testItems = subscriptionService.getAllSubscribedItems(subscription);
         assertEquals("RTX 3050", testItems.get(0).getTitle());
         assertEquals("RTX 3060", testItems.get(1).getTitle());
         assertEquals("RTX 3070", testItems.get(2).getTitle());
@@ -172,9 +172,6 @@ public class SubscriptionServiceTest {
         testUsers.add(subscription3);
         
         System.out.println(testUsers.isEmpty());
-
-
-
 
     }
 }

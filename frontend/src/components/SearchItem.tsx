@@ -1,12 +1,7 @@
 import React from "react";
 import ItemModel from "../models/ItemModel";
 import Card from "@mui/material/Card";
-import {
-  CardActionArea,
-  CardMedia,
-  IconButton,
-  Typography,
-} from "@mui/material";
+import { IconButton } from "@mui/material";
 import "./SearchItem.css";
 import { StarBorder } from "@mui/icons-material";
 
