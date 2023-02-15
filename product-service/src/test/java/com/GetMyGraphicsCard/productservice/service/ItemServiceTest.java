@@ -52,25 +52,6 @@ public class ItemServiceTest {
         graphicsCards.add(new Item("RTX 3060Ti"));
         graphicsCards.add(new Item("RTX 3070"));
     }
-    /*
-    @Test
-    @DisplayName("Perform full-text search on Item's title. Should return 2 for Item titles containing 3060")
-    void findAllItemsByTitleTest() {
-        when(itemRepository.save(any(Item.class))).thenAnswer(i -> i.getArguments()[0]);
-
-        for (Item i: graphicsCards) {
-            itemRepository.save(i);
-        }
-        verify(itemRepository, times(4)).save(any());
-
-        TextCriteria textCriteria = TextCriteria.forDefaultLanguage().matchingAny("3060").caseSensitive(false);
-
-        Pageable pageable = PageRequest.of(0, 20);
-        Page<Item> mockItems = Mockito.mock(Page.class);
-        when(itemRepository.findAllBy(textCriteria, pageable)).thenReturn(mockItems);
-
-
-    } */
 
 
 }

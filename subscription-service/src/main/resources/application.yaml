@@ -1,5 +1,5 @@
 server:
-  port: 5001
+  port: 0
 rsa:
   private-key: classpath:certs/private.pem
   public-key: classpath:certs/public.pem
@@ -30,7 +30,7 @@ eureka:
     serviceUrl:
       defaultZone: http://localhost:8070/eureka
   instance:
-    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${server.port}}
 logging:
   level:
     org:

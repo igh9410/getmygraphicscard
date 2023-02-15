@@ -115,6 +115,7 @@ public class SubscriptionServiceImpl implements SubscriptionService {
                 .build();
     }
 
+    @PreAuthorize("hasAuthority('SCOPE_ADMIN') or #subscription.email == authentication.name")
     @Override
     public String removeItemFromSubscription(Subscription subscription, int index) throws Exception {
        /* Optional<Subscription> result = subscriptionRepository.findById(subscriptionId);

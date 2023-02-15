@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.test.context.TestPropertySource;
+import reactor.core.publisher.Mono;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
@@ -41,13 +42,15 @@ public class WebClientServiceTest {
         TestItems.forEach(item -> sb.append(item.toString()));
         System.out.println(sb.toString());
     }
-/*
+
     @Test
     void addGraphicsCardToDBTest() {
-        Mono<Root> graphicsCard = webClientServiceImpl.requestGraphicsCardInfo("RTX 3070");
+        String chipset = "RTX 3070";
+        Mono<Root> graphicsCard = webClientServiceImpl.requestGraphicsCardInfo(chipset);
+
         webClientServiceImpl.addGraphicsCardToDB(graphicsCard, chipset);
 
-    } */
+    }
     @AfterAll
     static void removeWebServer() throws IOException {
         mockWebServer.shutdown();

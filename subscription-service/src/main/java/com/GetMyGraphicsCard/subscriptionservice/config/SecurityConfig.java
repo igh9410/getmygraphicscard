@@ -33,7 +33,7 @@ import java.security.interfaces.RSAPublicKey;
 import java.util.UUID;
 
 @Configuration
-@EnableWebSecurity(debug = true)
+@EnableWebSecurity
 @AllArgsConstructor
 @EnableMethodSecurity
 public class SecurityConfig {
