@@ -2,7 +2,7 @@ server:
   port: 5000
 logging:
   level:
-    org.springframework.web: "debug"
+    org.springframework.web: TRACE
     org.hibernate: "error"
 ##  file:
   ##  name: "productservice.log"
@@ -16,8 +16,6 @@ spring:
       host: localhost
       port: 27017
       database: Java
-    rest:
-      basePath: /api
  # config:
   #  import: optional:configserver:http://localhost:8071
    # use-legacy-processing: true

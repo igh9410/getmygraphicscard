@@ -1,5 +1,6 @@
 server:
-  port: 0
+  port: 5001
+  #${random.int(5000,5100)}
 rsa:
   private-key: classpath:certs/private.pem
   public-key: classpath:certs/public.pem
@@ -23,6 +24,7 @@ spring:
       properties:
         spring.json.trusted.packages: "*"
 
+
  # config:
   #  import: optional:configserver:http://localhost:8071
 eureka:
@@ -40,7 +42,12 @@ logging:
           descriptor:
             sql:
               BasicBinder: TRACE
-      security: TRACE
+      springframework:
+        security: TRACE
+springdoc:
+  api-docs:
+    path: /api-docs
+  show-actuator: true
 
 management:
   health:
