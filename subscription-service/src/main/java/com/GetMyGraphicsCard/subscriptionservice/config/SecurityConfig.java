@@ -59,12 +59,14 @@ public class SecurityConfig {
                 .requestMatchers("/api/subscriptions/**")
                 .authenticated();
 
+
             http.sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .oauth2ResourceServer(OAuth2ResourceServerConfigurer::jwt)
                 .exceptionHandling((ex) -> ex.authenticationEntryPoint(new BearerTokenAuthenticationEntryPoint())
                         .accessDeniedHandler(new BearerTokenAccessDeniedHandler()))
                     .logout()
                     .permitAll();
+
 
         return http.build();
     }

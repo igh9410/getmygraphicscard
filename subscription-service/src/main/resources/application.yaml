@@ -1,6 +1,6 @@
 server:
-  port: 5001
-  #${random.int(5000,5100)}
+  port: 0
+  ## ${random.int(5001,5010)}
 rsa:
   private-key: classpath:certs/private.pem
   public-key: classpath:certs/public.pem
