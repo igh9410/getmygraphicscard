@@ -3,15 +3,12 @@ package com.GetMyGraphicsCard.subscriptionservice.controller;
 import com.GetMyGraphicsCard.subscriptionservice.dto.SubscriptionItemDto;
 import com.GetMyGraphicsCard.subscriptionservice.entity.Subscription;
 import com.GetMyGraphicsCard.subscriptionservice.exception.NoSubscriptionException;
-import com.GetMyGraphicsCard.subscriptionservice.model.SecurityUser;
-import com.GetMyGraphicsCard.subscriptionservice.service.SubscriptionServiceImpl;
+import com.GetMyGraphicsCard.subscriptionservice.service.SubscriptionService;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -21,7 +18,7 @@ import java.util.List;
 @RequestMapping("/api/subscriptions")
 @CrossOrigin("http://localhost:3000")
 public class SubscriptionController {
-    private final SubscriptionServiceImpl subscriptionService;
+    private final SubscriptionService subscriptionService;
 
     private static final Logger log = LoggerFactory.getLogger(SubscriptionController.class);
 
