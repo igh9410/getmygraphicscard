@@ -3,7 +3,7 @@ package com.GetMyGraphicsCard.subscriptionservice.controller;
 import com.GetMyGraphicsCard.subscriptionservice.dto.LoginRequest;
 import com.GetMyGraphicsCard.subscriptionservice.dto.SubscriptionDto;
 import com.GetMyGraphicsCard.subscriptionservice.service.AuthService;
-import com.GetMyGraphicsCard.subscriptionservice.service.SubscriptionServiceImpl;
+import com.GetMyGraphicsCard.subscriptionservice.service.SubscriptionService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
@@ -22,7 +22,7 @@ public class AuthController {
 
     private static final Logger log = LoggerFactory.getLogger(AuthController.class);
     private final AuthService authService;
-    private final SubscriptionServiceImpl subscriptionService;
+    private final SubscriptionService subscriptionService;
     private final AuthenticationManager authenticationManager;
 
     @PostMapping("/signup")
