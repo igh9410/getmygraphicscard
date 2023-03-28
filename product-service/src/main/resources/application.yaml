@@ -4,8 +4,7 @@ logging:
   level:
     org.springframework.web: TRACE
     org.hibernate: "error"
-##  file:
-  ##  name: "productservice.log"
+
 spring:
   application:
     name: product-service
@@ -16,9 +15,7 @@ spring:
       host: localhost
       port: 27017
       database: Java
- # config:
-  #  import: optional:configserver:http://localhost:8071
-   # use-legacy-processing: true
+
   kafka:
     bootstrap-servers: localhost:9092
 

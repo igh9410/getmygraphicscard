@@ -11,12 +11,15 @@ import com.getmygraphicscard.subscriptionservice.repository.SubscriptionReposito
 import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.cloud.client.ServiceInstance;
+import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.reactive.function.client.WebClient;
 
+import java.net.URI;
 import java.time.Duration;
 import java.util.List;
 
@@ -29,6 +32,8 @@ public class SubscriptionServiceImpl implements SubscriptionService {
     private final SubscriptionRepository subscriptionRepository;
     private final WebClient webClient;
     private final PasswordEncoder passwordEncoder;
+
+
 
 
 
@@ -78,14 +83,10 @@ public class SubscriptionServiceImpl implements SubscriptionService {
     @Override
     @CircuitBreaker(name = "productService", fallbackMethod = "buildFallbackAddItemToSubscription")
     public SubscriptionItemDto addItemToSubscription(Subscription subscription, String id) throws Exception {
-        /*
-        Optional<Subscription> result = subscriptionRepository.findById(subscriptionId);
-
-        if (result.isEmpty()) {
-            throw new Exception("Please make a subscription to app first");
-        } */
 
         log.info("Requesting product with id {} info to product-service", id);
+
+
         SubscriptionItem item = webClient.get()
                 .uri(uriBuilder -> uriBuilder
                         .path("/items/{id}")
@@ -94,7 +95,7 @@ public class SubscriptionServiceImpl implements SubscriptionService {
                 .bodyToMono(SubscriptionItem.class)
                 .timeout(Duration.ofSeconds(3))
                 .block();
-        assert item != null;
+
 
         subscription.addItem(item);
 
@@ -117,10 +118,7 @@ public class SubscriptionServiceImpl implements SubscriptionService {
     @PreAuthorize("hasAuthority('SCOPE_ADMIN') or #subscription.email == authentication.name")
     @Override
     public String removeItemFromSubscription(Subscription subscription, int index) throws Exception {
-       /* Optional<Subscription> result = subscriptionRepository.findById(subscriptionId);
-        if (result.isEmpty()) {
-            throw new Exception("Subscription does not exists.");
-        } */
+
         SubscriptionItem removedItem = subscription.getSubscriptionItemList().get(index);
         subscription.removeItem(removedItem);
 

@@ -14,5 +14,6 @@ public class WebClientConfig {
         return WebClient.builder()
                 .baseUrl("http://localhost:5000/api")
                 .build();
+
     }
 }
