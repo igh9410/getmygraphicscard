@@ -1,8 +1,8 @@
-package com.GetMyGraphicsCard.subscriptionservice.service;
+package com.getmygraphicscard.subscriptionservice.service;
 
-import com.GetMyGraphicsCard.subscriptionservice.model.SecurityUser;
-import com.GetMyGraphicsCard.subscriptionservice.entity.Subscription;
-import com.GetMyGraphicsCard.subscriptionservice.repository.SubscriptionRepository;
+import com.getmygraphicscard.subscriptionservice.model.SecurityUser;
+import com.getmygraphicscard.subscriptionservice.entity.Subscription;
+import com.getmygraphicscard.subscriptionservice.repository.SubscriptionRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

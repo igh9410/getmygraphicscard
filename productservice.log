@@ -109,7 +109,7 @@
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:308)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1302)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1291)
-	at com.GetMyGraphicsCard.productservice.ProductServiceApplication.main(ProductServiceApplication.java:14)
+	at com.getmygraphicscard.productservice.ProductServiceApplication.main(ProductServiceApplication.java:14)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -211,7 +211,7 @@ Caused by: org.apache.hc.client5.http.HttpHostConnectException: Connect to http:
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:308)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1302)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1291)
-	at com.GetMyGraphicsCard.productservice.ProductServiceApplication.main(ProductServiceApplication.java:14)
+	at com.getmygraphicscard.productservice.ProductServiceApplication.main(ProductServiceApplication.java:14)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -1745,7 +1745,7 @@ com.netflix.discovery.shared.transport.TransportException: Cannot execute reques
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:308)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1302)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1291)
-	at com.GetMyGraphicsCard.productservice.ProductServiceApplication.main(ProductServiceApplication.java:14)
+	at com.getmygraphicscard.productservice.ProductServiceApplication.main(ProductServiceApplication.java:14)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -1847,7 +1847,7 @@ Caused by: org.apache.hc.client5.http.HttpHostConnectException: Connect to http:
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:308)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1302)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1291)
-	at com.GetMyGraphicsCard.productservice.ProductServiceApplication.main(ProductServiceApplication.java:14)
+	at com.getmygraphicscard.productservice.ProductServiceApplication.main(ProductServiceApplication.java:14)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -3109,8 +3109,8 @@ Original Stack Trace:
 	Suppressed: java.lang.Exception: #block terminated with an error
 		at reactor.core.publisher.BlockingSingleSubscriber.blockingGet(BlockingSingleSubscriber.java:99) ~[reactor-core-3.5.0.jar:3.5.0]
 		at reactor.core.publisher.Mono.block(Mono.java:1710) ~[reactor-core-3.5.0.jar:3.5.0]
-		at com.GetMyGraphicsCard.productservice.service.WebClientServiceImpl.addGraphicsCardToDB(WebClientServiceImpl.java:61) ~[main/:na]
-		at com.GetMyGraphicsCard.productservice.task.ScheduledTasks.GetGraphicsCardDataFromNaver(ScheduledTasks.java:30) ~[main/:na]
+		at service.com.getmygraphicscard.productservice.WebClientServiceImpl.addGraphicsCardToDB(WebClientServiceImpl.java:61) ~[main/:na]
+		at task.com.getmygraphicscard.productservice.ScheduledTasks.GetGraphicsCardDataFromNaver(ScheduledTasks.java:30) ~[main/:na]
 		at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
 		at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
 		at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
@@ -4002,7 +4002,7 @@ com.netflix.discovery.shared.transport.TransportException: Cannot execute reques
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:308)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1302)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1291)
-	at com.GetMyGraphicsCard.productservice.ProductServiceApplication.main(ProductServiceApplication.java:14)
+	at com.getmygraphicscard.productservice.ProductServiceApplication.main(ProductServiceApplication.java:14)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -4104,7 +4104,7 @@ Caused by: org.apache.hc.client5.http.HttpHostConnectException: Connect to http:
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:308)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1302)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1291)
-	at com.GetMyGraphicsCard.productservice.ProductServiceApplication.main(ProductServiceApplication.java:14)
+	at com.getmygraphicscard.productservice.ProductServiceApplication.main(ProductServiceApplication.java:14)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -4235,11 +4235,11 @@ com.netflix.discovery.shared.transport.TransportException: Cannot execute reques
 2023-01-23T14:38:43.177+09:00 DEBUG 19642 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
 2023-01-23T14:38:43.177+09:00  INFO 19642 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
 2023-01-23T14:38:43.179+09:00 DEBUG 19642 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/api/items", parameters={}
-2023-01-23T14:38:43.182+09:00 DEBUG 19642 --- [http-nio-5000-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.GetMyGraphicsCard.productservice.controller.ItemController#getAllItems(Integer, Integer)
+2023-01-23T14:38:43.182+09:00 DEBUG 19642 --- [http-nio-5000-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to controller.com.getmygraphicscard.productservice.ItemController#getAllItems(Integer, Integer)
 2023-01-23T14:38:43.187+09:00  INFO 19642 --- [http-nio-5000-exec-1] ItemController.class                     : Client-Id {naver.client-id}
 2023-01-23T14:38:43.187+09:00  INFO 19642 --- [http-nio-5000-exec-1] ItemController.class                     : Client-Secret {naver.client-secret}
 2023-01-23T14:38:43.229+09:00 DEBUG 19642 --- [http-nio-5000-exec-1] m.m.a.RequestResponseBodyMethodProcessor : Using 'application/json;q=0.8', given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, application/signed-exchange;v=b3;q=0.9, */*;q=0.8] and supported [application/json, application/*+json]
-2023-01-23T14:38:43.229+09:00 DEBUG 19642 --- [http-nio-5000-exec-1] m.m.a.RequestResponseBodyMethodProcessor : Writing [Page 1 of 271 containing com.GetMyGraphicsCard.productservice.dto.ItemResponse instances]
+2023-01-23T14:38:43.229+09:00 DEBUG 19642 --- [http-nio-5000-exec-1] m.m.a.RequestResponseBodyMethodProcessor : Writing [Page 1 of 271 containing dto.com.getmygraphicscard.productservice.ItemResponse instances]
 2023-01-23T14:38:43.235+09:00 DEBUG 19642 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
 2023-01-23T14:38:43.314+09:00 DEBUG 19642 --- [http-nio-5000-exec-2] o.s.web.servlet.DispatcherServlet        : GET "/favicon.ico", parameters={}
 2023-01-23T14:38:43.317+09:00 DEBUG 19642 --- [http-nio-5000-exec-2] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]

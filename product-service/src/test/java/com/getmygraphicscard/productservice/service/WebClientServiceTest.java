@@ -1,7 +1,7 @@
-package com.GetMyGraphicsCard.productservice.service;
+package com.getmygraphicscard.productservice.service;
 
-import com.GetMyGraphicsCard.productservice.entity.Item;
-import com.GetMyGraphicsCard.productservice.entity.Root;
+import com.getmygraphicscard.productservice.entity.Item;
+import com.getmygraphicscard.productservice.entity.Root;
 import okhttp3.mockwebserver.MockWebServer;
 import org.apache.commons.io.IOUtils;
 import org.junit.jupiter.api.AfterAll;

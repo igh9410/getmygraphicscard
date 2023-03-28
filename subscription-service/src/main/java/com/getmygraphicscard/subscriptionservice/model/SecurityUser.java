@@ -1,13 +1,12 @@
-package com.GetMyGraphicsCard.subscriptionservice.model;
+package com.getmygraphicscard.subscriptionservice.model;
 
-import com.GetMyGraphicsCard.subscriptionservice.entity.Subscription;
+import com.getmygraphicscard.subscriptionservice.entity.Subscription;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
 import java.util.Collections;
-import java.util.List;
 
 
 public class SecurityUser implements UserDetails {

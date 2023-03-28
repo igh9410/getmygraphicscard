@@ -1,4 +1,4 @@
-package com.GetMyGraphicsCard.productservice.config;
+package com.getmygraphicscard.productservice.config;
 
 import org.apache.kafka.clients.admin.NewTopic;
 import org.springframework.context.annotation.Bean;

@@ -1,7 +1,7 @@
-package com.GetMyGraphicsCard.productservice.controller;
+package com.getmygraphicscard.productservice.controller;
 
-import com.GetMyGraphicsCard.productservice.dto.ItemResponse;
-import com.GetMyGraphicsCard.productservice.service.ItemService;
+import com.getmygraphicscard.productservice.dto.ItemResponse;
+import com.getmygraphicscard.productservice.service.ItemService;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

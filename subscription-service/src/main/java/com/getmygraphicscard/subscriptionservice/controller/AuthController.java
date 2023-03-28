@@ -1,9 +1,9 @@
-package com.GetMyGraphicsCard.subscriptionservice.controller;
+package com.getmygraphicscard.subscriptionservice.controller;
 
-import com.GetMyGraphicsCard.subscriptionservice.dto.LoginRequest;
-import com.GetMyGraphicsCard.subscriptionservice.dto.SubscriptionDto;
-import com.GetMyGraphicsCard.subscriptionservice.service.AuthService;
-import com.GetMyGraphicsCard.subscriptionservice.service.SubscriptionService;
+import com.getmygraphicscard.subscriptionservice.dto.LoginRequest;
+import com.getmygraphicscard.subscriptionservice.dto.SubscriptionDto;
+import com.getmygraphicscard.subscriptionservice.service.AuthService;
+import com.getmygraphicscard.subscriptionservice.service.SubscriptionService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;

@@ -1,4 +1,4 @@
-package com.GetMyGraphicsCard.subscriptionservice.config;
+package com.getmygraphicscard.subscriptionservice.config;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 

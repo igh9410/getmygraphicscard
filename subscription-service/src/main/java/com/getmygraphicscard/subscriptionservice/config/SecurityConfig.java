@@ -1,8 +1,7 @@
-package com.GetMyGraphicsCard.subscriptionservice.config;
+package com.getmygraphicscard.subscriptionservice.config;
 
 
-import com.GetMyGraphicsCard.subscriptionservice.service.UserDetailsServiceImpl;
-import com.ctc.wstx.shaded.msv_core.driver.textui.Debug;
+import com.getmygraphicscard.subscriptionservice.service.UserDetailsServiceImpl;
 import com.nimbusds.jose.JOSEException;
 import com.nimbusds.jose.jwk.JWKSet;
 import com.nimbusds.jose.jwk.RSAKey;

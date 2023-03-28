@@ -1,4 +1,4 @@
-package com.GetMyGraphicsCard.productservice.dto;
+package com.getmygraphicscard.productservice.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

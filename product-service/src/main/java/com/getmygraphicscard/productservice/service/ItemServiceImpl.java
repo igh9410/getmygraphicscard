@@ -1,8 +1,8 @@
-package com.GetMyGraphicsCard.productservice.service;
+package com.getmygraphicscard.productservice.service;
 
-import com.GetMyGraphicsCard.productservice.dto.ItemResponse;
-import com.GetMyGraphicsCard.productservice.entity.Item;
-import com.GetMyGraphicsCard.productservice.repository.ItemRepository;
+import com.getmygraphicscard.productservice.dto.ItemResponse;
+import com.getmygraphicscard.productservice.entity.Item;
+import com.getmygraphicscard.productservice.repository.ItemRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
@@ -14,8 +14,8 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-@RequiredArgsConstructor
 @Slf4j
+@RequiredArgsConstructor
 public class ItemServiceImpl implements ItemService {
 
     private final ItemRepository itemRepository;

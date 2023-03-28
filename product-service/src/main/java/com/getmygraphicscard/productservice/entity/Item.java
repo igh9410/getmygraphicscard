@@ -1,4 +1,4 @@
-package com.GetMyGraphicsCard.productservice.entity;
+package com.getmygraphicscard.productservice.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;

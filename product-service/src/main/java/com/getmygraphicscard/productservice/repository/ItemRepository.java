@@ -1,7 +1,6 @@
-package com.GetMyGraphicsCard.productservice.repository;
+package com.getmygraphicscard.productservice.repository;
 
-import com.GetMyGraphicsCard.productservice.entity.Item;
-import org.springframework.data.domain.Example;
+import com.getmygraphicscard.productservice.entity.Item;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.mongodb.core.query.TextCriteria;

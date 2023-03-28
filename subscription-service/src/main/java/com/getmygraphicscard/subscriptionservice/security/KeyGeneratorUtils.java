@@ -1,4 +1,4 @@
-package com.GetMyGraphicsCard.subscriptionservice.security;
+package com.getmygraphicscard.subscriptionservice.security;
 
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;

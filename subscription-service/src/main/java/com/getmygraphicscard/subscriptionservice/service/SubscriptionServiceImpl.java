@@ -1,13 +1,13 @@
-package com.GetMyGraphicsCard.subscriptionservice.service;
+package com.getmygraphicscard.subscriptionservice.service;
 
-import com.GetMyGraphicsCard.subscriptionservice.dto.SubscriptionDto;
-import com.GetMyGraphicsCard.subscriptionservice.dto.SubscriptionItemDto;
-import com.GetMyGraphicsCard.subscriptionservice.entity.Subscription;
-import com.GetMyGraphicsCard.subscriptionservice.entity.SubscriptionItem;
-import com.GetMyGraphicsCard.subscriptionservice.enums.Role;
-import com.GetMyGraphicsCard.subscriptionservice.exception.DuplicateSubscriptionException;
-import com.GetMyGraphicsCard.subscriptionservice.exception.NoSubscriptionException;
-import com.GetMyGraphicsCard.subscriptionservice.repository.SubscriptionRepository;
+import com.getmygraphicscard.subscriptionservice.dto.SubscriptionDto;
+import com.getmygraphicscard.subscriptionservice.dto.SubscriptionItemDto;
+import com.getmygraphicscard.subscriptionservice.entity.Subscription;
+import com.getmygraphicscard.subscriptionservice.entity.SubscriptionItem;
+import com.getmygraphicscard.subscriptionservice.enums.Role;
+import com.getmygraphicscard.subscriptionservice.exception.DuplicateSubscriptionException;
+import com.getmygraphicscard.subscriptionservice.exception.NoSubscriptionException;
+import com.getmygraphicscard.subscriptionservice.repository.SubscriptionRepository;
 import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -19,7 +19,6 @@ import org.springframework.web.reactive.function.client.WebClient;
 
 import java.time.Duration;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @Transactional

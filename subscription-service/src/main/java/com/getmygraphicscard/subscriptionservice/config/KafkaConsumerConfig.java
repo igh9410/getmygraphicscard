@@ -1,6 +1,6 @@
-package com.GetMyGraphicsCard.subscriptionservice.config;
+package com.getmygraphicscard.subscriptionservice.config;
 
-import com.GetMyGraphicsCard.subscriptionservice.event.PriceAlert;
+import com.getmygraphicscard.subscriptionservice.event.PriceAlert;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.common.serialization.StringDeserializer;
 import org.springframework.beans.factory.annotation.Value;

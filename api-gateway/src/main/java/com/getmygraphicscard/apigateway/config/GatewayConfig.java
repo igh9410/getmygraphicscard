@@ -1,4 +1,4 @@
-package com.GetMyGraphicsCard.apigateway.config;
+package com.getmygraphicscard.apigateway.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

@@ -1,6 +1,6 @@
-package com.GetMyGraphicsCard.subscriptionservice;
+package com.getmygraphicscard.subscriptionservice;
 
-import com.GetMyGraphicsCard.subscriptionservice.config.RsaKeyProperties;
+import com.getmygraphicscard.subscriptionservice.config.RsaKeyProperties;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

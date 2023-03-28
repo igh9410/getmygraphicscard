@@ -1,4 +1,4 @@
-package com.GetMyGraphicsCard.subscriptionservice.entity;
+package com.getmygraphicscard.subscriptionservice.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

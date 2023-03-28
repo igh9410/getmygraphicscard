@@ -1,13 +1,11 @@
-package com.GetMyGraphicsCard.subscriptionservice.service;
+package com.getmygraphicscard.subscriptionservice.service;
 
-import com.GetMyGraphicsCard.subscriptionservice.entity.Alert;
-import com.GetMyGraphicsCard.subscriptionservice.entity.SubscriptionItem;
-import com.GetMyGraphicsCard.subscriptionservice.repository.AlertRepository;
-import com.GetMyGraphicsCard.subscriptionservice.repository.SubscriptionItemRepository;
-import jakarta.persistence.EntityManager;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.junit.jupiter.api.BeforeEach;
+
+import com.getmygraphicscard.subscriptionservice.entity.Alert;
+import com.getmygraphicscard.subscriptionservice.entity.SubscriptionItem;
+import com.getmygraphicscard.subscriptionservice.repository.AlertRepository;
+import com.getmygraphicscard.subscriptionservice.repository.SubscriptionItemRepository;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

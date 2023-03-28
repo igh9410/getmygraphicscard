@@ -1,10 +1,9 @@
-package com.GetMyGraphicsCard.subscriptionservice.service;
+package com.getmygraphicscard.subscriptionservice.service;
 
-import com.GetMyGraphicsCard.subscriptionservice.entity.Alert;
-import com.GetMyGraphicsCard.subscriptionservice.entity.SubscriptionItem;
-import com.GetMyGraphicsCard.subscriptionservice.event.PriceAlert;
-import com.GetMyGraphicsCard.subscriptionservice.repository.AlertRepository;
-import com.GetMyGraphicsCard.subscriptionservice.repository.SubscriptionItemRepository;
+import com.getmygraphicscard.subscriptionservice.entity.Alert;
+import com.getmygraphicscard.subscriptionservice.event.PriceAlert;
+import com.getmygraphicscard.subscriptionservice.repository.AlertRepository;
+import com.getmygraphicscard.subscriptionservice.repository.SubscriptionItemRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Service;

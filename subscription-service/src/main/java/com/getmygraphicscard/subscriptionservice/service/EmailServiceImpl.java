@@ -1,10 +1,8 @@
-package com.GetMyGraphicsCard.subscriptionservice.service;
+package com.getmygraphicscard.subscriptionservice.service;
 
-import com.GetMyGraphicsCard.subscriptionservice.entity.Alert;
-import com.GetMyGraphicsCard.subscriptionservice.entity.SubscriptionItem;
-import com.GetMyGraphicsCard.subscriptionservice.repository.AlertRepository;
-import com.GetMyGraphicsCard.subscriptionservice.repository.SubscriptionItemRepository;
-import com.GetMyGraphicsCard.subscriptionservice.repository.SubscriptionRepository;
+import com.getmygraphicscard.subscriptionservice.entity.SubscriptionItem;
+import com.getmygraphicscard.subscriptionservice.repository.AlertRepository;
+import com.getmygraphicscard.subscriptionservice.repository.SubscriptionItemRepository;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

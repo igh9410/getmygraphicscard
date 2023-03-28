@@ -1,36 +1,16 @@
-package com.GetMyGraphicsCard.productservice.service;
+package com.getmygraphicscard.productservice.service;
 
-import com.GetMyGraphicsCard.productservice.dto.ItemResponse;
-import com.GetMyGraphicsCard.productservice.entity.Item;
-import com.GetMyGraphicsCard.productservice.repository.ItemRepository;
-import org.jetbrains.annotations.NotNull;
+import com.getmygraphicscard.productservice.entity.Item;
+import com.getmygraphicscard.productservice.repository.ItemRepository;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.annotation.Import;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
-import org.springframework.data.mongodb.core.query.TextCriteria;
-import org.springframework.test.context.TestPropertySource;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
-import java.util.function.Function;
-
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.AdditionalAnswers.returnsFirstArg;
-import static org.mockito.Mockito.*;
 
 
 @ExtendWith(MockitoExtension.class)

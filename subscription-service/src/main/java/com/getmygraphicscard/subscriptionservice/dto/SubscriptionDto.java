@@ -1,4 +1,4 @@
-package com.GetMyGraphicsCard.subscriptionservice.dto;
+package com.getmygraphicscard.subscriptionservice.dto;
 
 
 import jakarta.validation.constraints.Email;

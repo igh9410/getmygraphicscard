@@ -1,6 +1,6 @@
-package com.GetMyGraphicsCard.subscriptionservice.entity;
+package com.getmygraphicscard.subscriptionservice.entity;
 
-import com.GetMyGraphicsCard.subscriptionservice.enums.Role;
+import com.getmygraphicscard.subscriptionservice.enums.Role;
 import jakarta.persistence.*;
 import lombok.*;
 

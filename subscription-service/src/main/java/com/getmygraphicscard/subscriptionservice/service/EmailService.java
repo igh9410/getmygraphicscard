@@ -1,4 +1,4 @@
-package com.GetMyGraphicsCard.subscriptionservice.service;
+package com.getmygraphicscard.subscriptionservice.service;
 
 public interface EmailService {
     void sendMailToSubscribers();

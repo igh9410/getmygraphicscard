@@ -1,6 +1,6 @@
-package com.GetMyGraphicsCard.subscriptionservice.repository;
+package com.getmygraphicscard.subscriptionservice.repository;
 
-import com.GetMyGraphicsCard.subscriptionservice.entity.Subscription;
+import com.getmygraphicscard.subscriptionservice.entity.Subscription;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

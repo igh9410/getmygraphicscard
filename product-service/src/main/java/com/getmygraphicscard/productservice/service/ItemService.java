@@ -1,6 +1,6 @@
-package com.GetMyGraphicsCard.productservice.service;
+package com.getmygraphicscard.productservice.service;
 
-import com.GetMyGraphicsCard.productservice.dto.ItemResponse;
+import com.getmygraphicscard.productservice.dto.ItemResponse;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 

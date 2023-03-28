@@ -1,6 +1,6 @@
-package com.GetMyGraphicsCard.subscriptionservice.repository;
+package com.getmygraphicscard.subscriptionservice.repository;
 
-import com.GetMyGraphicsCard.subscriptionservice.entity.Alert;
+import com.getmygraphicscard.subscriptionservice.entity.Alert;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 

@@ -1,4 +1,4 @@
-package com.GetMyGraphicsCard.subscriptionservice.event;
+package com.getmygraphicscard.subscriptionservice.event;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

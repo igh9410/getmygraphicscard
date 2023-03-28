@@ -1,7 +1,6 @@
-package com.GetMyGraphicsCard.productservice.service;
+package com.getmygraphicscard.productservice.service;
 
-import com.GetMyGraphicsCard.productservice.entity.Root;
-import reactor.core.publisher.Flux;
+import com.getmygraphicscard.productservice.entity.Root;
 import reactor.core.publisher.Mono;
 
 public interface WebClientService {

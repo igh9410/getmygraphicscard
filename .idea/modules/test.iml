@@ -4,5 +4,6 @@
     <content url="file://$MODULE_DIR$/../../subscription-service/src/test">
       <sourceFolder url="file://$MODULE_DIR$/../../subscription-service/src/test/resources" type="java-test-resource" />
     </content>
+    <orderEntry type="sourceFolder" forTests="false" />
   </component>
 </module>

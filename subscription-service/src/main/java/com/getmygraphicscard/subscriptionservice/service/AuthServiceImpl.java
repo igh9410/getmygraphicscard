@@ -1,4 +1,4 @@
-package com.GetMyGraphicsCard.subscriptionservice.service;
+package com.getmygraphicscard.subscriptionservice.service;
 
 import lombok.AllArgsConstructor;
 import org.springframework.security.core.Authentication;

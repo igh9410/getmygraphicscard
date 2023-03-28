@@ -1,7 +1,7 @@
-package com.GetMyGraphicsCard.productservice.task;
+package com.getmygraphicscard.productservice.task;
 
-import com.GetMyGraphicsCard.productservice.entity.Root;
-import com.GetMyGraphicsCard.productservice.service.WebClientService;
+import com.getmygraphicscard.productservice.entity.Root;
+import com.getmygraphicscard.productservice.service.WebClientService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

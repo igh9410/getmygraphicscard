@@ -1,4 +1,4 @@
-package com.GetMyGraphicsCard.subscriptionservice.exception;
+package com.getmygraphicscard.subscriptionservice.exception;
 
 public class NoSubscriptionException extends RuntimeException {
     public NoSubscriptionException() {

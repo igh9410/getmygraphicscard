@@ -1,11 +1,9 @@
-package com.GetMyGraphicsCard.subscriptionservice.service;
+package com.getmygraphicscard.subscriptionservice.service;
 
-import com.GetMyGraphicsCard.subscriptionservice.dto.SubscriptionDto;
-import com.GetMyGraphicsCard.subscriptionservice.dto.SubscriptionItemDto;
-import com.GetMyGraphicsCard.subscriptionservice.entity.Subscription;
-import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
+import com.getmygraphicscard.subscriptionservice.dto.SubscriptionDto;
+import com.getmygraphicscard.subscriptionservice.dto.SubscriptionItemDto;
+import com.getmygraphicscard.subscriptionservice.entity.Subscription;
 
-import java.security.Principal;
 import java.util.List;
 
 public interface SubscriptionService {

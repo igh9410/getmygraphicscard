@@ -1,4 +1,4 @@
-package com.GetMyGraphicsCard.configserver;
+package com.getmygraphicscard.configserver;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

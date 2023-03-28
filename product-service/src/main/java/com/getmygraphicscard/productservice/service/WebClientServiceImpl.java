@@ -1,10 +1,10 @@
-package com.GetMyGraphicsCard.productservice.service;
+package com.getmygraphicscard.productservice.service;
 
 
-import com.GetMyGraphicsCard.productservice.entity.Item;
-import com.GetMyGraphicsCard.productservice.entity.Root;
-import com.GetMyGraphicsCard.productservice.event.PriceAlert;
-import com.GetMyGraphicsCard.productservice.repository.ItemRepository;
+import com.getmygraphicscard.productservice.entity.Item;
+import com.getmygraphicscard.productservice.entity.Root;
+import com.getmygraphicscard.productservice.event.PriceAlert;
+import com.getmygraphicscard.productservice.repository.ItemRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.MediaType;

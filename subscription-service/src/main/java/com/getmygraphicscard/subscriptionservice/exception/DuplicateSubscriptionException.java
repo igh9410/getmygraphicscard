@@ -1,4 +1,4 @@
-package com.GetMyGraphicsCard.subscriptionservice.exception;
+package com.getmygraphicscard.subscriptionservice.exception;
 
 public class DuplicateSubscriptionException extends RuntimeException {
     public DuplicateSubscriptionException() {

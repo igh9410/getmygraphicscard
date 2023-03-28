@@ -1,9 +1,9 @@
-package com.GetMyGraphicsCard.subscriptionservice.controller;
+package com.getmygraphicscard.subscriptionservice.controller;
 
-import com.GetMyGraphicsCard.subscriptionservice.dto.SubscriptionItemDto;
-import com.GetMyGraphicsCard.subscriptionservice.entity.Subscription;
-import com.GetMyGraphicsCard.subscriptionservice.exception.NoSubscriptionException;
-import com.GetMyGraphicsCard.subscriptionservice.service.SubscriptionService;
+import com.getmygraphicscard.subscriptionservice.dto.SubscriptionItemDto;
+import com.getmygraphicscard.subscriptionservice.entity.Subscription;
+import com.getmygraphicscard.subscriptionservice.exception.NoSubscriptionException;
+import com.getmygraphicscard.subscriptionservice.service.SubscriptionService;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

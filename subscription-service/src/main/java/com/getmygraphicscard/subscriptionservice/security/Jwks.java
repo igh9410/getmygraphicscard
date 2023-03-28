@@ -1,4 +1,4 @@
-package com.GetMyGraphicsCard.subscriptionservice.security;
+package com.getmygraphicscard.subscriptionservice.security;
 
 import com.nimbusds.jose.jwk.RSAKey;
 import lombok.AllArgsConstructor;
