@@ -4,6 +4,9 @@ import com.getmygraphicscard.subscriptionservice.dto.LoginRequest;
 import com.getmygraphicscard.subscriptionservice.dto.SubscriptionDto;
 import com.getmygraphicscard.subscriptionservice.service.AuthService;
 import com.getmygraphicscard.subscriptionservice.service.SubscriptionService;
+
+import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
@@ -31,11 +34,16 @@ public class AuthController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<String> login(@RequestBody LoginRequest loginRequest) {
+    public ResponseEntity<String> login(@RequestBody LoginRequest loginRequest, HttpServletResponse response) {
         log.debug("Token requested for user: '{}'", loginRequest.getEmail());
         Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(loginRequest.getEmail(), loginRequest.getPassword()));
         String token = authService.generateToken(authentication);
         log.debug("Token granted: {}", token);
+      //  Cookie cookie = new Cookie("token", token);
+     //  cookie.setHttpOnly(true);
+     //   cookie.setPath("/"); // This will make the cookie available throughout the whole site
+    //    response.addCookie(cookie);
+
         return ResponseEntity.ok(token);
     }
 

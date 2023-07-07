@@ -1,0 +1,3 @@
+use Java
+db.getCollectionNames()
+
