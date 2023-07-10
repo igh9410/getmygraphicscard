@@ -53,6 +53,22 @@ public class ItemServiceImpl implements ItemService {
         return mapToItemResponse(result.get());
     }
 
+    @Override
+    public Page<ItemResponse> findItemsByTitleAndPriceRange(String title, int lowest, int highest, Pageable pageable) throws Exception {
+        
+        if (lowest > highest) {
+            throw new Exception("Lowest Price can't exceed highest price");
+        }
+
+        Page<Item> itemPage = itemRepository.findItemsByTitleAndPriceRange(title, lowest, highest, pageable);
+
+        if (itemPage == null) {
+            throw new Exception("Items not found");
+        }
+
+        return itemPage.map(item -> new ItemResponse(item.getTitle(), item.getLink(), item.getImage(), item.getLprice()));
+    }
+
 
     private ItemResponse mapToItemResponse(Item item) {
         return ItemResponse.builder()
@@ -62,5 +78,7 @@ public class ItemServiceImpl implements ItemService {
                 .lprice(item.getLprice())
                 .build();
     }
+
+
 
 }

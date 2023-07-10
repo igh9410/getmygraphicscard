@@ -31,8 +31,14 @@ public class ItemController {
 
     @GetMapping("/search")
     public Page<ItemResponse> findAllItemsByTitle(@RequestParam String title, @RequestParam(defaultValue = "0") Integer pageNo,
-                                                  @RequestParam(defaultValue = "20") Integer size) {
+                                                  @RequestParam(defaultValue = "20") Integer size,
+                                                  @RequestParam(required = false) Integer lowest,
+                                                  @RequestParam(required = false) Integer highest) throws Exception {
         Pageable pageable = PageRequest.of(pageNo, size);
+
+        if (lowest != null && highest != null) {
+            return itemService.findItemsByTitleAndPriceRange(title, lowest, highest, pageable);
+        }
         return itemService.findAllItemsByTitle(title, pageable);
     }
 

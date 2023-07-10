@@ -5,7 +5,8 @@ import lombok.*;
 
 
 @Entity
-@Table(name = "item")
+@Table(name = "item",
+        uniqueConstraints = @UniqueConstraint(columnNames = {"link", "subscription_id"}))
 @Builder
 @Getter
 @Setter

@@ -8,15 +8,14 @@ import java.util.List;
 
 public interface ItemService {
 
-    public Page<ItemResponse> getAllItems(Pageable pageable);
+    Page<ItemResponse> getAllItems(Pageable pageable);
 
-    public List<ItemResponse> findItemsInPriceRange(int lowest, int highest) throws Exception;
+    List<ItemResponse> findItemsInPriceRange(int lowest, int highest) throws Exception;
 
-    public Page<ItemResponse> findAllItemsByTitle(String title, Pageable pageable);
+    Page<ItemResponse> findAllItemsByTitle(String title, Pageable pageable);
 
-    public ItemResponse findItemById(String id) throws Exception;
-
-
+    ItemResponse findItemById(String id) throws Exception;
 
 
+    Page<ItemResponse> findItemsByTitleAndPriceRange(String title, int lowest, int highest, Pageable pageable) throws Exception;
 }
