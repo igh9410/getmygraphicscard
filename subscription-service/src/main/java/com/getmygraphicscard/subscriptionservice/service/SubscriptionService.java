@@ -4,6 +4,7 @@ import com.getmygraphicscard.subscriptionservice.dto.SubscriptionDto;
 import com.getmygraphicscard.subscriptionservice.dto.SubscriptionItemDto;
 import com.getmygraphicscard.subscriptionservice.entity.Subscription;
 
+import java.security.Principal;
 import java.util.List;
 
 public interface SubscriptionService {

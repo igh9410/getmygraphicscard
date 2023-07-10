@@ -11,15 +11,16 @@ import com.getmygraphicscard.subscriptionservice.repository.SubscriptionReposito
 import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.cloud.client.ServiceInstance;
-import org.springframework.cloud.client.discovery.DiscoveryClient;
+import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.reactive.function.client.WebClient;
 
-import java.net.URI;
 import java.time.Duration;
 import java.util.List;
 
@@ -32,9 +33,6 @@ public class SubscriptionServiceImpl implements SubscriptionService {
     private final SubscriptionRepository subscriptionRepository;
     private final WebClient webClient;
     private final PasswordEncoder passwordEncoder;
-
-
-
 
 
     @Override
@@ -55,6 +53,20 @@ public class SubscriptionServiceImpl implements SubscriptionService {
 
     @Override
     public String removeSubscription(Long subscriptionId) {
+        Subscription subscription = subscriptionRepository.findById(subscriptionId)
+                .orElseThrow(() -> new NoSubscriptionException("Subscription not found"));
+
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+        // Check if the authenticated user has the same email as the Subscription or is ADMIN
+        boolean isAdmin = authentication.getAuthorities().stream()
+                .map(GrantedAuthority::getAuthority)
+                .anyMatch(scope -> scope.equals("SCOPE_ADMIN"));
+
+        if (!isAdmin && !authentication.getName().equals(subscription.getEmail())) {
+            throw new AccessDeniedException("Not authorized to delete this subscription");
+        }
+
         subscriptionRepository.deleteById(subscriptionId);
         return "Subscription deleted";
     }
@@ -81,6 +93,7 @@ public class SubscriptionServiceImpl implements SubscriptionService {
     }
 
     @Override
+    @PreAuthorize("hasAuthority('SCOPE_ADMIN') or #subscription.email == authentication.name")
     @CircuitBreaker(name = "productService", fallbackMethod = "buildFallbackAddItemToSubscription")
     public SubscriptionItemDto addItemToSubscription(Subscription subscription, String id) throws Exception {
 

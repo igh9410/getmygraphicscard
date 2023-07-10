@@ -10,6 +10,7 @@ import com.nimbusds.jose.proc.SecurityContext;
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.ProviderManager;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
@@ -40,7 +41,6 @@ import java.util.UUID;
 @EnableMethodSecurity
 public class SecurityConfig {
     private final UserDetailsServiceImpl userDetailsService;
-   // private final JwtTokenValidatorFilter jwtTokenValidatorFilter;
 
     @Bean
     public WebSecurityCustomizer webSecurityCustomizer() {
@@ -54,18 +54,17 @@ public class SecurityConfig {
 
             http.authorizeHttpRequests()
                 .requestMatchers("/api/auth/**")
-                .permitAll()
+                    .permitAll()
                 .and()
                 .authorizeHttpRequests()
-                .requestMatchers("/api/subscriptions/**")
-                .authenticated();
+                    .requestMatchers("/api/subscriptions/**")
+                                .authenticated();
 
 
             http.sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .oauth2ResourceServer(OAuth2ResourceServerConfigurer::jwt)
                 .exceptionHandling((ex) -> ex.authenticationEntryPoint(new BearerTokenAuthenticationEntryPoint())
                         .accessDeniedHandler(new BearerTokenAccessDeniedHandler()))
-           //         .addFilterBefore(jwtTokenValidatorFilter, UsernamePasswordAuthenticationFilter.class)
                     .logout()
                     .permitAll();
 

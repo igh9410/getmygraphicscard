@@ -2,6 +2,8 @@ package com.getmygraphicscard.subscriptionservice.controller;
 
 import com.getmygraphicscard.subscriptionservice.dto.LoginRequest;
 import com.getmygraphicscard.subscriptionservice.dto.SubscriptionDto;
+import com.getmygraphicscard.subscriptionservice.entity.Subscription;
+import com.getmygraphicscard.subscriptionservice.exception.NoSubscriptionException;
 import com.getmygraphicscard.subscriptionservice.service.AuthService;
 import com.getmygraphicscard.subscriptionservice.service.SubscriptionService;
 
@@ -39,10 +41,6 @@ public class AuthController {
         Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(loginRequest.getEmail(), loginRequest.getPassword()));
         String token = authService.generateToken(authentication);
         log.debug("Token granted: {}", token);
-      //  Cookie cookie = new Cookie("token", token);
-     //  cookie.setHttpOnly(true);
-     //   cookie.setPath("/"); // This will make the cookie available throughout the whole site
-    //    response.addCookie(cookie);
 
         return ResponseEntity.ok(token);
     }

@@ -22,21 +22,12 @@ public class SubscriptionController {
 
     private static final Logger log = LoggerFactory.getLogger(SubscriptionController.class);
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<String> removeSubscription(@PathVariable("id") Long subscriptionId) throws Exception {
-        Subscription subscription = subscriptionService.findSubscriptionById(subscriptionId);
-        if (subscription == null) {
-            throw new NoSubscriptionException("Subscription does not exist.");
-        }
-        return ResponseEntity.ok(subscriptionService.removeSubscription(subscriptionId));
-    }
-
 
     @GetMapping("/{id}")
     public ResponseEntity<List<SubscriptionItemDto>> getAllSubscribedItems(@PathVariable("id") Long subscriptionId) throws Exception {
        Subscription subscription = subscriptionService.findSubscriptionById(subscriptionId);
        if (subscription == null) {
-           throw new NoSubscriptionException("Subscription does not exist.");
+           return ResponseEntity.notFound().build();
        }
        List<SubscriptionItemDto> subscriptionItemDtoList = subscriptionService.getAllSubscribedItems(subscription);
        return ResponseEntity.ok(subscriptionItemDtoList);
@@ -50,6 +41,15 @@ public class SubscriptionController {
            throw new NoSubscriptionException("Subscription does not exist.");
        }
        return ResponseEntity.ok(subscriptionService.addItemToSubscription(subscription, productId));
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> removeSubscription(@PathVariable("id") Long subscriptionId) throws Exception {
+        Subscription subscription = subscriptionService.findSubscriptionById(subscriptionId);
+        if (subscription == null) {
+            throw new NoSubscriptionException("Subscription does not exist.");
+        }
+        return ResponseEntity.ok(subscriptionService.removeSubscription(subscriptionId));
     }
 
     @DeleteMapping("{id}/{index}")
