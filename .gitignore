@@ -13,3 +13,4 @@ build
 # Ignore configurations
 Keycloak-config
 OAuth2Tokens
+/identity-service/src/main/resources/application-jwt.yaml

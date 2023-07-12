@@ -6,8 +6,6 @@ rsa:
 spring:
   application:
     name: identity-service
-  profiles:
-    include: jwt
   datasource:
     url: jdbc:mysql://localhost:3306/identity_service
     driver-class-name: com.mysql.cj.jdbc.Driver

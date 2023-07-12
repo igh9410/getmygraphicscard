@@ -27,6 +27,7 @@ public class SubscriptionController {
     @GetMapping("/")
     public ResponseEntity<List<SubscriptionItemDto>> getAllSubscribedItems() throws Exception {
        String userEmail = jwtInterceptor.getUserEmail();
+       log.info("Logged in user email = " + userEmail);
        List<SubscriptionItemDto> subscriptionItemDtoList = subscriptionService.getAllSubscribedItems(userEmail);
        return ResponseEntity.ok(subscriptionItemDtoList);
     }

@@ -2,8 +2,8 @@ server:
   port: 0
   ## ${random.int(5001,5010)}
 rsa:
-  private-key: classpath:certs/private.pem
   public-key: classpath:certs/public.pem
+  private-key: classpath:certs/private.pem
 spring:
   application:
     name: subscription-service

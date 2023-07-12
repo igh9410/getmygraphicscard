@@ -1,10 +1,13 @@
 package com.getmygraphicscard.identityservice.config;
 
 
+import com.getmygraphicscard.identityservice.security.RsaKeyProperties;
 import com.getmygraphicscard.identityservice.service.UserDetailsServiceImpl;
 import com.nimbusds.jose.JOSEException;
+import com.nimbusds.jose.jwk.JWK;
 import com.nimbusds.jose.jwk.JWKSet;
 import com.nimbusds.jose.jwk.RSAKey;
+import com.nimbusds.jose.jwk.source.ImmutableJWKSet;
 import com.nimbusds.jose.jwk.source.JWKSource;
 import com.nimbusds.jose.proc.SecurityContext;
 import lombok.AllArgsConstructor;
@@ -13,7 +16,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.ProviderManager;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
-import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.oauth2.server.resource.OAuth2ResourceServerConfigurer;
@@ -27,17 +29,17 @@ import org.springframework.security.oauth2.server.resource.web.BearerTokenAuthen
 import org.springframework.security.oauth2.server.resource.web.access.BearerTokenAccessDeniedHandler;
 import org.springframework.security.web.SecurityFilterChain;
 
-import java.security.KeyPair;
-import java.security.KeyPairGenerator;
-import java.security.interfaces.RSAPublicKey;
-import java.util.UUID;
-
 @Configuration
 @EnableWebSecurity(debug = true)
-@AllArgsConstructor
 public class SecurityConfig {
     private final UserDetailsServiceImpl userDetailsService;
 
+    private final RsaKeyProperties jwtConfigProperties;
+
+    public SecurityConfig(UserDetailsServiceImpl userDetailsService, RsaKeyProperties jwtConfigProperties) {
+        this.userDetailsService = userDetailsService;
+        this.jwtConfigProperties = jwtConfigProperties;
+    }
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
@@ -76,42 +78,15 @@ public class SecurityConfig {
     }
 
 
-    @Bean
-    public KeyPair keyPair() {
-        try {
-            var keyPairGenerator = KeyPairGenerator.getInstance("RSA");
-            keyPairGenerator.initialize(2048);
-            return keyPairGenerator.generateKeyPair();
-        } catch (Exception ex) {
-            throw new RuntimeException(ex);
-        }
-    }
 
     @Bean
-    public RSAKey rsaKey(KeyPair keyPair) {
-
-        return new RSAKey
-                .Builder((RSAPublicKey)keyPair.getPublic())
-                .privateKey(keyPair.getPrivate())
-                .keyID(UUID.randomUUID().toString())
-                .build();
-    }
-
-    @Bean
-    public JWKSource<SecurityContext> jwkSource(RSAKey rsaKey) {
-        var jwkSet = new JWKSet(rsaKey);
-
-        return (jwkSelector, context) ->  jwkSelector.select(jwkSet);
-    }
-
-    @Bean
-    JwtEncoder jwtEncoder(JWKSource<SecurityContext> jwks) {
+    JwtEncoder jwtEncoder() {
+        JWK jwk = new RSAKey.Builder(jwtConfigProperties.publicKey()).privateKey(jwtConfigProperties.privateKey()).build();
+        JWKSource<SecurityContext> jwks = new ImmutableJWKSet<>(new JWKSet(jwk));
         return new NimbusJwtEncoder(jwks);
     }
-
     @Bean
-    JwtDecoder jwtDecoder(RSAKey rsaKey) throws JOSEException {
-        return NimbusJwtDecoder.withPublicKey(rsaKey.toRSAPublicKey()).build();
+    JwtDecoder jwtDecoder() {
+        return NimbusJwtDecoder.withPublicKey(jwtConfigProperties.publicKey()).build();
     }
-
 }
