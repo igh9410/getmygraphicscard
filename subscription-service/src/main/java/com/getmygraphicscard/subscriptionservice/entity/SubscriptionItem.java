@@ -5,8 +5,8 @@ import lombok.*;
 
 
 @Entity
-@Table(name = "item",
-        uniqueConstraints = @UniqueConstraint(columnNames = {"link", "subscription_id"}))
+@Table(name = "subscription_item",
+        uniqueConstraints = @UniqueConstraint(columnNames = {"link", "user_email"}))
 @Builder
 @Getter
 @Setter
@@ -23,9 +23,7 @@ public class SubscriptionItem {
     private String image;
     private int lprice;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="subscription_id")
-    private Subscription subscription;
-
+    @Column(name="user_email")
+    private String userEmail;
 
 }

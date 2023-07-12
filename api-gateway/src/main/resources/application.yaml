@@ -5,29 +5,35 @@ spring:
     name: api-gateway
   cloud:
     gateway:
-      ## Eureka Server Route
-      routes[0]:
-        id: eureka-server
-        uri: http://localhost:8070
-        predicates[0]: Path=/eureka
-        filters[0]: SetPath=/
-      ## Eureka Static Resources Route
-      routes[1]:
-        id: eureka-server-static
-        uri: http://localhost:8070
-        predicates:
-          - Path=/eureka/**
-      ## Product Service Route
-      routes[2]:
-        id: product-service
-        uri: lb://product-service
-        predicates[0]: Path=/api/items, /api/items/**
-      ## Subscription Service Route
-      routes[3]:
-        id: subscription-service
-        uri: lb://subscription-service
-        predicates:
-        - Path= /api/subscriptions,/api/subscriptions/**, /api/auth/{segment}
+      routes:
+        ## Eureka Server Route
+        - id: eureka-server
+          uri: http://localhost:8070
+          predicates:
+            - Path=/eureka
+          filters:
+            - SetPath=/
+        ## Eureka Static Resources Route
+        - id: eureka-server-static
+          uri: http://localhost:8070
+          predicates:
+            - Path=/eureka/**
+        ## Identity Service Route
+        - id: identity-service
+          uri: lb://identity-service
+          predicates:
+            - Path=/api/auth/**
+        ## Product Service Route
+        - id: product-service
+          uri: lb://product-service
+          predicates:
+            - Path=/api/items, /api/items/**
+        ## Subscription Service Route
+        - id: subscription-service
+          uri: lb://subscription-service
+          predicates:
+            - Path=/api/subscriptions, /api/subscriptions/**, /api/auth/{segment}
+
 
 
 # ...
@@ -42,8 +48,6 @@ eureka:
 
 logging:
   level:
-    nodeValue: DEBUG
-    root: INFO
     org:
       springframework:
         cloud:

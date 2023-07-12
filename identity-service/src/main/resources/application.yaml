@@ -1,0 +1,35 @@
+server:
+  port: 4000
+rsa:
+  private-key: classpath:certs/private.pem
+  public-key: classpath:certs/public.pem
+spring:
+  application:
+    name: identity-service
+  profiles:
+    include: jwt
+  datasource:
+    url: jdbc:mysql://localhost:3306/identity_service
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: igh9410
+    password: Rjsgur94!
+  jpa:
+    hibernate:
+      ddl-auto: update
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8070/eureka
+  instance:
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${server.port}}
+logging:
+  level:
+    org:
+      hibernate:
+        SQL: DEBUG
+        type:
+          descriptor:
+            sql:
+              BasicBinder: TRACE
+      springframework:
+        security: TRACE

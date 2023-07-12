@@ -1,8 +1,8 @@
 package com.getmygraphicscard.subscriptionservice.controller;
 
 import com.getmygraphicscard.subscriptionservice.dto.SubscriptionItemDto;
-import com.getmygraphicscard.subscriptionservice.entity.Subscription;
 import com.getmygraphicscard.subscriptionservice.exception.NoSubscriptionException;
+import com.getmygraphicscard.subscriptionservice.interceptor.JwtInterceptor;
 import com.getmygraphicscard.subscriptionservice.service.SubscriptionService;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
@@ -19,23 +19,21 @@ import java.util.List;
 @CrossOrigin("http://localhost:3000")
 public class SubscriptionController {
     private final SubscriptionService subscriptionService;
+    private final JwtInterceptor jwtInterceptor;
 
     private static final Logger log = LoggerFactory.getLogger(SubscriptionController.class);
 
 
-    @GetMapping("/{id}")
-    public ResponseEntity<List<SubscriptionItemDto>> getAllSubscribedItems(@PathVariable("id") Long subscriptionId) throws Exception {
-       Subscription subscription = subscriptionService.findSubscriptionById(subscriptionId);
-       if (subscription == null) {
-           return ResponseEntity.notFound().build();
-       }
-       List<SubscriptionItemDto> subscriptionItemDtoList = subscriptionService.getAllSubscribedItems(subscription);
+    @GetMapping("/")
+    public ResponseEntity<List<SubscriptionItemDto>> getAllSubscribedItems() throws Exception {
+       String userEmail = jwtInterceptor.getUserEmail();
+       List<SubscriptionItemDto> subscriptionItemDtoList = subscriptionService.getAllSubscribedItems(userEmail);
        return ResponseEntity.ok(subscriptionItemDtoList);
     }
-
-    @PostMapping("/{id}")
+/*
+    @PostMapping("/")
     @ResponseStatus(HttpStatus.CREATED)
-    public ResponseEntity<SubscriptionItemDto> addItemToSubscription(@PathVariable("id") Long subscriptionId, @RequestBody String productId) throws Exception {
+    public ResponseEntity<SubscriptionItemDto> addItemToSubscription(@RequestHeader("Authorization") String bearerToken, @RequestBody String productId) throws Exception {
        Subscription subscription = subscriptionService.findSubscriptionById(subscriptionId);
        if (subscription == null) {
            throw new NoSubscriptionException("Subscription does not exist.");
@@ -64,6 +62,6 @@ public class SubscriptionController {
         return ResponseEntity.ok(subscriptionService.removeItemFromSubscription(subscription, index));
     }
 
-
+*/
 
 }

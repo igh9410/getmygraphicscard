@@ -1,5 +1,5 @@
 server:
-  port: 5000
+  port: 0
 logging:
   level:
     org.springframework.web: TRACE
@@ -24,7 +24,7 @@ eureka:
     serviceUrl:
       defaultZone: http://localhost:8070/eureka
   instance:
-    instance-id: ${spring.application.name}:${spring.application.instance_id:${server.port}}
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
 
 
 

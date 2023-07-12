@@ -36,7 +36,7 @@ public class EmailServiceImpl implements EmailService {
         // send emails to subscribers every 5 minute
         for (SubscriptionItem i : items) {
             SimpleMailMessage message = new SimpleMailMessage();
-            String receiverEmail = i.getSubscription().getEmail();
+            String receiverEmail = i.getUserEmail();
             message.setFrom("athanasia9410@gmail.com");
             message.setTo(receiverEmail);
             message.setSubject("Your subscribed item " +  i.getTitle() + " hits the lowest price!");

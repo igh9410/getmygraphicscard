@@ -23,16 +23,19 @@ spring:
     consumer:
       properties:
         spring.json.trusted.packages: "*"
+  ## Redis Configuration
+  data:
+    redis:
+      database: 0
+      host: localhost
+      port: 6379
 
-
- # config:
-  #  import: optional:configserver:http://localhost:8071
 eureka:
   client:
     serviceUrl:
       defaultZone: http://localhost:8070/eureka
   instance:
-    instance-id: ${spring.application.name}:${spring.application.instance_id:${server.port}}
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
 logging:
   level:
     org:
