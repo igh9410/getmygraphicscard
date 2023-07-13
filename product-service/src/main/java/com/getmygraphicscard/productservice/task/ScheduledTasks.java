@@ -5,9 +5,12 @@ import com.getmygraphicscard.productservice.service.WebClientService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.integration.redis.util.RedisLockRegistry;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 import reactor.core.publisher.Mono;
+
+import java.util.concurrent.locks.Lock;
 
 @Component
 public class ScheduledTasks {
@@ -22,13 +25,23 @@ public class ScheduledTasks {
     @Autowired
     private WebClientService webClientService;
 
+    @Autowired
+    private RedisLockRegistry redisLockRegistry;
+
 
     @Scheduled(cron = "0 0/5 * * * ?") // Send Http requests to Naver API every 5 minutes and save to DB
-    public void GetGraphicsCardDataFromNaver() {
-        log.info("Sending Http requests..");
-        for (String chipset: chipsetsNvidia) {
-            Mono<Root> graphics = webClientService.requestGraphicsCardInfo(chipset);
-            webClientService.addGraphicsCardToDB(graphics, chipset);
+    public void getGraphicsCardDataFromNaver() {
+        Lock lock = redisLockRegistry.obtain("getGraphicsCardDataFromNaver");
+        if (lock.tryLock()) {
+            try {
+                log.info("Sending Http requests..");
+                for (String chipset : chipsetsNvidia) {
+                    Mono<Root> graphics = webClientService.requestGraphicsCardInfo(chipset);
+                    webClientService.addGraphicsCardToDB(graphics, chipset);
+                }
+            } finally {
+                lock.unlock();
+            }
         }
     }
 }

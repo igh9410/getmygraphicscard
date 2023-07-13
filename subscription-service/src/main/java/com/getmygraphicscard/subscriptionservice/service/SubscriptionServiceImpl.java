@@ -27,7 +27,6 @@ public class SubscriptionServiceImpl implements SubscriptionService {
 
     private SubscriptionItemDto mapToDto(SubscriptionItem subscriptionItem) {
         return SubscriptionItemDto.builder()
-                .id(subscriptionItem.getId())
                 .title(subscriptionItem.getTitle())
                 .link(subscriptionItem.getLink())
                 .image(subscriptionItem.getImage())

@@ -34,13 +34,9 @@ dependencies {
 	implementation 'org.springdoc:springdoc-openapi:2.0.2'
 	implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.0.2'
 	implementation 'com.auth0:java-jwt:4.4.0'
-
-
-
-
-
-
-
+	implementation 'org.springframework.boot:spring-boot-starter-integration'
+	implementation 'org.springframework.boot:spring-boot-starter-data-redis'
+	implementation 'org.springframework.integration:spring-integration-redis'
 
 	compileOnly 'org.projectlombok:lombok'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
