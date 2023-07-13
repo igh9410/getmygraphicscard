@@ -10,7 +10,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import java.net.URI;
 import java.util.List;
 
 @RestController
@@ -29,40 +31,30 @@ public class SubscriptionController {
        String userEmail = jwtInterceptor.getUserEmail();
        log.info("Logged in user email = " + userEmail);
        List<SubscriptionItemDto> subscriptionItemDtoList = subscriptionService.getAllSubscribedItems(userEmail);
+
        return ResponseEntity.ok(subscriptionItemDtoList);
     }
-/*
+
     @PostMapping("/")
     @ResponseStatus(HttpStatus.CREATED)
-    public ResponseEntity<SubscriptionItemDto> addItemToSubscription(@RequestHeader("Authorization") String bearerToken, @RequestBody String productId) throws Exception {
-       Subscription subscription = subscriptionService.findSubscriptionById(subscriptionId);
-       if (subscription == null) {
-           throw new NoSubscriptionException("Subscription does not exist.");
-       }
-       return ResponseEntity.ok(subscriptionService.addItemToSubscription(subscription, productId));
+    public ResponseEntity<SubscriptionItemDto> addItemToSubscription(@RequestBody String productId) throws Exception {
+       String userEmail = jwtInterceptor.getUserEmail();
+
+       return ResponseEntity.status(HttpStatus.CREATED).body(subscriptionService.addItemToSubscription(userEmail, productId));
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<String> removeSubscription(@PathVariable("id") Long subscriptionId) throws Exception {
-        Subscription subscription = subscriptionService.findSubscriptionById(subscriptionId);
-        if (subscription == null) {
-            throw new NoSubscriptionException("Subscription does not exist.");
+
+    @DeleteMapping("/{index}")
+    public ResponseEntity<String> removeItemFromSubscription(@PathVariable("index") int index) throws Exception {
+        String userEmail = jwtInterceptor.getUserEmail();
+        if (index < 0 || index >= subscriptionService.getAllSubscribedItems(userEmail).size()) {
+            throw new IndexOutOfBoundsException("Index is out of bounds");
         }
-        return ResponseEntity.ok(subscriptionService.removeSubscription(subscriptionId));
+        subscriptionService.removeItemFromSubscription(userEmail, index);
+
+        return ResponseEntity.noContent().build();
     }
 
-    @DeleteMapping("{id}/{index}")
-    public ResponseEntity<String> removeItemFromSubscription(@PathVariable("id") Long subscriptionId, @PathVariable("index") int index) throws Exception {
-        Subscription subscription = subscriptionService.findSubscriptionById(subscriptionId);
-        if (subscription == null) {
-            throw new NoSubscriptionException("Subscription does not exist.");
-        }
-        if (index >= subscriptionService.getAllSubscribedItems(subscription).size()) {
-            throw new IndexOutOfBoundsException("OutOfBoundsException");
-        }
-        return ResponseEntity.ok(subscriptionService.removeItemFromSubscription(subscription, index));
-    }
 
-*/
 
 }

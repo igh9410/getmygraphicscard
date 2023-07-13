@@ -5,6 +5,7 @@ import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.JWTVerificationException;
+import com.auth0.jwt.interfaces.Claim;
 import com.auth0.jwt.interfaces.DecodedJWT;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -19,12 +20,14 @@ import java.security.interfaces.RSAPublicKey;
 import java.util.Base64;
 
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 import org.springframework.web.servlet.HandlerInterceptor;
 
 
 @Component
+@Slf4j
 public class JwtInterceptor implements HandlerInterceptor {
 
 
@@ -33,27 +36,36 @@ public class JwtInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         String bearerToken = request.getHeader("Authorization");
+
+        if (bearerToken == null || !bearerToken.startsWith("Bearer ")) { // Check if Authorization header is empty or not starts with "Bearer "...
+            log.info("No Authorization header in the request, blocking the request...");
+            response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+            return false;
+        }
+
         if (StringUtils.hasText(bearerToken) && bearerToken.startsWith("Bearer ")) {
             String jwtToken = bearerToken.substring(7);
             DecodedJWT decodedJWT;
 
             try {
+
                 Algorithm algorithm = Algorithm.RSA256(getPublicKey(), getPrivateKey());
                 JWTVerifier verifier = JWT.require(algorithm)
-                        // specify an specific claim validations
                         .withIssuer("self")
-                        // reusable verifier instance
                         .build();
 
                 decodedJWT = verifier.verify(jwtToken);
 
-                String email = decodedJWT.getSubject();
-                userEmail.set(email);
-                System.out.println("Token = " + bearerToken);
-                System.out.println("Extracted User Email = " + getUserEmail());
-            } catch (
-                    JWTVerificationException exception){
+                Claim email = decodedJWT.getClaim("email");
+                userEmail.set(email.asString());
+                log.info("Token = " + bearerToken);
+                log.info("Extracted User Email = " + getUserEmail());
+
+            } catch (JWTVerificationException exception){
                 // Invalid signature/claims
+                log.info("Invalid JWT token");
+                response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+                return false; // Block the request
             }
         }
         return true;

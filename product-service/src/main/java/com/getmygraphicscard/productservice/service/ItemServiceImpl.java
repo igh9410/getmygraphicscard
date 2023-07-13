@@ -23,7 +23,7 @@ public class ItemServiceImpl implements ItemService {
     @Override
     public Page<ItemResponse> getAllItems(Pageable pageable) {
         Page<Item> itemPage = itemRepository.findAll(pageable);
-        return itemPage.map(item -> new ItemResponse(item.getTitle(), item.getLink(), item.getImage(), item.getLprice()));
+        return itemPage.map(item -> new ItemResponse(item.getProductId(), item.getTitle(), item.getLink(), item.getImage(), item.getLprice()));
     }
 
     @Override
@@ -40,7 +40,7 @@ public class ItemServiceImpl implements ItemService {
         TextCriteria textCriteria = TextCriteria.forDefaultLanguage().matchingAny(title).caseSensitive(false);
         log.info("Finding items by title {}..", title);
         Page<Item> itemPage = itemRepository.findAllBy(textCriteria, pageable);
-        return itemPage.map(item -> new ItemResponse(item.getTitle(), item.getLink(), item.getImage(), item.getLprice()));
+        return itemPage.map(item -> new ItemResponse(item.getProductId(), item.getTitle(), item.getLink(), item.getImage(), item.getLprice()));
     }
 
     @Override
@@ -66,7 +66,7 @@ public class ItemServiceImpl implements ItemService {
             throw new Exception("Items not found");
         }
 
-        return itemPage.map(item -> new ItemResponse(item.getTitle(), item.getLink(), item.getImage(), item.getLprice()));
+        return itemPage.map(item -> new ItemResponse(item.getProductId(), item.getTitle(), item.getLink(), item.getImage(), item.getLprice()));
     }
 
 

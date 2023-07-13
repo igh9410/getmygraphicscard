@@ -8,9 +8,9 @@ public interface SubscriptionService {
 
     List<SubscriptionItemDto> getAllSubscribedItems(String userEmail) throws Exception;
 
-//    SubscriptionItemDto addItemToSubscription(Subscription subscription, String id) throws Exception;
+    SubscriptionItemDto addItemToSubscription(String userEmail, String productId) throws Exception;
 
- //   String removeItemFromSubscription(Subscription subscription, int index) throws Exception;
+    String removeItemFromSubscription(String userEmail, int index) throws Exception;
 
 }
 

@@ -5,12 +5,14 @@ import com.getmygraphicscard.subscriptionservice.event.PriceAlert;
 import com.getmygraphicscard.subscriptionservice.repository.AlertRepository;
 import com.getmygraphicscard.subscriptionservice.repository.SubscriptionItemRepository;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Service;
 
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class KafkaConsumer {
 
     private final AlertRepository alertRepository;
@@ -20,7 +22,7 @@ public class KafkaConsumer {
 
     @KafkaListener(topics = "alertTopic", groupId = "groupId", containerFactory = "alertListener")
     public void consume(PriceAlert data) {
-        System.out.println("Listener received: " + data.toString());
+        log.info("Listener received: " + data.toString());
         Alert alert = new Alert();
         alert.setTitle(data.getTitle());
         alert.setLink(data.getLink());

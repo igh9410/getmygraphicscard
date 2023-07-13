@@ -20,7 +20,11 @@ public class SecurityUser implements UserDetails {
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return Collections.singleton(new SimpleGrantedAuthority(user.getRole().name()));
-        //return List.of(() -> subscription.getRole().name());
+    }
+
+    @Override
+    public String getUsername() {
+        return user.getUsername();
     }
 
     @Override
@@ -28,10 +32,11 @@ public class SecurityUser implements UserDetails {
         return user.getPassword();
     }
 
-    @Override
-    public String getUsername() {
+    public String getEmail() {
         return user.getEmail();
     }
+
+
 
     @Override
     public boolean isAccountNonExpired() {

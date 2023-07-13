@@ -17,7 +17,12 @@ public class Alert {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Version
+    private Integer version; // Implement Optimistic Locking
+
     private String productId;
+
     private String title;
     private String link;
 

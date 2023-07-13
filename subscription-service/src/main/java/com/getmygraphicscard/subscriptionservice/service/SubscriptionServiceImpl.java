@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.client.RestTemplate;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -43,10 +44,10 @@ public class SubscriptionServiceImpl implements SubscriptionService {
 
         return subscriptionItemList.stream().map(this::mapToDto).toList();
     }
-/*
+
     @Override
     @CircuitBreaker(name = "productService", fallbackMethod = "buildFallbackAddItemToSubscription")
-    public SubscriptionItemDto addItemToSubscription(Subscription subscription, String id) throws Exception {
+    public SubscriptionItemDto addItemToSubscription(String userEmail, String id) throws Exception {
 
         log.info("Requesting product with id {} info to product-service", id);
 
@@ -55,13 +56,15 @@ public class SubscriptionServiceImpl implements SubscriptionService {
         ResponseEntity<SubscriptionItem> responseEntity = restTemplate.getForEntity(url, SubscriptionItem.class);
         SubscriptionItem item = responseEntity.getBody();
 
+        item.setCreatedTime(LocalDateTime.now());
+        item.setUserEmail(userEmail);
+
         if (item == null || responseEntity.getStatusCode() != HttpStatus.OK) {
             throw new Exception("Failed to retrieve item");
         }
-        subscription.addItem(item);
 
         // save to database
-        subscriptionRepository.save(subscription);
+        subscriptionItemRepository.save(item);
         return mapToDto(item);
     }
 
@@ -78,13 +81,16 @@ public class SubscriptionServiceImpl implements SubscriptionService {
 
 
     @Override
-    public String removeItemFromSubscription(Subscription subscription, int index) throws Exception {
+    public String removeItemFromSubscription(String userEmail, int index) throws Exception {
 
-        SubscriptionItem removedItem = subscription.getSubscriptionItemList().get(index);
-        subscription.removeItem(removedItem);
+        List<SubscriptionItem> items = subscriptionItemRepository.findByUserEmail(userEmail);
+        SubscriptionItem item = items.get(index);
+
+        subscriptionItemRepository.delete(item);
+
 
         return "Item deleted successfully.";
-    }*/
+    }
 
 
 

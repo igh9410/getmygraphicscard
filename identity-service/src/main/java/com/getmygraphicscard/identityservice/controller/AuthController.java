@@ -35,19 +35,17 @@ public class AuthController {
         UserDto createdUser = authService.saveUser(userDto);
         URI location = ServletUriComponentsBuilder
                 .fromCurrentRequest().path("/{id}")
-                .buildAndExpand(createdUser.getEmail()).toUri();
+                .buildAndExpand(createdUser.getUsername()).toUri();
         return ResponseEntity.created(location).body("New User Registered");
     }
 
 
     @PostMapping("/login")
     public ResponseEntity<String> login(@RequestBody LoginRequest loginRequest, HttpServletResponse response) {
-        log.info("Token requested for user: '{}'", loginRequest.getEmail());
-        Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(loginRequest.getEmail(), loginRequest.getPassword()));
+        log.info("Token requested for user: '{}'", loginRequest.getUsername());
+        Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword()));
         String token = authService.generateToken(authentication);
         log.info("Token granted: {}", token);
-        log.info("Public key = " + jwtConfigProperties.publicKey().toString());
-        log.info("Private key = " +  jwtConfigProperties.privateKey().toString());
         return ResponseEntity.ok(token);
     }
 

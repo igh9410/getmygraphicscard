@@ -3,6 +3,8 @@ package com.getmygraphicscard.subscriptionservice.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.time.LocalDateTime;
+
 
 @Entity
 @Table(name = "subscription_item",
@@ -22,8 +24,10 @@ public class SubscriptionItem {
     private String link;
     private String image;
     private int lprice;
-
     @Column(name="user_email")
     private String userEmail;
+    @Column(name="created_time")
+    private LocalDateTime createdTime;
+
 
 }

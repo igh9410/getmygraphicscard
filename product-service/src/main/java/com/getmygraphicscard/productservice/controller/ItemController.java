@@ -42,11 +42,6 @@ public class ItemController {
         return itemService.findAllItemsByTitle(title, pageable);
     }
 
-    @GetMapping("/price")
-    public List<ItemResponse> findAllItemsByPriceRange(@RequestParam int lowest, @RequestParam int highest) throws Exception {
-        return itemService.findItemsInPriceRange(lowest, highest);
-    }
-
     @GetMapping("{id}")
     public ItemResponse findItemById(@PathVariable String id) throws Exception {
         return itemService.findItemById(id);

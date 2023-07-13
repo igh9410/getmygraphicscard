@@ -12,6 +12,8 @@ import java.math.BigDecimal;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ItemResponse {
+
+    private String id;
     private String title;
     private String link;
     private String image;
