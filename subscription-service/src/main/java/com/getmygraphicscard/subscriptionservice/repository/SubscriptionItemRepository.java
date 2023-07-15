@@ -12,4 +12,6 @@ public interface SubscriptionItemRepository extends JpaRepository<SubscriptionIt
     @Query(value = "SELECT i FROM SubscriptionItem i INNER JOIN Alert a ON i.link=a.link")
     List<SubscriptionItem> itemsToBeNotified();
 
+    List<SubscriptionItem> findByUserEmail(String userEmail);
+
 }

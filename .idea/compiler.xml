@@ -16,6 +16,12 @@
       <module name="com.GetMyGraphicsCard.product-service.main" target="17" />
       <module name="com.GetMyGraphicsCard.subscription-service.main" target="17" />
       <module name="com.GetMyGraphicsCard.subscription-service.test" target="17" />
+      <module name="config-server" target="17" />
+      <module name="config-server.main" target="17" />
+      <module name="config-server.test" target="17" />
+      <module name="identityservice" target="17" />
+      <module name="identityservice.main" target="17" />
+      <module name="identityservice.test" target="17" />
       <module name="OAuth2AuthorizationServer" target="17" />
       <module name="OAuth2AuthorizationServer.main" target="17" />
       <module name="OAuth2AuthorizationServer.test" target="17" />

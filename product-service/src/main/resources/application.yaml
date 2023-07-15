@@ -1,5 +1,5 @@
 server:
-  port: 5000
+  port: 0
 logging:
   level:
     org.springframework.web: TRACE
@@ -11,20 +11,31 @@ spring:
   profiles:
     include: naver
   data:
+    # MongoDB Configuration
     mongodb:
       host: localhost
       port: 27017
       database: Java
+    # Redis Configuration
+    redis:
+      host: localhost
+      port: 6379
 
+  # Kafka Configuration
   kafka:
     bootstrap-servers: localhost:9092
+springdoc:
+  api-docs:
+    path: /api/docs
+
+
 
 eureka:
   client:
     serviceUrl:
       defaultZone: http://localhost:8070/eureka
   instance:
-    instance-id: ${spring.application.name}:${spring.application.instance_id:${server.port}}
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
 
 
 

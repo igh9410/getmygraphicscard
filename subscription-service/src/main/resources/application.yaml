@@ -2,8 +2,8 @@ server:
   port: 0
   ## ${random.int(5001,5010)}
 rsa:
-  private-key: classpath:certs/private.pem
   public-key: classpath:certs/public.pem
+  private-key: classpath:certs/private.pem
 spring:
   application:
     name: subscription-service
@@ -23,16 +23,18 @@ spring:
     consumer:
       properties:
         spring.json.trusted.packages: "*"
+  ## Redis Configuration
+  data:
+    redis:
+      host: localhost
+      port: 6379
 
-
- # config:
-  #  import: optional:configserver:http://localhost:8071
 eureka:
   client:
     serviceUrl:
       defaultZone: http://localhost:8070/eureka
   instance:
-    instance-id: ${spring.application.name}:${spring.application.instance_id:${server.port}}
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
 logging:
   level:
     org:
@@ -46,7 +48,7 @@ logging:
         security: TRACE
 springdoc:
   api-docs:
-    path: /api-docs
+    path: /api/docs
   show-actuator: true
 
 management:

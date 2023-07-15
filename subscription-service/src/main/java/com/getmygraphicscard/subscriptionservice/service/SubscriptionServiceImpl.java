@@ -1,27 +1,18 @@
 package com.getmygraphicscard.subscriptionservice.service;
 
-import com.getmygraphicscard.subscriptionservice.dto.SubscriptionDto;
 import com.getmygraphicscard.subscriptionservice.dto.SubscriptionItemDto;
-import com.getmygraphicscard.subscriptionservice.entity.Subscription;
 import com.getmygraphicscard.subscriptionservice.entity.SubscriptionItem;
-import com.getmygraphicscard.subscriptionservice.enums.Role;
-import com.getmygraphicscard.subscriptionservice.exception.DuplicateSubscriptionException;
-import com.getmygraphicscard.subscriptionservice.exception.NoSubscriptionException;
-import com.getmygraphicscard.subscriptionservice.repository.SubscriptionRepository;
+import com.getmygraphicscard.subscriptionservice.repository.SubscriptionItemRepository;
 import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.security.access.AccessDeniedException;
-import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.reactive.function.client.WebClient;
+import org.springframework.web.client.RestTemplate;
 
-import java.time.Duration;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -30,90 +21,49 @@ import java.util.List;
 @RequiredArgsConstructor
 public class SubscriptionServiceImpl implements SubscriptionService {
 
-    private final SubscriptionRepository subscriptionRepository;
-    private final WebClient webClient;
-    private final PasswordEncoder passwordEncoder;
+    private final SubscriptionItemRepository subscriptionItemRepository;
 
+    private final RestTemplate restTemplate;
 
-    @Override
-    public SubscriptionDto makeSubscription(SubscriptionDto subscriptionDto) {
-        if (subscriptionRepository.existsByEmail(subscriptionDto.getEmail())) {
-            throw new DuplicateSubscriptionException("Email already registered");
-        }
-        Subscription subscription = Subscription.builder()
-                .email(subscriptionDto.getEmail())
-                .password(passwordEncoder.encode(subscriptionDto.getPassword()))
-                .role(Role.USER)
+    private SubscriptionItemDto mapToDto(SubscriptionItem subscriptionItem) {
+        return SubscriptionItemDto.builder()
+                .title(subscriptionItem.getTitle())
+                .link(subscriptionItem.getLink())
+                .image(subscriptionItem.getImage())
+                .lprice(subscriptionItem.getLprice())
                 .build();
-        subscriptionRepository.save(subscription);
-        log.info("New user registered");
-
-        return subscriptionDto;
-    }
-
-    @Override
-    public String removeSubscription(Long subscriptionId) {
-        Subscription subscription = subscriptionRepository.findById(subscriptionId)
-                .orElseThrow(() -> new NoSubscriptionException("Subscription not found"));
-
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-
-        // Check if the authenticated user has the same email as the Subscription or is ADMIN
-        boolean isAdmin = authentication.getAuthorities().stream()
-                .map(GrantedAuthority::getAuthority)
-                .anyMatch(scope -> scope.equals("SCOPE_ADMIN"));
-
-        if (!isAdmin && !authentication.getName().equals(subscription.getEmail())) {
-            throw new AccessDeniedException("Not authorized to delete this subscription");
-        }
-
-        subscriptionRepository.deleteById(subscriptionId);
-        return "Subscription deleted";
-    }
-
-    @Override
-    public Subscription findSubscriptionByEmail(String email) {
-        return subscriptionRepository.findByEmail(email).orElseThrow(() -> new NoSubscriptionException("Not a registered user"));
-    }
-
-    @Override
-    public Subscription findSubscriptionById(Long subscriptionId) {
-        return subscriptionRepository.getReferenceById(subscriptionId);
     }
 
 
-
-    @PreAuthorize("hasAuthority('SCOPE_ADMIN') or #subscription.email == authentication.name")
     @Override
-    public List<SubscriptionItemDto> getAllSubscribedItems(Subscription subscription) throws Exception {
+    public List<SubscriptionItemDto> getAllSubscribedItems(String userEmail) throws Exception {
+        List<SubscriptionItem> subscriptionItemList = subscriptionItemRepository.findByUserEmail(userEmail);
 
         log.info("Retrieving all subscribed items");
 
-        return subscription.getSubscriptionItemList().stream().map(this::mapToDto).toList();
+        return subscriptionItemList.stream().map(this::mapToDto).toList();
     }
 
     @Override
-    @PreAuthorize("hasAuthority('SCOPE_ADMIN') or #subscription.email == authentication.name")
     @CircuitBreaker(name = "productService", fallbackMethod = "buildFallbackAddItemToSubscription")
-    public SubscriptionItemDto addItemToSubscription(Subscription subscription, String id) throws Exception {
+    public SubscriptionItemDto addItemToSubscription(String userEmail, String id) throws Exception {
 
         log.info("Requesting product with id {} info to product-service", id);
 
+        String url = "http://product-service/api/items/" + id;
 
-        SubscriptionItem item = webClient.get()
-                .uri(uriBuilder -> uriBuilder
-                        .path("/items/{id}")
-                        .build(id))
-                .retrieve()
-                .bodyToMono(SubscriptionItem.class)
-                .timeout(Duration.ofSeconds(3))
-                .block();
+        ResponseEntity<SubscriptionItem> responseEntity = restTemplate.getForEntity(url, SubscriptionItem.class);
+        SubscriptionItem item = responseEntity.getBody();
 
+        item.setCreatedTime(LocalDateTime.now());
+        item.setUserEmail(userEmail);
 
-        subscription.addItem(item);
+        if (item == null || responseEntity.getStatusCode() != HttpStatus.OK) {
+            throw new Exception("Failed to retrieve item");
+        }
 
         // save to database
-        subscriptionRepository.save(subscription);
+        subscriptionItemRepository.save(item);
         return mapToDto(item);
     }
 
@@ -128,26 +78,19 @@ public class SubscriptionServiceImpl implements SubscriptionService {
                 .build();
     }
 
-    @PreAuthorize("hasAuthority('SCOPE_ADMIN') or #subscription.email == authentication.name")
-    @Override
-    public String removeItemFromSubscription(Subscription subscription, int index) throws Exception {
 
-        SubscriptionItem removedItem = subscription.getSubscriptionItemList().get(index);
-        subscription.removeItem(removedItem);
+    @Override
+    public String removeItemFromSubscription(String userEmail, int index) throws Exception {
+
+        List<SubscriptionItem> items = subscriptionItemRepository.findByUserEmail(userEmail);
+        SubscriptionItem item = items.get(index);
+
+        subscriptionItemRepository.delete(item);
+
 
         return "Item deleted successfully.";
     }
 
 
 
-
-
-    private SubscriptionItemDto mapToDto(SubscriptionItem subscriptionItem) {
-        return SubscriptionItemDto.builder()
-                .title(subscriptionItem.getTitle())
-                .link(subscriptionItem.getLink())
-                .image(subscriptionItem.getImage())
-                .lprice(subscriptionItem.getLprice())
-                .build();
-    }
 }
