@@ -7,6 +7,7 @@ import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.JWTVerificationException;
 import com.auth0.jwt.interfaces.Claim;
 import com.auth0.jwt.interfaces.DecodedJWT;
+import com.getmygraphicscard.subscriptionservice.service.JwtService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.nio.file.Files;
@@ -20,7 +21,9 @@ import java.security.interfaces.RSAPublicKey;
 import java.util.Base64;
 
 
+import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 import org.springframework.web.servlet.HandlerInterceptor;
@@ -28,10 +31,13 @@ import org.springframework.web.servlet.HandlerInterceptor;
 
 @Component
 @Slf4j
+@AllArgsConstructor
 public class JwtInterceptor implements HandlerInterceptor {
 
 
-    private ThreadLocal<String> userEmail = new ThreadLocal<>();
+    private final ThreadLocal<String> userEmail = new ThreadLocal<>();
+
+    private final JwtService jwtService;
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
@@ -46,6 +52,14 @@ public class JwtInterceptor implements HandlerInterceptor {
         if (StringUtils.hasText(bearerToken) && bearerToken.startsWith("Bearer ")) {
             String jwtToken = bearerToken.substring(7);
             DecodedJWT decodedJWT;
+            log.info("Black list check for token {}", jwtService.isTokenBlacklisted(jwtToken));
+
+            // Check if token is blacklisted
+            if (jwtService.isTokenBlacklisted(jwtToken)) {
+                log.info("Token is blacklisted. Blocking the request...");
+                response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+                return false;
+            }
 
             try {
 

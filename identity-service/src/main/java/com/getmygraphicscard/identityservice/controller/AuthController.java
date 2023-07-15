@@ -49,5 +49,21 @@ public class AuthController {
         return ResponseEntity.ok(token);
     }
 
+    @PostMapping("/logout")
+    public ResponseEntity<String> logout(@RequestHeader("Authorization") String bearerToken, HttpServletResponse response) {
+        if (bearerToken != null && bearerToken.startsWith("Bearer ")) {
+            String token = bearerToken.substring(7);
+            log.info("Token = " + token);
+            boolean isLogoutSuccessful = authService.addTokenToBlackList(token);
+            if (isLogoutSuccessful) {
+                return ResponseEntity.noContent().build(); // Return 201 for successful logout
+            } else {
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST).build(); // Return 400 for logout failure
+            }
+        }
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).build(); // Return 400 for logout failure
+    }
+
+
 
 }

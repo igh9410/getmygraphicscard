@@ -18,7 +18,6 @@ spring:
       database: Java
     # Redis Configuration
     redis:
-      database: 0
       host: localhost
       port: 6379
 

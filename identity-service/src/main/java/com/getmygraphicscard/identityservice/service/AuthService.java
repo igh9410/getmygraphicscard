@@ -7,6 +7,8 @@ public interface AuthService {
 
     public String generateToken(Authentication authentication);
 
+    public boolean addTokenToBlackList(String token);
+
     UserDto saveUser(UserDto userDto);
 
 }

@@ -44,20 +44,23 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 
-            // Disable CSRF protection because there's no need to use it when using JWT.
-            http.csrf().disable();
+         // Disable CSRF protection because there's no need to use it when using JWT.
+        http.csrf().disable();
 
-            http.authorizeHttpRequests()
-                .requestMatchers("/api/auth/**")
+        http.authorizeHttpRequests()
+                  .requestMatchers("/api/auth/**")
+               // .requestMatchers("/api/auth/login", "/api/signup")
                     .permitAll();
 
 
         http.sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .oauth2ResourceServer(OAuth2ResourceServerConfigurer::jwt)
                 .exceptionHandling((ex) -> ex.authenticationEntryPoint(new BearerTokenAuthenticationEntryPoint())
-                        .accessDeniedHandler(new BearerTokenAccessDeniedHandler()))
-                    .logout()
-                    .permitAll();
+                        .accessDeniedHandler(new BearerTokenAccessDeniedHandler()));
+
+       http.logout().disable();
+
+
 
 
         return http.build();

@@ -42,7 +42,7 @@ public class EmailServiceImpl implements EmailService {
         Lock lock = redisLockRegistry.obtain("sendMailToSubscribers");
         if (lock.tryLock()) { // Using Distributed Lock to prevent multiple execution
             try {
-
+                logger.info("Sending emails...");
                 for (SubscriptionItem i : items) {
                     SimpleMailMessage message = new SimpleMailMessage();
                     String receiverEmail = i.getUserEmail();
@@ -53,11 +53,12 @@ public class EmailServiceImpl implements EmailService {
                     emailSender.send(message);
 
                 }
+                // Delete the saved alerts after sending emails;
+                alertRepository.deleteAll();
             } finally {
                 lock.unlock();
             }
         }
-        // Delete the saved alerts after sending emails;
-        alertRepository.deleteAll();
+
     }
 }

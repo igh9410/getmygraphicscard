@@ -7,6 +7,8 @@ import com.getmygraphicscard.identityservice.model.SecurityUser;
 import com.getmygraphicscard.identityservice.repository.UserRepository;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -19,6 +21,7 @@ import org.springframework.stereotype.Service;
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
 import java.util.Optional;
+import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
 @Service
@@ -31,6 +34,8 @@ public class AuthServiceImpl implements AuthService {
     private final PasswordEncoder passwordEncoder;
 
     private final UserRepository userRepository;
+
+    private final StringRedisTemplate redisTemplate;
 
     @Override
     public String generateToken(Authentication authentication) {
@@ -53,6 +58,24 @@ public class AuthServiceImpl implements AuthService {
         log.info("New Token Generated");
         return token;
     }
+
+    @Override
+    public boolean addTokenToBlackList(String token) {
+        // Add token to blacklist included in the Authorization header for logout
+        if (!redisTemplate.hasKey(token)) {
+            // Add token to blacklist included in the Authorization header for logout
+            log.info("Token {} is blacklisted, therefore becomes invalid", token);
+            redisTemplate.opsForValue().setIfAbsent(token,"blacklist", 3, TimeUnit.HOURS);
+            log.info(redisTemplate.opsForValue().get(token));
+
+            return true;
+        } else {
+            // Token is already blacklisted.
+            log.info("Token {} is already on the blacklist", token);
+            return false;
+        }
+    }
+
 
     @Override
     public UserDto saveUser(UserDto userDto) {
