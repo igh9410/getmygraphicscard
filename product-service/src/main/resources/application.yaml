@@ -24,6 +24,9 @@ spring:
   # Kafka Configuration
   kafka:
     bootstrap-servers: localhost:9092
+springdoc:
+  api-docs:
+    path: /api/docs
 
 
 

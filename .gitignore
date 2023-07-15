@@ -14,3 +14,7 @@ build
 Keycloak-config
 OAuth2Tokens
 /identity-service/src/main/resources/application-jwt.yaml
+/Backup
+
+# Ignore Former frontend project
+/frontend

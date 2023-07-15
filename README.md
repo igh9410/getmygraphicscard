@@ -20,6 +20,13 @@ For product-service,
 For subscription-service,
 ![Screenshot from 2023-02-16 18-47-04](https://user-images.githubusercontent.com/31177070/219332020-ecb00564-22fe-49e6-80c5-0bcc6a23ae79.png)
 
+## To Run
+To run the whole microservices, Docker, MySQL and MongoDB must be installed and running.
+Run Redis and Apache Kafka first in terminal with command "docker compose up -d"
+After that, the execution order of each microservice does not matter much, but I recommend running eureka-server,
+api-gateway, identity-service, product-service, subscription-service in order.
+product-service and subscription-service support launching multiple instances.
+
 ## 📝 How It Works
 
 Users access to the app via Spring Cloud Gateway, running on port 8888.
@@ -202,6 +209,7 @@ Send POST request to sign up to the app
 
 ```json
 {
+    "username": "[username in plain text]",
     "email": "[valid email address]",
     "password": "[password in plain text]"
 }
@@ -211,6 +219,7 @@ Send POST request to sign up to the app
 
 ```json
 {
+    "username": "test1234",
     "email": "iloveauth@example.com",
     "password": "abcd1234"
 }
@@ -218,20 +227,12 @@ Send POST request to sign up to the app
 
 ### Success Response
 
-**Code** : `200 OK`
+**Code** : `201 OK`
 
-**Content example**
-
-```json
-{
-    "email": "iloveauth@example.com",
-    "password": "abcd1234"
-}
-```
 
 ### Error Response
 
-**Condition** : If the email is already registered.
+**Condition** : If the username or email is already registered.
 
 **Code** : `401 Unauthorized`
 
@@ -419,7 +420,13 @@ Item deleted successfully.
 
 
 # GetMyGraphicsCard - 한국어
-
+실행하려면 Docker와 MySQL, MongoDB가 설치되어 실행 중이어야 합니다.
+docer compose up -d로 Redis와 아파치 Kafka를 먼저 실행해주세요.
+그 이후에는 각 마이크로서비스들 실행 순서는 크게 상관없으나 eureka-server,
+api-gateway, identity-service, product-service, subscription
+-service 순서로 실행하는 것을 권장합니다.
+product-service와 subscription-service는 서버 다중화를 지원하므로 여러개의
+인스턴스를 실행할 수 있습니다.
 
 GetMyGraphicsCard 프로젝트는 스프링부트 프로젝트를 두개 생성해서 하나는
 제품 서비스, 다른 하나는 구독 서비스로 분리하고 또 스프링 클라우드 API Gateway와

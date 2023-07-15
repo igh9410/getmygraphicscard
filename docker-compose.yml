@@ -1,64 +1,7 @@
 ---
 version: "3.9"
 services:
-
-  product-service: 
-    image: igh9410/product-service:v2
-    ports:
-      - "5000:5000"
-    depends_on:
-      - mongo
-      - broker
-      - eureka-server
-    environment:
-      - KAFKA_BROKER_URL=broker:9092
-      - SPRING_DATA_MONGODB_URI=mongodb://mongo:27017/java
-      - EUREKA_URL=http://eureka-server:8070/eureka
-    networks:
-      - backend
-  
-  mongo:
-    image: mongo
-    ports:
-      - "27017:27017"
-
-    volumes:
-      - mongodb_data:/data/db
-    networks:
-      - backend
-  
-  subscription-service:
-    image: igh9410/subscription-service:v1
-    ports:
-      - "5001:5001"
-    depends_on:
-      - mysql
-    networks:
-      - backend
-  
-  mysql:
-    image: mysql
-    ports:
-      - "3306:3306"
-    networks:
-      - backend
-
-  eureka-server:
-    image: igh9410/eureka-server:v1
-    ports:
-      - "8070:8070"
-    networks:
-      - backend
-
-  api-gateway:
-    image: igh9410/api-gateway:v1
-    ports:
-      - "8888:8888"
-    networks:
-      - backend  
-  
-
-  zookeeper:
+  zookeeper: # ZooKepper for Kafka
     image: confluentinc/cp-zookeeper:7.3.0
     container_name: zookeeper
     environment:
@@ -67,7 +10,7 @@ services:
     networks:
       - backend
 
-  broker:
+  broker: # Kafka Broker
     image: confluentinc/cp-kafka:7.3.0
     container_name: broker
     ports:
@@ -84,6 +27,15 @@ services:
       KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1
     networks:
       - backend
+  
+  redis:  # Redis Image
+    image: redis:latest
+    container_name: redis
+    ports:
+      - "6379:6379"
+    networks:
+      - backend
+
 
 networks:
   backend:
