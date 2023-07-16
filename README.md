@@ -14,13 +14,13 @@ Backend: Java 17, Spring Boot v3, Spring Cloud, Spring Security, JPA (Hibernate)
 
 ## 🧱 Database Schema Diagram
 
-For identity-service,
+For identity-service,  
 ![identity-service](assets/identity_service.png)
 
-For product-service,
+For product-service,  
 ![ItemSchema](https://user-images.githubusercontent.com/31177070/219332017-b1b6e89d-5870-480f-836d-f28ead74e256.png)
 
-For subscription-service,
+For subscription-service,  
 ![subscription-service](assets/subscription_service.png)
 
 ## To Run
