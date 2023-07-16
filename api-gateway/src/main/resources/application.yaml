@@ -22,17 +22,17 @@ spring:
         - id: identity-service
           uri: lb://identity-service
           predicates:
-            - Path=/api/auth/**
+            - Path=/api/auth/**, /identity/**, /docs/**
         ## Product Service Route
         - id: product-service
           uri: lb://product-service
           predicates:
-            - Path=/api/items, /api/items/**, /api/docs/**
+            - Path=/api/items, /api/items/**, /product/**, /docs/**
         ## Subscription Service Route
         - id: subscription-service
           uri: lb://subscription-service
           predicates:
-            - Path=/api/subscriptions, /api/subscriptions/**, /api/docs/**
+            - Path=/api/subscriptions, /api/subscriptions/**, /subscription/**, /docs/**
 
 
 

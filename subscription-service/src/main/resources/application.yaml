@@ -48,8 +48,10 @@ logging:
         security: TRACE
 springdoc:
   api-docs:
-    path: /api/docs
-  show-actuator: true
+    path: /docs/subscription
+  swagger-ui:
+    path: /subscription/swagger-ui.html
+
 
 management:
   health:

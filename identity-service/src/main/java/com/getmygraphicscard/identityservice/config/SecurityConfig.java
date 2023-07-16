@@ -48,8 +48,7 @@ public class SecurityConfig {
         http.csrf().disable();
 
         http.authorizeHttpRequests()
-                  .requestMatchers("/api/auth/**")
-               // .requestMatchers("/api/auth/login", "/api/signup")
+                  .requestMatchers("/api/auth/**", "/identity/**", "/docs/**")
                     .permitAll();
 
 

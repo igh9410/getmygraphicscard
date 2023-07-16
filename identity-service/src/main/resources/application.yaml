@@ -19,6 +19,14 @@ spring:
       host: localhost
       port: 6379
 
+springdoc:
+  api-docs:
+    path: /docs/identity
+  swagger-ui:
+    path: /identity/swagger-ui.html
+
+
+
 eureka:
   client:
     serviceUrl:
