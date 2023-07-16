@@ -6,7 +6,7 @@ Graphics card comparison site which sends email notifications.
 
 Frontend: React Typescript (still under construction)
 
-Backend: Java 17, Spring Boot v3, Spring Cloud, Spring Security, JPA (Hibernate), MySQL, MongoDB, Kafka
+Backend: Java 17, Spring Boot v3, Spring Cloud, Spring Security, JPA (Hibernate), MySQL, MongoDB, Kafka, Redis
 
 ## 🧱 Server Architecture Diagram
 
@@ -14,11 +14,14 @@ Backend: Java 17, Spring Boot v3, Spring Cloud, Spring Security, JPA (Hibernate)
 
 ## 🧱 Database Schema Diagram
 
+For identity-service,
+![identity-service](assets/identity_service.png)
+
 For product-service,
 ![ItemSchema](https://user-images.githubusercontent.com/31177070/219332017-b1b6e89d-5870-480f-836d-f28ead74e256.png)
 
 For subscription-service,
-![Screenshot from 2023-02-16 18-47-04](https://user-images.githubusercontent.com/31177070/219332020-ecb00564-22fe-49e6-80c5-0bcc6a23ae79.png)
+![subscription-service](assets/subscription_service.png)
 
 ## To Run
 To run the whole microservices, Docker, MySQL and MongoDB must be installed and running.
@@ -51,167 +54,32 @@ Users will receive emails like below when their items on the wishlist become the
 
 # 📝 API Documentation
 
+API documentation for each service can be accessed via following URL:
+
+identity-service: http:localhost:4000/identity/swagger-ui.html  
+product-service: http:localhost:{port number for product-service}/product/swagger-ui.html  
+subscription-service: http:localhost:{port number for subscription-service}/subscription/swagger-ui.html  
+
+
+## Identity Service
+
+![identity-service1](assets/IdentityService1.png)  
+![identity-service2](assets/IdentityService2.png)  
+
+
 ## Product Service
 
-###  Items
-
-**Description**: Returns 20 saved items information. 
-
-**URL** : `/api/items/`
-
-**Method** : `GET`
-
-**Auth required** : NO
-
-**Params** : pageNo (default = 0),  size (default 20)
-
-#### Success Response
-
-**Code** : `200 OK`
-
-**Content example**
-
-```json
-{"content": [{"title": "INNO3D 지포스 GTX 1630 OC D6 4GB TWIN X2","link": "[https://search.shopping.naver.com/gate.nhn?id=35480507621](https://search.shopping.naver.com/gate.nhn?id=35480507621)","image": "[https://shopping-phinf.pstatic.net/main_3548050/35480507621.20221027163645.jpg](https://shopping-phinf.pstatic.net/main_3548050/35480507621.20221027163645.jpg)","lprice": 198000},{"title": "이엠텍 지포스 GTX 1630 STORM X Dual MINI D6 4GB","link": "[https://search.shopping.naver.com/gate.nhn?id=33802526621](https://search.shopping.naver.com/gate.nhn?id=33802526621)","image": "[https://shopping-phinf.pstatic.net/main_3380252/33802526621.20220801171627.jpg]], ..., "pageable": {"sort": {"empty": true,"sorted": false,"unsorted": true},"offset": 0,"pageNumber": 0,"pageSize": 20,"unpaged": false,"paged": true},"totalPages": 201,"totalElements": 4007,"last": false,"size": 20,"number": 0,"sort": {"empty": true,"sorted": false,"unsorted": true},"first": true,"numberOfElements": 20,"empty": false}
-```
-
-
-
-```
-[
-	
-	{
-
-	"title":  "COLORFUL RTX 2060 토마호크 D6 6GB 무상AS 24년",
-
-	"link":  "https://search.shopping.naver.com/gate.nhn?id=36362481720",
-
-	"image":  "https://shopping-phinf.pstatic.net/main_3636248/36362481720.jpg",
-
-	"lprice":  168330
-
-	},
-
-	{
-
-	"title":  "MSI 지포스 RTX 2070 벤투스 D6 8GB 중고 AS6개월",
-
-	"link":  "https://search.shopping.naver.com/gate.nhn?id=37433169835",
-
-	"image":  "https://shopping-phinf.pstatic.net/main_3743316/37433169835.jpg",
-
-	"lprice":  756960
-
-	},
-
-	{
-
-	"title":  "ASUS RTX2060 GTX1660ti 1660 1650 TUF 그래픽 냉각팬",
-
-	"link":  "https://search.shopping.naver.com/gate.nhn?id=29542489777",
-
-	"image":  "https://shopping-phinf.pstatic.net/main_2954248/29542489777.jpg",
-
-	"lprice":  152900
-
-	}
-
-]
-```
-
-
-### Error Response
-
-**Condition** : If user with {id} param doesn't exist in the database.
-
-**Code** : `403 Forbidden`
-
-##
-
-### Add item to the subscription
-
-Add the item to the user with id {id}'s wishlist.
-It can be performed by an authenticated user with id same with the parameter or by ADMIN user.
-
-**URL** : `/api/subscriptions/{id}`
-
-**Method** : `POST`
-
-**Auth required** : YES
-
-**Params** : {id} (required)
-
-**Data constraints**
-
-```
-{productId}
-```
-
-**Data example**
-```
-33816585619
-```
-
-
-### Success Response
-
-**Code** : `200 OK`
-
-**Content example**
-
-```
-{
-
-	"title":  "컬러풀 지포스 GTX 1630 토마호크 D6 4GB",
-
-	"link":  "https://search.shopping.naver.com/gate.nhn?id=33816585619",
-
-	"image":  "https://shopping-phinf.pstatic.net/main_3381658/33816585619.20220802114706.jpg",
-
-	"lprice":  187500
-
-}
-```
-
-
-### Error Response
-
-**Condition** : If the item with the specified productId doesn't exist in the database.
-
-**Code** : `403 Forbidden`
-
-##
-
-### Remove item from the subscription
-
-Delete the item with index from the user with id {id}'s wishlist.
-It can be performed by an authenticated user with id same with the parameter or by ADMIN user.
-
-**URL** : `/api/subscriptions/{id}/{index}`
-
-**Method** : `DELETE`
-
-**Auth required** : YES
-
-**Params** : {id} (required), {index} (required)
-
-### Success Response
-
-**Code** : `200 OK`
-
-**Content example**
-
-```
-Item deleted successfully.
-```
-
-
-### Error Response
-
-**Condition** : If the item with the specified index doesn't exist in the database.
-
-**Code** : `403 Forbidden`
-
+![product-service1](assets/ProductService1.png)  
+![product-service2](assets/ProductService2.png)  
+![product-service3](assets/ProductService3.png)  
+![product-service4](assets/ProductService4.png)  
+![product-service5](assets/ProductService5.png)  
+
+## Subscription Service
+
+![subscription-service1](assets/SubscriptionService1.png)  
+![subscription-service2](assets/SubscriptionService2.png)  
+![subscription-service3](assets/SubscriptionService3.png)  
 
 # GetMyGraphicsCard - 한국어
 실행하려면 Docker와 MySQL, MongoDB가 설치되어 실행 중이어야 합니다.
