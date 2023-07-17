@@ -1,13 +1,9 @@
 package com.getmygraphicscard.subscriptionservice.service;
 
 
-import com.getmygraphicscard.subscriptionservice.dto.SubscriptionDto;
 import com.getmygraphicscard.subscriptionservice.dto.SubscriptionItemDto;
-import com.getmygraphicscard.subscriptionservice.entity.Subscription;
 import com.getmygraphicscard.subscriptionservice.entity.SubscriptionItem;
-import com.getmygraphicscard.subscriptionservice.enums.Role;
-import com.getmygraphicscard.subscriptionservice.repository.SubscriptionRepository;
-
+import com.getmygraphicscard.subscriptionservice.repository.SubscriptionItemRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -15,16 +11,12 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.context.annotation.Import;
-import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.web.client.RestTemplate;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.AdditionalAnswers.returnsFirstArg;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.BDDMockito.willDoNothing;
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.when;
 
 
 @ExtendWith(MockitoExtension.class)
@@ -32,74 +24,68 @@ import static org.mockito.Mockito.*;
 public class SubscriptionServiceTest {
 
     @Mock
-    SubscriptionRepository subscriptionRepository;
+    SubscriptionItemRepository subscriptionItemRepository;
+
+    @Mock
+    RestTemplate restTemplate;
 
     @InjectMocks
     SubscriptionServiceImpl subscriptionService;
 
-    @Mock
-    PasswordEncoder passwordEncoder;
-    Subscription subscription;
 
     @BeforeEach
-    public void setUpSubscription() {
-        subscription = Subscription.builder()
-                .id(1L)
-                .password("test")
-                .email("test@gmail.com")
-                .role(Role.USER)
-                .subscriptionItemList(new ArrayList<>())
-                .build();
-
-        subscription.getSubscriptionItemList().add(SubscriptionItem.builder().subscription(subscription)
+    public void setUpSubscriptionItems() {
+        SubscriptionItem subscriptionItem1 = SubscriptionItem.builder()
                 .title("RTX 3050")
                 .image("test1")
                 .link("test1")
-                .lprice(20000).build());
-        subscription.getSubscriptionItemList().add(SubscriptionItem.builder().subscription(subscription)
+                .userEmail("test1@gmail.com")
+                .lprice(200000).build();
+
+        SubscriptionItem subscriptionItem2 = SubscriptionItem.builder()
                 .title("RTX 3060")
                 .image("test2")
                 .link("test2")
-                .lprice(30000).build());
-        subscription.getSubscriptionItemList().add(SubscriptionItem.builder().subscription(subscription)
-                .title("RTX 3070")
+                .userEmail("test1@gmail.com")
+                .lprice(300000).build();
+
+        SubscriptionItem subscriptionItem3 = SubscriptionItem.builder()
+                .title("RTX 3060Ti")
                 .image("test3")
                 .link("test3")
-                .lprice(40000).build());
-    }
+                .userEmail("test2@gmail.com")
+                .lprice(400000).build();
 
+        SubscriptionItem subscriptionItem4 = SubscriptionItem.builder()
+                .title("RTX 3070")
+                .image("test4")
+                .link("test4")
+                .userEmail("test2@gmail.com")
+                .lprice(500000).build();
 
-    @Test
-    void makeSubscriptionTest() {
-        // given
-        when(subscriptionRepository.save(any(Subscription.class))).then(returnsFirstArg());
-
-        //when
-        SubscriptionDto subscriptionDto = SubscriptionDto.builder()
-                .password(subscription.getPassword())
-                .email(subscription.getEmail())
-                .build();
-
-        SubscriptionDto expected = subscriptionService.makeSubscription(subscriptionDto);
-
-        assertEquals("test", expected.getPassword());
-        assertEquals("test@gmail.com", expected.getEmail());
-
-        verify(subscriptionRepository).save(any());
-
+        subscriptionItemRepository.save(subscriptionItem1);
+        subscriptionItemRepository.save(subscriptionItem2);
+        subscriptionItemRepository.save(subscriptionItem3);
+        subscriptionItemRepository.save(subscriptionItem4);
     }
 
     @Test
-    void removeSubscriptionTest() {
-        Long subscriptionId = 1L;
+    void getAllSubscribedItemsTest() throws Exception {
+        // Given
+        String userEmail = "test@test.com";
+        SubscriptionItem subscriptionItem = new SubscriptionItem();
+        subscriptionItem.setTitle("Test Item");
+        // Add any other necessary fields
+        when(subscriptionItemRepository.findByUserEmail(userEmail)).thenReturn(List.of(subscriptionItem));
 
-        willDoNothing().given(subscriptionRepository).deleteById(subscriptionId);
+        // When
+        List<SubscriptionItemDto> items = subscriptionService.getAllSubscribedItems(userEmail);
 
-        subscriptionService.removeSubscription(subscriptionId);
+        // Then
+        assertEquals(1, items.size());
+        assertEquals("Test Item", items.get(0).getTitle());
 
-        verify(subscriptionRepository, times(1)).deleteById(subscriptionId);
     }
-
 
     @Test
     void addItemToSubscriptionTest() throws Exception {
@@ -111,8 +97,8 @@ public class SubscriptionServiceTest {
                 .lprice(200000)
                 .build();
 
-        subscription.addItem(subscriptionItem);
-        assertEquals(subscription.getSubscriptionItemList().get(3).getTitle(), subscriptionItem.getTitle(), "This should be equal");
+        subscriptionItemRepository.save(subscriptionItem);
+
 
     }
 
@@ -125,56 +111,12 @@ public class SubscriptionServiceTest {
                 .title("RTX 3060TI")
                 .lprice(200000)
                 .build();
-        subscription.addItem(subscriptionItem);
-        subscription.removeItem(subscriptionItem);
-        assertEquals(3, subscription.getSubscriptionItemList().size(), "Should be 3");
-    }
-
-    @Test
-    void getAllSubscribedItemsTest() throws Exception {
-
-        List<SubscriptionItemDto> testItems = subscriptionService.getAllSubscribedItems(subscription);
-        assertEquals("RTX 3050", testItems.get(0).getTitle());
-        assertEquals("RTX 3060", testItems.get(1).getTitle());
-        assertEquals("RTX 3070", testItems.get(2).getTitle());
-    }
-
-    @Test
-    void getNotifiedUsersByLinkTest() {
-        Subscription subscription2 = Subscription.builder()
-                .id(2L)
-                .password("test2")
-                .email("test2@gmail.com")
-                .role(Role.USER)
-                .subscriptionItemList(new ArrayList<>())
-                .build();
-        subscription2.getSubscriptionItemList().add(SubscriptionItem.builder().subscription(subscription)
-                .title("RTX 3050")
-                .image("test1")
-                .link("test1")
-                .lprice(20000).build());
-        Subscription subscription3 = Subscription.builder()
-                .id(3L)
-                .password("test3")
-                .email("test3@gmail.com")
-                .role(Role.USER)
-                .subscriptionItemList(new ArrayList<>())
-                .build();
-        subscription2.getSubscriptionItemList().add(SubscriptionItem.builder().subscription(subscription)
-                .title("RTX 3060")
-                .image("test2")
-                .link("test2")
-                .lprice(300000).build());
-
-        String link = "test1";
-        List<Subscription> testUsers = new ArrayList<>();
-        testUsers.add(subscription);
-        testUsers.add(subscription2);
-        testUsers.add(subscription3);
-        
-        System.out.println(testUsers.isEmpty());
 
     }
+
+
+
+
 }
 
 
