@@ -1,0 +1,18 @@
+jwt:
+  secret: 79244226452948404D635166546A576D5A7134743777217A25432A462D4A614E
+spring:
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: athanasia9410@gmail.com
+    password: odzwmynkeorrbefh
+    properties:
+      mail:
+        debug: true
+        transport:
+          protocol: smtp
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+
