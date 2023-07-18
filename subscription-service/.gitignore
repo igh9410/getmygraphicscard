@@ -36,7 +36,3 @@ out/
 ### VS Code ###
 .vscode/
 
-# Credentials
-application-oauth.yaml
-/src/main/resources/certs/
-/src/main/resources/certs/**
