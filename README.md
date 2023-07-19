@@ -6,6 +6,8 @@ To run the whole microservices, Docker, JDK 17 are required.
 Intellij IDE is recommended.  
 Make sure that MongoDB and MySQL is not running before the installation.  
 For user convenience, databases and middlewares like MySQL, MongoDB, Redis are included in docker-compose.yml.  
+If the user OS is Windows, please install Git Bash and execute the commands introduced below  
+in the Git Bash terminal.  
 While Docker is running, run the docker-compose file for this project by "docker-compose up -d",  
 Then to initialize databases, run "./install-script.sh" or just run the sh file install-script.sh  
 Execute this command in terminal after that to ensure database initialization.   
