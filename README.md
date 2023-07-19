@@ -1,6 +1,21 @@
 # GetMyGraphicsCard
 Graphics card comparison site which sends email notifications.
 
+## To Run
+To run the whole microservices, Docker, JDK 17 are required.  
+Intellij IDE is recommended.  
+Make sure that MongoDB and MySQL is not running before the installation.  
+For user convenience, databases and middlewares like MySQL, MongoDB, Redis are included in docker-compose.yml.  
+While Docker is running, run the docker-compose file for this project by "docker-compose up -d",  
+Then to initialize databases, run "./install-script.sh" or just run the sh file install-script.sh  
+Execute this command in terminal after that to ensure database initialization.   
+mysql -uroot -pmypassword -e "CREATE DATABASE IF NOT EXISTS identity_service; CREATE DATABASE IF NOT EXISTS subscription_service;"  
+
+After that, the execution order of each microservice does not matter much, but I recommend running eureka-server,  
+api-gateway, identity-service, product-service, subscription-service in order.  
+product-service and subscription-service support launching multiple instances.
+
+
 
 ## 📝  Tech Stack
 
@@ -23,12 +38,6 @@ For product-service,
 For subscription-service,
 ![subscription-service](assets/subscription_service.png)
 
-## To Run
-To run the whole microservices, Docker, MySQL and MongoDB must be installed and running.
-Run Redis and Apache Kafka first in terminal with command "docker compose up -d"
-After that, the execution order of each microservice does not matter much, but I recommend running eureka-server,
-api-gateway, identity-service, product-service, subscription-service in order.
-product-service and subscription-service support launching multiple instances.
 
 ## 📝 How It Works
 
@@ -82,8 +91,18 @@ subscription-service: http:localhost:{port number for subscription-service}/subs
 ![subscription-service3](assets/SubscriptionService3.png)  
 
 # GetMyGraphicsCard - 한국어
-실행하려면 Docker와 MySQL, MongoDB가 설치되어 실행 중이어야 합니다.
-docer compose up -d로 Redis와 아파치 Kafka를 먼저 실행해주세요.
+실행하려면 Docker와 JDK 17이 필요합니다.  
+Intellij IDE를 권장합니다.  
+혹시 MySQL이나 MongoDB가 로컬에서 실행중이면 중지해주셔야 합니다.  
+MySQL, MongoDB, Redis, Kafka는 도커 컴포즈 파일에 포함되어 있습니다.  
+사용자 운영체제가 Windows라면 먼저 Git Bash를 설치해주시고 Git Bash에서  
+커맨드들을 실행해주세요.  
+Docker를 실행한 이후 터미널에 "docker-compose up -d"로 도커 컴포즈를 실행합니다.  
+이후 './install-script.sh' install-script.sh 파일을 실행합니다.  
+MySQL 데이터베이스를 생성하기 위해 터미널에서  
+mysql -uroot -pmypassword -e "CREATE DATABASE IF NOT EXISTS identity_service; CREATE DATABASE IF NOT EXISTS subscription_service;"  
+커맨드를 실행해주세요.  
+
 그 이후에는 각 마이크로서비스들 실행 순서는 크게 상관없으나 eureka-server,
 api-gateway, identity-service, product-service, subscription
 -service 순서로 실행하는 것을 권장합니다.

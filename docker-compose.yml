@@ -35,6 +35,28 @@ services:
       - "6379:6379"
     networks:
       - backend
+  mysql:  # MySQL Service
+    image: mysql:latest
+    container_name: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: mypassword  # root password
+      MYSQL_USER: igh9410  # creating a new user
+      MYSQL_PASSWORD: mypassword  # password for the new user
+    ports:
+      - "3306:3306"
+    networks:
+      - backend
+
+  mongodb:  # MongoDB Service
+    image: mongo:latest
+    container_name: mongodb
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+    networks:
+      - backend
+
 
 
 networks:
@@ -43,3 +65,4 @@ networks:
 
 volumes: 
   mongodb_data:
+  mysql_data:
