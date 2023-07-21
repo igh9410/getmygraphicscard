@@ -1,5 +1,6 @@
 # GetMyGraphicsCard
 Graphics card comparison site which sends email notifications.
+Frontend repository: [Frontend](https://github.com/igh9410/GetMyGraphicsCard-Frontend)
 
 
 ## 📝  Tech Stack
