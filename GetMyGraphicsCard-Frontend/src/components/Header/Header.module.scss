@@ -1,0 +1,14 @@
+.header {
+  width: 90rem;
+  height: 4.875rem;
+  justify-self: center;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  justify-content: center;
+  align-items: center;
+
+  .buttonWrapper {
+    display: flex;
+    justify-self: flex-end;
+  }
+}
