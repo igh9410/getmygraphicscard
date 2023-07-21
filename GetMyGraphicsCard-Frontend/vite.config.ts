@@ -48,8 +48,8 @@ export default defineConfig({
         replacement: fileURLToPath(new URL('./src/features', import.meta.url)),
       },
       {
-        find: '@routes',
-        replacement: fileURLToPath(new URL('./src/routes', import.meta.url)),
+        find: '@pages',
+        replacement: fileURLToPath(new URL('./src/pages', import.meta.url)),
       },
       {
         find: '@types',
