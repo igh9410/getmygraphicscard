@@ -51,6 +51,7 @@ public class SecurityConfig {
 
          // Disable CSRF protection because there's no need to use it when using JWT.
         http.cors().configurationSource(corsConfigurationSource());//configurationSource(corsConfigurationSource());
+     //   http.cors().disable();
 
         http.csrf().disable();
 
@@ -102,7 +103,7 @@ public class SecurityConfig {
     @Bean
     CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration config = new CorsConfiguration();
-        config.setAllowedOrigins(Arrays.asList("http://localhost:3000", "http://localhost:3001"));
+        config.setAllowedOrigins(Arrays.asList("http://localhost:3000", "http://localhost:3001", "http://localhost:8888"));
         config.setAllowedHeaders(Arrays.asList("Authorization", "Cache-Control", "Content-Type"));
         config.setAllowedMethods(Arrays.asList("GET", "POST", "OPTIONS", "DELETE", "PUT", "PATCH"));
         config.setAllowCredentials(true);

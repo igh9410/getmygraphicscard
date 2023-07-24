@@ -22,7 +22,7 @@ import java.net.URI;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/auth")
-@CrossOrigin("http://localhost:3000")
+@CrossOrigin("http:localhost:3000")
 public class AuthController {
 
     private static final Logger log = LoggerFactory.getLogger(AuthController.class);
