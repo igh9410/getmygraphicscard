@@ -48,11 +48,15 @@ spring:
         ## Product Service Route
         - id: product-service
           uri: lb://product-service
+          filters:
+            - DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin
           predicates:
             - Path=/api/items, /api/items/**, /product/**, /docs/**
         ## Subscription Service Route
         - id: subscription-service
           uri: lb://subscription-service
+          filters:
+            - DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin
           predicates:
             - Path=/api/subscriptions, /api/subscriptions/**, /subscription/**, /docs/**
 
