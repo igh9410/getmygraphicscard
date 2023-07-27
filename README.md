@@ -1,7 +1,7 @@
 # GetMyGraphicsCard
 Graphics card comparison site which sends email notifications.  
 Frontend repository: [Frontend](https://github.com/igh9410/GetMyGraphicsCard-Frontend)  
-Beta Showcase Video: [Showcase](https://youtu.be/SB2ql3nyEjA)  
+Final Showcase Video: [Showcase](https://youtu.be/tIaediY-c1U)  
 
 ## 📝  Tech Stack
 
