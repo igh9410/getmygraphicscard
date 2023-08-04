@@ -25,10 +25,20 @@ For subscription-service,
 ![subscription-service](assets/subscription_service.png)
 
 ## To Run
-To run the whole microservices, Docker, MySQL and MongoDB must be installed and running.
-Run Redis and Apache Kafka first in terminal with command "docker compose up -d"
-After that, the execution order of each microservice does not matter much, but I recommend running eureka-server,
-api-gateway, identity-service, product-service, subscription-service in order.
+## To Run
+To run the whole microservices, Docker, JDK 17 are required.  
+Intellij IDE is recommended.  
+Make sure that MongoDB and MySQL is not running before the installation.  
+For user convenience, databases and middlewares like MySQL, MongoDB, Redis are included in docker-compose.yml.  
+If the user OS is Windows, please install Git Bash and execute the commands introduced below  
+in the Git Bash terminal.  
+While Docker is running, run the docker-compose file for this project by "docker-compose up -d",  
+Then to initialize databases, run "./install-script.sh" or just run the sh file install-script.sh  
+Execute this command in terminal after that to ensure database initialization.   
+mysql -uroot -pmypassword -e "CREATE DATABASE IF NOT EXISTS identity_service; CREATE DATABASE IF NOT EXISTS subscription_service;"  
+
+After that, the execution order of each microservice does not matter much, but I recommend running eureka-server,  
+api-gateway, identity-service, product-service, subscription-service in order.  
 product-service and subscription-service support launching multiple instances.
 
 ## 📝 How It Works
