@@ -72,7 +72,7 @@ public class JwtInterceptor implements HandlerInterceptor {
 
                 Claim email = decodedJWT.getClaim("email");
                 userEmail.set(email.asString());
-                log.info("Token = " + bearerToken);
+             //   log.info("Token = " + bearerToken);
                 log.info("Extracted User Email = " + getUserEmail());
 
             } catch (JWTVerificationException exception){
@@ -113,5 +113,10 @@ public class JwtInterceptor implements HandlerInterceptor {
     }
     public String getUserEmail() {
         return userEmail.get();
+    }
+
+    @Override
+    public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception {
+        userEmail.remove();
     }
 }
