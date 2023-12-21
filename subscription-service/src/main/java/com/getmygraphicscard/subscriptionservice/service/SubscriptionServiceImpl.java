@@ -2,6 +2,7 @@ package com.getmygraphicscard.subscriptionservice.service;
 
 import com.getmygraphicscard.subscriptionservice.dto.SubscriptionItemDto;
 import com.getmygraphicscard.subscriptionservice.entity.SubscriptionItem;
+import com.getmygraphicscard.subscriptionservice.exception.ItemNotFoundException;
 import com.getmygraphicscard.subscriptionservice.repository.SubscriptionItemRepository;
 import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import lombok.RequiredArgsConstructor;
@@ -46,6 +47,7 @@ public class SubscriptionServiceImpl implements SubscriptionService {
 
     @Override
     @CircuitBreaker(name = "productService", fallbackMethod = "buildFallbackAddItemToSubscription")
+    @Transactional
     public SubscriptionItemDto addItemToSubscription(String userEmail, String id) throws Exception {
 
         log.info("Requesting product with id {} info to product-service", id);
@@ -80,9 +82,15 @@ public class SubscriptionServiceImpl implements SubscriptionService {
 
 
     @Override
+    @Transactional
     public String removeItemFromSubscription(String userEmail, int index) throws Exception {
 
+
         List<SubscriptionItem> items = subscriptionItemRepository.findByUserEmail(userEmail);
+        if (index < 0 || index >= items.size()) {
+            throw new ItemNotFoundException("Item at index " + index + " not found.");
+        }
+
         SubscriptionItem item = items.get(index);
 
         subscriptionItemRepository.delete(item);
