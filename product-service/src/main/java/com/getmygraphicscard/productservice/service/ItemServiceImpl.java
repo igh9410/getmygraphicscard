@@ -2,6 +2,8 @@ package com.getmygraphicscard.productservice.service;
 
 import com.getmygraphicscard.productservice.dto.ItemResponse;
 import com.getmygraphicscard.productservice.entity.Item;
+import com.getmygraphicscard.productservice.exception.InvalidPriceRangeException;
+import com.getmygraphicscard.productservice.exception.ItemNotFoundException;
 import com.getmygraphicscard.productservice.repository.ItemRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -12,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 @Slf4j
@@ -28,11 +31,12 @@ public class ItemServiceImpl implements ItemService {
 
     @Override
     public List<ItemResponse> findItemsInPriceRange(int lowest, int highest) throws Exception {
-        List<Item> items = itemRepository.findItemByLpriceBetween(lowest, highest);
-        if (items == null) {
-            throw new Exception("Items not found");
+        if (lowest > highest) {
+            throw new InvalidPriceRangeException("Lowest price [" + lowest + "] can't exceed highest price [" + highest + "].");
         }
-        return items.parallelStream().map(this::mapToItemResponse).toList();
+
+        List<Item> items = itemRepository.findItemByLpriceBetween(lowest, highest);
+        return items.stream().map(this::mapToItemResponse).collect(Collectors.toList());
     }
 
     @Override
@@ -45,28 +49,21 @@ public class ItemServiceImpl implements ItemService {
 
     @Override
     public ItemResponse findItemById(String id) throws Exception {
-        Optional<Item> result = itemRepository.findById(id);
-        if (result.isEmpty()) {
-            throw new Exception("Item not found .. ");
-        }
-        log.info("Getting ProductId {} info..", id);
-        return mapToItemResponse(result.get());
+        return itemRepository.findById(id)
+                .map(this::mapToItemResponse)
+                .orElseThrow(() -> new ItemNotFoundException("Item with ID [" + id + "] not found."));
     }
 
     @Override
     public Page<ItemResponse> findItemsByTitleAndPriceRange(String title, int lowest, int highest, Pageable pageable) throws Exception {
-        
+
         if (lowest > highest) {
-            throw new Exception("Lowest Price can't exceed highest price");
+            throw new InvalidPriceRangeException("Lowest price [" + lowest + "] can't exceed highest price [" + highest + "].");
         }
 
         Page<Item> itemPage = itemRepository.findItemsByTitleAndPriceRange(title, lowest, highest, pageable);
 
-        if (itemPage == null) {
-            throw new Exception("Items not found");
-        }
-
-        return itemPage.map(item -> new ItemResponse(item.getProductId(), item.getTitle(), item.getLink(), item.getImage(), item.getLprice()));
+        return itemPage.map(this::mapToItemResponse);
     }
 
 
