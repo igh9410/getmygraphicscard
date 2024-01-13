@@ -28,19 +28,19 @@ public class SubscriptionController {
 
     @GetMapping("/")
     public ResponseEntity<List<SubscriptionItemDto>> getAllSubscribedItems() throws Exception {
-       String userEmail = jwtInterceptor.getUserEmail();
-       log.info("Logged in user email = " + userEmail);
-       List<SubscriptionItemDto> subscriptionItemDtoList = subscriptionService.getAllSubscribedItems(userEmail);
+        String userEmail = jwtInterceptor.getUserEmail();
+        log.info("Logged in user email = " + userEmail);
+        List<SubscriptionItemDto> subscriptionItemDtoList = subscriptionService.getAllSubscribedItems(userEmail);
 
-       return ResponseEntity.ok(subscriptionItemDtoList);
+        return ResponseEntity.ok(subscriptionItemDtoList);
     }
 
     @PostMapping("/")
     @ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity<SubscriptionItemDto> addItemToSubscription(@RequestBody String productId) throws Exception {
-       String userEmail = jwtInterceptor.getUserEmail();
+        String userEmail = jwtInterceptor.getUserEmail();
 
-       return ResponseEntity.status(HttpStatus.CREATED).body(subscriptionService.addItemToSubscription(userEmail, productId));
+        return ResponseEntity.status(HttpStatus.CREATED).body(subscriptionService.addItemToSubscription(userEmail, productId));
     }
 
 
@@ -54,7 +54,6 @@ public class SubscriptionController {
 
         return ResponseEntity.noContent().build();
     }
-
 
 
 }

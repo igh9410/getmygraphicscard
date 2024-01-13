@@ -52,7 +52,7 @@ public class WebClientServiceImpl implements WebClientService {
                 .map(i -> new Item(i.getTitle().replaceAll("\\<.*?>", ""), i.getLink(), i.getImage(), i.getLprice(), i.getProductId()))
                 .collect(Collectors.toList());
 
-        for (Item i: addedItems) {
+        for (Item i : addedItems) {
             if (itemRepository.existsById(i.getProductId())) {
                 log.info("Product Id = " + i.getProductId());
                 Item comparison = itemRepository.findByLink(i.getLink()).orElseThrow(() -> new RuntimeException("Item does not exist"));
@@ -66,7 +66,6 @@ public class WebClientServiceImpl implements WebClientService {
         log.info("Saving {} data to DB", chipset);
         itemRepository.saveAll(addedItems);
     }
-
 
 
 }

@@ -28,9 +28,8 @@ public class EmailServiceImpl implements EmailService {
 
     private final AlertRepository alertRepository;
 
-    private static Logger logger =  LoggerFactory.getLogger(EmailServiceImpl.class);
+    private static Logger logger = LoggerFactory.getLogger(EmailServiceImpl.class);
     private final RedisLockRegistry redisLockRegistry;
-
 
 
     @Override

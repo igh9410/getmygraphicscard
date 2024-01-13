@@ -32,6 +32,7 @@ public class WebClientServiceTest {
         mockWebServer = new MockWebServer();
         mockWebServer.start(6000);
     }
+
     @Test
     void requestGraphicsCardInfoTest() throws IOException {
         ClassPathResource naverResource = new ClassPathResource("NaverShop.json");
@@ -51,13 +52,11 @@ public class WebClientServiceTest {
         webClientServiceImpl.addGraphicsCardToDB(graphicsCard, chipset);
 
     }
+
     @AfterAll
     static void removeWebServer() throws IOException {
         mockWebServer.shutdown();
     }
-
-
-
 
 
 }

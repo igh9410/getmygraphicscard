@@ -49,15 +49,15 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 
-         // Disable CSRF protection because there's no need to use it when using JWT.
+        // Disable CSRF protection because there's no need to use it when using JWT.
         http.cors().configurationSource(corsConfigurationSource());//configurationSource(corsConfigurationSource());
-     //   http.cors().disable();
+        //   http.cors().disable();
 
         http.csrf().disable();
 
         http.authorizeHttpRequests()
-                  .requestMatchers("/api/auth/**", "/identity/**", "/docs/**")
-                    .permitAll();
+                .requestMatchers("/api/auth/**", "/identity/**", "/docs/**")
+                .permitAll();
 
 
         http.sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
@@ -65,9 +65,7 @@ public class SecurityConfig {
                 .exceptionHandling((ex) -> ex.authenticationEntryPoint(new BearerTokenAuthenticationEntryPoint())
                         .accessDeniedHandler(new BearerTokenAccessDeniedHandler()));
 
-       http.logout().disable();
-
-
+        http.logout().disable();
 
 
         return http.build();
@@ -88,13 +86,13 @@ public class SecurityConfig {
     }
 
 
-
     @Bean
     JwtEncoder jwtEncoder() {
         JWK jwk = new RSAKey.Builder(jwtConfigProperties.publicKey()).privateKey(jwtConfigProperties.privateKey()).build();
         JWKSource<SecurityContext> jwks = new ImmutableJWKSet<>(new JWKSet(jwk));
         return new NimbusJwtEncoder(jwks);
     }
+
     @Bean
     JwtDecoder jwtDecoder() {
         return NimbusJwtDecoder.withPublicKey(jwtConfigProperties.publicKey()).build();

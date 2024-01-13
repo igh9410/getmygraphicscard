@@ -16,16 +16,15 @@ import lombok.NoArgsConstructor;
 public class UserDto {
 
     @NotBlank
-    @Size(min=6, max=12, message = "The username must be between 6 and 12 characters.")
+    @Size(min = 6, max = 12, message = "The username must be between 6 and 12 characters.")
     private String username;
 
     @Email(message = "The email must be valid.")
     private String email;
 
     @NotBlank
-    @Size(min=6, max=20, message = "The password must be between 6 and 20 characters.")
+    @Size(min = 6, max = 20, message = "The password must be between 6 and 20 characters.")
     private String password;
-
 
 
 }

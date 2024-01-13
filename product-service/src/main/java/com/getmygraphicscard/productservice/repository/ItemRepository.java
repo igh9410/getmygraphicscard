@@ -16,6 +16,7 @@ import java.util.Optional;
 public interface ItemRepository extends MongoRepository<Item, String> {
 
     Page<Item> findAll(Pageable pageable);
+
     Page<Item> findAllBy(TextCriteria criteria, Pageable pageable);
 
     Optional<Item> findByLink(String Link);
@@ -26,7 +27,7 @@ public interface ItemRepository extends MongoRepository<Item, String> {
     @Query("{$and: [{'$text': {$search: ?0}}, {'lprice': {$gte: ?1, $lte: ?2}}]}")
     List<Item> findItemsByTitleAndPriceRangeQuery(String title, int lowest, int highest);
 
-    default Page<Item> findItemsByTitleAndPriceRange(String title, int lowest, int highest, Pageable pageable){
+    default Page<Item> findItemsByTitleAndPriceRange(String title, int lowest, int highest, Pageable pageable) {
         List<Item> items = findItemsByTitleAndPriceRangeQuery(title, lowest, highest);
         int start = (int) pageable.getOffset();
         int end = Math.min((start + pageable.getPageSize()), items.size());

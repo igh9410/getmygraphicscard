@@ -17,7 +17,7 @@ public class ScheduledTasks {
     private static final Logger log = LoggerFactory.getLogger(ScheduledTasks.class);
 
     // Array of Nvidia graphics cards chipsets reference : https://en.wikipedia.org/wiki/List_of_Nvidia_graphics_processing_units/
-     private static String[] chipsetsNvidia = {"GTX 1630", "GTX 1650", "GTX 1650 Super", "GTX 1660", "GTX 1660 Super", "GTX 1660 Ti",
+    private static String[] chipsetsNvidia = {"GTX 1630", "GTX 1650", "GTX 1650 Super", "GTX 1660", "GTX 1660 Super", "GTX 1660 Ti",
             "RTX 2060", "RTX 2060 Super", "RTX 2070", "RTX 2070 Super", "RTX 2080", "RTX 2080 Super", "RTX 2080 Ti", "TITAN RTX",
             "RTX 3050", "RTX 3060", "RTX 3060 Ti", "RTX 3070", "RTX 3070 Ti", "RTX 3080", "RTX 3080 Ti", "RTX 3090", "RTX 3090 Ti", "RTX 4060",
             "RTX 4070 Ti", "RTX 4080", "RTX 4090"};

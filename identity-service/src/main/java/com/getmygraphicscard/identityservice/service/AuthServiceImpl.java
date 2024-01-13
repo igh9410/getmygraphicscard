@@ -58,12 +58,12 @@ public class AuthServiceImpl implements AuthService {
     }
 
     @Override
-    public boolean addTokenToBlackList(String token) {
+    public boolean addTokenToBlockList(String token) {
         // Add token to blacklist included in the Authorization header for logout
         if (!redisTemplate.hasKey(token)) {
             // Add token to blacklist included in the Authorization header for logout
             log.info("Token {} is blacklisted, therefore becomes invalid", token);
-            redisTemplate.opsForValue().setIfAbsent(token,"blacklist", 3, TimeUnit.HOURS);
+            redisTemplate.opsForValue().setIfAbsent(token, "blacklist", 3, TimeUnit.HOURS);
             log.info(redisTemplate.opsForValue().get(token));
 
             return true;

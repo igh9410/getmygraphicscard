@@ -14,7 +14,6 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 
-
 @SpringBootTest
 public class EmailServiceTest {
 
@@ -28,9 +27,6 @@ public class EmailServiceTest {
     AlertRepository alertRepository;
 
 
-
-
-
     @Test
     @Transactional
     public void sendEmailTest() {
@@ -38,7 +34,7 @@ public class EmailServiceTest {
         List<Alert> alerts = alertRepository.findAlertsToBeSent().stream().toList();
 
 
-        for (Alert a: alerts) {
+        for (Alert a : alerts) {
             System.out.println("Alert= " + a.toString());
         }
 

@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="4941d86f-9086-4a6c-aca8-e1b97cc3f7d3" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jpa-buddy.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/com.getmygraphicscard.product-service.main.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/com.getmygraphicscard.subscription-service.main.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/identity-service.main.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/product-service.main.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/subscription-service.main.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/test.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NaverShop.json" beforeDir="false" afterPath="$PROJECT_DIR$/NaverShop.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-gateway/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/api-gateway/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-gateway/src/main/java/com/getmygraphicscard/apigateway/ApiGatewayApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/api-gateway/src/main/java/com/getmygraphicscard/apigateway/ApiGatewayApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-gateway/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/api-gateway/src/main/resources/application.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-gateway/src/test/java/com/getmygraphicscard/apigateway/ApiGatewayApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/api-gateway/src/test/java/com/getmygraphicscard/apigateway/ApiGatewayApplicationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eureka-server/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/eureka-server/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eureka-server/src/main/java/com/getmygraphicscard/eurekaserver/EurekaServerApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/eureka-server/src/main/java/com/getmygraphicscard/eurekaserver/EurekaServerApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eureka-server/src/test/java/com/getmygraphicscard/eurekaserver/EurekaServerApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/eureka-server/src/test/java/com/getmygraphicscard/eurekaserver/EurekaServerApplicationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/identity-service/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/identity-service/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/identity-service/src/main/java/com/getmygraphicscard/identityservice/IdentityServiceApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/identity-service/src/main/java/com/getmygraphicscard/identityservice/IdentityServiceApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/identity-service/src/main/java/com/getmygraphicscard/identityservice/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/identity-service/src/main/java/com/getmygraphicscard/identityservice/config/SecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/identity-service/src/main/java/com/getmygraphicscard/identityservice/controller/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/identity-service/src/main/java/com/getmygraphicscard/identityservice/controller/AuthController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/identity-service/src/main/java/com/getmygraphicscard/identityservice/dto/UserDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/identity-service/src/main/java/com/getmygraphicscard/identityservice/dto/UserDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/identity-service/src/main/java/com/getmygraphicscard/identityservice/model/SecurityUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/identity-service/src/main/java/com/getmygraphicscard/identityservice/model/SecurityUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/identity-service/src/main/java/com/getmygraphicscard/identityservice/repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/identity-service/src/main/java/com/getmygraphicscard/identityservice/repository/UserRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/identity-service/src/main/java/com/getmygraphicscard/identityservice/security/RsaKeyProperties.java" beforeDir="false" afterPath="$PROJECT_DIR$/identity-service/src/main/java/com/getmygraphicscard/identityservice/security/RsaKeyProperties.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/identity-service/src/main/java/com/getmygraphicscard/identityservice/service/AuthService.java" beforeDir="false" afterPath="$PROJECT_DIR$/identity-service/src/main/java/com/getmygraphicscard/identityservice/service/AuthService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/identity-service/src/main/java/com/getmygraphicscard/identityservice/service/AuthServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/identity-service/src/main/java/com/getmygraphicscard/identityservice/service/AuthServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/identity-service/src/main/java/com/getmygraphicscard/identityservice/service/UserDetailsServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/identity-service/src/main/java/com/getmygraphicscard/identityservice/service/UserDetailsServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/identity-service/src/test/java/com/getmygraphicscard/identityservice/IdentityServiceApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/identity-service/src/test/java/com/getmygraphicscard/identityservice/IdentityServiceApplicationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/identity-service/src/test/java/com/getmygraphicscard/identityservice/controller/AuthControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/identity-service/src/test/java/com/getmygraphicscard/identityservice/controller/AuthControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/identity-service/src/test/java/com/getmygraphicscard/identityservice/service/AuthServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/identity-service/src/test/java/com/getmygraphicscard/identityservice/service/AuthServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/product-service/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/product-service/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/product-service/src/main/java/com/getmygraphicscard/productservice/ProductServiceApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/product-service/src/main/java/com/getmygraphicscard/productservice/ProductServiceApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/product-service/src/main/java/com/getmygraphicscard/productservice/repository/ItemRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/product-service/src/main/java/com/getmygraphicscard/productservice/repository/ItemRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/product-service/src/main/java/com/getmygraphicscard/productservice/service/ItemServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/product-service/src/main/java/com/getmygraphicscard/productservice/service/ItemServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/product-service/src/main/java/com/getmygraphicscard/productservice/service/WebClientService.java" beforeDir="false" afterPath="$PROJECT_DIR$/product-service/src/main/java/com/getmygraphicscard/productservice/service/WebClientService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/product-service/src/main/java/com/getmygraphicscard/productservice/service/WebClientServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/product-service/src/main/java/com/getmygraphicscard/productservice/service/WebClientServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/product-service/src/main/java/com/getmygraphicscard/productservice/task/ScheduledTasks.java" beforeDir="false" afterPath="$PROJECT_DIR$/product-service/src/main/java/com/getmygraphicscard/productservice/task/ScheduledTasks.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/product-service/src/test/java/com/getmygraphicscard/productservice/ProductServiceApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/product-service/src/test/java/com/getmygraphicscard/productservice/ProductServiceApplicationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/product-service/src/test/java/com/getmygraphicscard/productservice/service/WebClientServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/product-service/src/test/java/com/getmygraphicscard/productservice/service/WebClientServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/subscription-service/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/subscription-service/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/subscription-service/src/main/java/com/getmygraphicscard/subscriptionservice/SubscriptionServiceApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/subscription-service/src/main/java/com/getmygraphicscard/subscriptionservice/SubscriptionServiceApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/subscription-service/src/main/java/com/getmygraphicscard/subscriptionservice/config/KafkaConsumerConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/subscription-service/src/main/java/com/getmygraphicscard/subscriptionservice/config/KafkaConsumerConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/subscription-service/src/main/java/com/getmygraphicscard/subscriptionservice/controller/SubscriptionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/subscription-service/src/main/java/com/getmygraphicscard/subscriptionservice/controller/SubscriptionController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/subscription-service/src/main/java/com/getmygraphicscard/subscriptionservice/entity/SubscriptionItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/subscription-service/src/main/java/com/getmygraphicscard/subscriptionservice/entity/SubscriptionItem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/subscription-service/src/main/java/com/getmygraphicscard/subscriptionservice/interceptor/JwtInterceptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/subscription-service/src/main/java/com/getmygraphicscard/subscriptionservice/interceptor/JwtInterceptor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/subscription-service/src/main/java/com/getmygraphicscard/subscriptionservice/service/EmailServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/subscription-service/src/main/java/com/getmygraphicscard/subscriptionservice/service/EmailServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/subscription-service/src/main/java/com/getmygraphicscard/subscriptionservice/service/JwtService.java" beforeDir="false" afterPath="$PROJECT_DIR$/subscription-service/src/main/java/com/getmygraphicscard/subscriptionservice/service/JwtService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/subscription-service/src/main/java/com/getmygraphicscard/subscriptionservice/service/JwtServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/subscription-service/src/main/java/com/getmygraphicscard/subscriptionservice/service/JwtServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/subscription-service/src/main/java/com/getmygraphicscard/subscriptionservice/service/KafkaConsumer.java" beforeDir="false" afterPath="$PROJECT_DIR$/subscription-service/src/main/java/com/getmygraphicscard/subscriptionservice/service/KafkaConsumer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/subscription-service/src/main/java/com/getmygraphicscard/subscriptionservice/service/SubscriptionServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/subscription-service/src/main/java/com/getmygraphicscard/subscriptionservice/service/SubscriptionServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/subscription-service/src/test/java/com/getmygraphicscard/subscriptionservice/SubscriptionServiceImplApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/subscription-service/src/test/java/com/getmygraphicscard/subscriptionservice/SubscriptionServiceImplApplicationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/subscription-service/src/test/java/com/getmygraphicscard/subscriptionservice/service/EmailServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/subscription-service/src/test/java/com/getmygraphicscard/subscriptionservice/service/EmailServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/subscription-service/src/test/java/com/getmygraphicscard/subscriptionservice/service/SubscriptionServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/subscription-service/src/test/java/com/getmygraphicscard/subscriptionservice/service/SubscriptionServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/subscription-service/src/test/resources/application-test.properties" beforeDir="false" afterPath="$PROJECT_DIR$/subscription-service/src/test/resources/application-test.properties" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+    <projectState path="$PROJECT_DIR$/api-gateway">
+      <ProjectState />
+    </projectState>
+    <projectState path="$PROJECT_DIR$/eureka-server">
+      <ProjectState />
+    </projectState>
+    <projectState path="$PROJECT_DIR$/identity-service">
+      <ProjectState />
+    </projectState>
+    <projectState path="$PROJECT_DIR$/product-service">
+      <ProjectState />
+    </projectState>
+    <projectState path="$PROJECT_DIR$/subscription-service">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="api-gateway" type="f1a62948:ProjectNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="eureka-server" type="f1a62948:ProjectNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="getmygraphicscard" type="f1a62948:ProjectNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="getmygraphicscard" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="JpbToolWindowState">
+    <option name="isToolWindowVisible" value="false" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2Sk30sliXY4OyKRRMgjjdTcgTXy" />
+  <component name="ProjectViewState">
+    <option name="autoscrollFromSource" value="true" />
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "/home/geonhyuk/Documents/CS/Java/getmygraphicscard",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "reference.projectsettings.compiler.annotationProcessors"
+  }
+}]]></component>
+  <component name="RunManager" selected="Application.SubscriptionServiceApplication">
+    <configuration name="ApiGatewayApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.getmygraphicscard.apigateway.ApiGatewayApplication" />
+      <module name="api-gateway_main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.getmygraphicscard.apigateway.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="EurekaServerApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.getmygraphicscard.eurekaserver.EurekaServerApplication" />
+      <module name="eureka-server_main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.getmygraphicscard.eurekaserver.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="IdentityServiceApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.getmygraphicscard.identityservice.IdentityServiceApplication" />
+      <module name="identity-service_main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.getmygraphicscard.identityservice.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ProductServiceApplication" type="Application" factoryName="Application" singleton="false" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.getmygraphicscard.productservice.ProductServiceApplication" />
+      <module name="product-service_main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.getmygraphicscard.productservice.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SubscriptionServiceApplication" type="Application" factoryName="Application" singleton="false" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.getmygraphicscard.subscriptionservice.SubscriptionServiceApplication" />
+      <module name="subscription-service_main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.getmygraphicscard.subscriptionservice.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.SubscriptionServiceApplication" />
+      <item itemvalue="Application.ApiGatewayApplication" />
+      <item itemvalue="Application.EurekaServerApplication" />
+      <item itemvalue="Application.IdentityServiceApplication" />
+      <item itemvalue="Application.ProductServiceApplication" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.SubscriptionServiceApplication" />
+        <item itemvalue="Application.ProductServiceApplication" />
+        <item itemvalue="Application.IdentityServiceApplication" />
+        <item itemvalue="Application.EurekaServerApplication" />
+        <item itemvalue="Application.ApiGatewayApplication" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="4941d86f-9086-4a6c-aca8-e1b97cc3f7d3" name="Changes" comment="" />
+      <created>1689676531604</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1689676531604</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/api-gateway/src/main/java/com/getmygraphicscard/apigateway/ApiGatewayApplication.java</url>
+          <line>8</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/getmygraphicscard$SubscriptionServiceApplication.ic" NAME="SubscriptionServiceApplication Coverage Results" MODIFIED="1690187109099" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.getmygraphicscard.subscriptionservice.*</FILTER>
+    </SUITE>
+  </component>
+</project>

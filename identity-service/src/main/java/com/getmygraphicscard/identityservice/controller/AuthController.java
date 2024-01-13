@@ -29,6 +29,7 @@ public class AuthController {
     private final AuthService authService;
     private final AuthenticationManager authenticationManager;
     private final RsaKeyProperties jwtConfigProperties;
+
     @PostMapping("/signup")
     @ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity<String> userSignUp(@Valid @RequestBody UserDto userDto) {
@@ -54,7 +55,7 @@ public class AuthController {
         if (bearerToken != null && bearerToken.startsWith("Bearer ")) {
             String token = bearerToken.substring(7);
             log.info("Token = " + token);
-            boolean isLogoutSuccessful = authService.addTokenToBlackList(token);
+            boolean isLogoutSuccessful = authService.addTokenToBlockList(token);
             if (isLogoutSuccessful) {
                 return ResponseEntity.noContent().build(); // Return 201 for successful logout
             } else {
@@ -63,7 +64,6 @@ public class AuthController {
         }
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).build(); // Return 400 for logout failure
     }
-
 
 
 }

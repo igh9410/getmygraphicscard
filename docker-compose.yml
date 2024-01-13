@@ -28,7 +28,7 @@ services:
     networks:
       - backend
   
-  redis:  # Redis Image
+  redis: # Redis Image
     image: redis:latest
     container_name: redis
     ports:
@@ -41,5 +41,5 @@ networks:
   backend:
     driver: bridge
 
-volumes: 
+volumes:
   mongodb_data:

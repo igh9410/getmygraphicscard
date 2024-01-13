@@ -3,27 +3,14 @@
   <component name="CompilerConfiguration">
     <annotationProcessing>
       <profile default="true" name="Default" enabled="true" />
+      <profile name="Gradle Imported" enabled="true">
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="false">
+          <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.projectlombok/lombok/1.18.28/a2ff5da8bcd8b1b26f36b806ced63213362c6dcc/lombok-1.18.28.jar" />
+        </processorPath>
+        <module name="identity-service_main" />
+      </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="com.GetMyGraphicsCard.product-service.main" target="17" />
-      <module name="com.GetMyGraphicsCard.subscription-service.main" target="17" />
-      <module name="com.GetMyGraphicsCard.subscription-service.test" target="17" />
-      <module name="config-server" target="17" />
-      <module name="config-server.main" target="17" />
-      <module name="config-server.test" target="17" />
-      <module name="identityservice" target="17" />
-      <module name="identityservice.main" target="17" />
-      <module name="identityservice.test" target="17" />
-      <module name="OAuth2AuthorizationServer" target="17" />
-      <module name="OAuth2AuthorizationServer.main" target="17" />
-      <module name="OAuth2AuthorizationServer.test" target="17" />
-      <module name="product-service_main" target="17" />
-      <module name="product-service_test" target="17" />
-    </bytecodeTargetLevel>
-  </component>
-  <component name="JavacSettings">
-    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="product-service.main" options="--add-exports jdk.javadoc/jdk.javadoc.internal.doclets.formats.html.markup=ALL-UNNAMED" />
-    </option>
+    <bytecodeTargetLevel target="1.6" />
   </component>
 </project>

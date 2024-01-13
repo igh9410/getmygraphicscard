@@ -25,7 +25,6 @@ public class KafkaConsumer {
     private final RedisLockRegistry redisLockRegistry;
 
 
-
     @KafkaListener(topics = "alertTopic", groupId = "groupId", containerFactory = "alertListener")
     public void consume(PriceAlert data) {
         Lock lock = redisLockRegistry.obtain("sendMailToSubscribers");

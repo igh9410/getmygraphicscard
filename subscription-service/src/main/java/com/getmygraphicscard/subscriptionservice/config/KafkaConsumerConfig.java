@@ -32,8 +32,7 @@ public class KafkaConsumerConfig {
     @Bean
     public ConcurrentKafkaListenerContainerFactory<String,
             PriceAlert>
-    alertListener()
-    {
+    alertListener() {
         ConcurrentKafkaListenerContainerFactory<String,
                 PriceAlert>
                 factory

@@ -4,7 +4,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.getmygraphicscard.identityservice.config.SecurityConfig;
 import com.getmygraphicscard.identityservice.dto.LoginRequest;
 import com.getmygraphicscard.identityservice.dto.UserDto;
-import com.getmygraphicscard.identityservice.entity.User;
 import com.getmygraphicscard.identityservice.security.RsaKeyProperties;
 import com.getmygraphicscard.identityservice.service.AuthService;
 import com.getmygraphicscard.identityservice.service.UserDetailsServiceImpl;
@@ -17,8 +16,6 @@ import org.springframework.context.annotation.Import;
 import org.springframework.http.MediaType;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.oauth2.jwt.Jwt;
-import org.springframework.security.oauth2.jwt.JwtDecoder;
 import org.springframework.test.web.servlet.MockMvc;
 
 import static org.mockito.ArgumentMatchers.any;
@@ -90,7 +87,7 @@ public class AuthControllerTest {
         String testToken = "eyJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJldmVyeWEiLCJzY29wZSI6IlVTRVIiLCJpc3MiOiJzZWxmIiwiZXhwIjoxNjg5NjgyMDM1LCJpYXQiOjE2ODk2NzEyMzUsImVtYWlsIjoiaGFsbHdheUBnbWFpbC5jb20ifQ.O9CzqacixrWxogcuHV6P4DZ2X4jaGjx-ggvJ0m_5eskdZcW-1HbcmdulFnkaHi3ZRft83sIXMA14nSEUB0c_wSFV0ydrQonEVoqU4gf0evAmEXXqZtXD0Bv7SjT131TNEDw5LpXKadEWTZbwIc6p9P2F3ccy0pjsnoUXG4Q3IUlLXWhlqFJK5qVpEgMka5NEBfot601zX4GyKJVehNnrwi5jNeFQUUFuUEWgnqR3o32QmafbE4w-aUx61k_Gl3xLEw1ig-_gZwzmtaM7V_2lbYkhlzyk6p7egIU6lnTAsylZ-9m8k4AFYwpfs0ugXjFpJJsbRGUtuaEVKSPeC2xyCQ";
         String bearerToken = "Bearer " + testToken;
         // Define what your AuthService should return when logout is called
-        when(authService.addTokenToBlackList(testToken)).thenReturn(true);
+        when(authService.addTokenToBlockList(testToken)).thenReturn(true);
 
         mockMvc.perform(post("/api/auth/logout")
                         .contentType(MediaType.APPLICATION_JSON)
@@ -98,7 +95,6 @@ public class AuthControllerTest {
                 .andExpect(status().isNoContent());
 
     }
-
 
 
 }

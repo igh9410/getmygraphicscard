@@ -3,7 +3,6 @@ package com.getmygraphicscard.identityservice.service;
 import com.getmygraphicscard.identityservice.dto.UserDto;
 import com.getmygraphicscard.identityservice.entity.User;
 import com.getmygraphicscard.identityservice.enums.Role;
-import com.getmygraphicscard.identityservice.model.SecurityUser;
 import com.getmygraphicscard.identityservice.repository.UserRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -14,24 +13,11 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.annotation.Import;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.oauth2.jwt.Jwt;
-import org.springframework.security.oauth2.jwt.JwtClaimsSet;
 import org.springframework.security.oauth2.jwt.JwtEncoder;
-import org.springframework.security.oauth2.jwt.JwtEncoderParameters;
 
-import java.time.Instant;
-import java.time.temporal.ChronoUnit;
-import java.util.Arrays;
-import java.util.Collection;
 import java.util.concurrent.TimeUnit;
-import java.util.stream.Collectors;
 
-import static com.getmygraphicscard.identityservice.enums.Role.USER;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.ArgumentMatchers.any;
@@ -84,18 +70,18 @@ public class AuthServiceTest {
     } */
 
     @Test
-    public void addTokenToBlackListTest() {
+    public void addTokenToBlockListTest() {
 
         String token = "testToken";
 
         ValueOperations<String, String> valueOperations = mock(ValueOperations.class);
         when(redisTemplate.hasKey(token)).thenReturn(false);
         when(redisTemplate.opsForValue()).thenReturn(valueOperations);
-        when(valueOperations.setIfAbsent(token,"blacklist", 3, TimeUnit.HOURS)).thenReturn(true);
+        when(valueOperations.setIfAbsent(token, "blacklist", 3, TimeUnit.HOURS)).thenReturn(true);
 
 
         // Act
-        boolean result = authService.addTokenToBlackList(token);
+        boolean result = authService.addTokenToBlockList(token);
 
         // Assert
         assertTrue(result);

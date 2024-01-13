@@ -1,9 +1,10 @@
 # GetMyGraphicsCard
+
 Graphics card comparison site which sends email notifications.  
 Frontend repository: [Frontend](https://github.com/igh9410/GetMyGraphicsCard-Frontend)  
-Final Showcase Video: [Showcase](https://youtu.be/tIaediY-c1U)  
+Final Showcase Video: [Showcase](https://youtu.be/tIaediY-c1U)
 
-## 📝  Tech Stack
+## 📝 Tech Stack
 
 Frontend: React Typescript (still under construction)
 
@@ -25,7 +26,9 @@ For subscription-service,
 ![subscription-service](assets/subscription_service.png)
 
 ## To Run
+
 ## To Run
+
 To run the whole microservices, Docker, JDK 17 are required.  
 Intellij IDE is recommended.  
 Make sure that MongoDB and MySQL is not running before the installation.  
@@ -35,7 +38,8 @@ in the Git Bash terminal.
 While Docker is running, run the docker-compose file for this project by "docker-compose up -d",  
 Then to initialize databases, run "./install-script.sh" or just run the sh file install-script.sh  
 Execute this command in terminal after that to ensure database initialization.   
-mysql -uroot -pmypassword -e "CREATE DATABASE IF NOT EXISTS identity_service; CREATE DATABASE IF NOT EXISTS subscription_service;"  
+mysql -uroot -pmypassword -e "CREATE DATABASE IF NOT EXISTS identity_service; CREATE DATABASE IF NOT EXISTS
+subscription_service;"
 
 After that, the execution order of each microservice does not matter much, but I recommend running eureka-server,  
 api-gateway, identity-service, product-service, subscription-service in order.  
@@ -45,23 +49,31 @@ product-service and subscription-service support launching multiple instances.
 
 Users access to the app via Spring Cloud Gateway, running on port 8888.
 
+The product service sends HTTP requests to https://shopping.naver.com, every 5 minutes, retrieving graphics card price
+information and saving the information to MongoDB. It compares the item price information with previously saved data
+when saving the data to MongoDB. If the lowest price of a product becomes available when retrieving price information
+from Naver.com, the app publishes alert messages to the Kafka cluster. And users can look up the price information via
+/items/** endpoints.
 
-The product service sends HTTP requests to https://shopping.naver.com, every 5 minutes, retrieving graphics card price information and saving the information to  MongoDB. It compares the item price information with previously saved data when saving the data to MongoDB. If the lowest price of a product becomes available when retrieving price information from Naver.com, the app publishes alert messages to the Kafka cluster. And users can look up the price information via /items/** endpoints.
-
-The subscription service is another spring boot app, which deals with user management and email notification service. Multiple instances of the subscription service can be deployed in case of heavy user traffics. Users must register to use the subscription service. The user information and their subscription information are saved to the connected MySQL database. Users can add or delete items to their wishlist. The subscription service listens (subscribes) to the Kafka clusters, and saves the messages to the MySQL database. The saved messages are used as price information alert emails. The service sends the price information alert email to the users when the items on their wishlist become the lowest price available. After sending emails to the users, the subscription service deletes the messages in the MySQL database to prevent users from receiving emails regarding the same item information.
+The subscription service is another spring boot app, which deals with user management and email notification service.
+Multiple instances of the subscription service can be deployed in case of heavy user traffics. Users must register to
+use the subscription service. The user information and their subscription information are saved to the connected MySQL
+database. Users can add or delete items to their wishlist. The subscription service listens (subscribes) to the Kafka
+clusters, and saves the messages to the MySQL database. The saved messages are used as price information alert emails.
+The service sends the price information alert email to the users when the items on their wishlist become the lowest
+price available. After sending emails to the users, the subscription service deletes the messages in the MySQL database
+to prevent users from receiving emails regarding the same item information.
 
 Users can have either role USER or ADMIN.
 ADMIN users can perform CRUD operations on all resources of registered users.
 Users with the role of USER can only perform CRUD operations on their resources.
-The endpoint /subscriptions/** is secured with Spring Security. JWT is used for authentication and authorization to enhance the scalability of the app. When the user signs in to the app, the subscription service returns a JWT token which lasts 1 hour. Users can access their resources with the returned token. 
+The endpoint /subscriptions/** is secured with Spring Security. JWT is used for authentication and authorization to
+enhance the scalability of the app. When the user signs in to the app, the subscription service returns a JWT token
+which lasts 1 hour. Users can access their resources with the returned token.
 
 Users will receive emails like below when their items on the wishlist become the lowest price.
 
 ![Email](https://user-images.githubusercontent.com/31177070/219342151-e9abacee-2a3e-4382-830f-2e517a3a7f88.png)
-
-
-
-
 
 # 📝 API Documentation
 
@@ -69,14 +81,12 @@ API documentation for each service can be accessed via following URL:
 
 identity-service: http:localhost:4000/identity/swagger-ui.html  
 product-service: http:localhost:{port number for product-service}/product/swagger-ui.html  
-subscription-service: http:localhost:{port number for subscription-service}/subscription/swagger-ui.html  
-
+subscription-service: http:localhost:{port number for subscription-service}/subscription/swagger-ui.html
 
 ## Identity Service
 
 ![identity-service1](assets/IdentityService1.png)  
-![identity-service2](assets/IdentityService2.png)  
-
+![identity-service2](assets/IdentityService2.png)
 
 ## Product Service
 
@@ -84,15 +94,16 @@ subscription-service: http:localhost:{port number for subscription-service}/subs
 ![product-service2](assets/ProductService2.png)  
 ![product-service3](assets/ProductService3.png)  
 ![product-service4](assets/ProductService4.png)  
-![product-service5](assets/ProductService5.png)  
+![product-service5](assets/ProductService5.png)
 
 ## Subscription Service
 
 ![subscription-service1](assets/SubscriptionService1.png)  
 ![subscription-service2](assets/SubscriptionService2.png)  
-![subscription-service3](assets/SubscriptionService3.png)  
+![subscription-service3](assets/SubscriptionService3.png)
 
 # GetMyGraphicsCard - 한국어
+
 실행하려면 Docker와 MySQL, MongoDB가 설치되어 실행 중이어야 합니다.
 docer compose up -d로 Redis와 아파치 Kafka를 먼저 실행해주세요.
 그 이후에는 각 마이크로서비스들 실행 순서는 크게 상관없으나 eureka-server,

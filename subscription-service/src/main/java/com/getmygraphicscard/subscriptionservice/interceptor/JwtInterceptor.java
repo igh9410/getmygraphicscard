@@ -10,6 +10,7 @@ import com.auth0.jwt.interfaces.DecodedJWT;
 import com.getmygraphicscard.subscriptionservice.service.JwtService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -52,11 +53,11 @@ public class JwtInterceptor implements HandlerInterceptor {
         if (StringUtils.hasText(bearerToken) && bearerToken.startsWith("Bearer ")) {
             String jwtToken = bearerToken.substring(7);
             DecodedJWT decodedJWT;
-            log.info("Black list check for token {}", jwtService.isTokenBlacklisted(jwtToken));
+            log.info("Block list check for token {}", jwtService.isTokenBlocklisted(jwtToken));
 
-            // Check if token is blacklisted
-            if (jwtService.isTokenBlacklisted(jwtToken)) {
-                log.info("Token is blacklisted. Blocking the request...");
+            // Check if token is ed
+            if (jwtService.isTokenBlocklisted(jwtToken)) {
+                log.info("Token is blocklisted. Blocking the request...");
                 response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
                 return false;
             }
@@ -72,10 +73,10 @@ public class JwtInterceptor implements HandlerInterceptor {
 
                 Claim email = decodedJWT.getClaim("email");
                 userEmail.set(email.asString());
-             //   log.info("Token = " + bearerToken);
+                //   log.info("Token = " + bearerToken);
                 log.info("Extracted User Email = " + getUserEmail());
 
-            } catch (JWTVerificationException exception){
+            } catch (JWTVerificationException exception) {
                 // Invalid signature/claims
                 log.info("Invalid JWT token");
                 response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
@@ -84,6 +85,7 @@ public class JwtInterceptor implements HandlerInterceptor {
         }
         return true;
     }
+
     public RSAPublicKey getPublicKey() throws Exception {
         Path path = Paths.get(getClass().getClassLoader().getResource("certs/public.pem").toURI());
         String publicKeyContent = new String(Files.readAllBytes(path));
@@ -111,6 +113,7 @@ public class JwtInterceptor implements HandlerInterceptor {
 
         return (RSAPrivateKey) keyFactory.generatePrivate(keySpec);
     }
+
     public String getUserEmail() {
         return userEmail.get();
     }

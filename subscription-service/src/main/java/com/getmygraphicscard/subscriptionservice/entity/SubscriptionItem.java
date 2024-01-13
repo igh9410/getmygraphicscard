@@ -18,15 +18,15 @@ public class SubscriptionItem {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="id")
+    @Column(name = "id")
     private Long id;
     private String title;
     private String link;
     private String image;
     private int lprice;
-    @Column(name="user_email")
+    @Column(name = "user_email")
     private String userEmail;
-    @Column(name="created_time")
+    @Column(name = "created_time")
     private LocalDateTime createdTime;
 
 

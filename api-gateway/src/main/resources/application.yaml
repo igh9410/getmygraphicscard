@@ -42,7 +42,7 @@ spring:
         - id: identity-service
           uri: lb://identity-service
           filters:
-              - DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin
+            - DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin
           predicates:
             - Path=/api/auth/**, /identity/**, /docs/**
         ## Product Service Route

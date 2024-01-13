@@ -12,8 +12,9 @@ import org.springframework.stereotype.Service;
 public class JwtServiceImpl implements JwtService {
 
     private final StringRedisTemplate redisTemplate;
+
     @Override
-    public boolean isTokenBlacklisted(String token) {
+    public boolean isTokenBlocklisted(String token) {
         return redisTemplate.opsForValue().get(token) != null;
     }
 }
